@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
-		EE28A99F2A27913700736689 /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99E2A27913700736689 /* MusicView.swift */; };
-		EE28A9A32A2796D800736689 /* BreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* BreathingView.swift */; };
+		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
 		EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A42A27976D00736689 /* QuestionView.swift */; };
 		EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8015072A278D1500137787 /* BottomNavigator.swift */; };
 		EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECEE48C2A24F9F400249177 /* DRP_32App.swift */; };
@@ -40,8 +39,7 @@
 
 /* Begin PBXFileReference section */
 		EE28A99C2A27912900736689 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		EE28A99E2A27913700736689 /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
-		EE28A9A22A2796D800736689 /* BreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingView.swift; sourceTree = "<group>"; };
+		EE28A9A22A2796D800736689 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		EE28A9A42A27976D00736689 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		EE8015072A278D1500137787 /* BottomNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavigator.swift; sourceTree = "<group>"; };
 		EECEE4892A24F9F400249177 /* DRP_32.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRP_32.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,8 +84,7 @@
 			children = (
 				EE8015072A278D1500137787 /* BottomNavigator.swift */,
 				EE28A99C2A27912900736689 /* CalendarView.swift */,
-				EE28A99E2A27913700736689 /* MusicView.swift */,
-				EE28A9A22A2796D800736689 /* BreathingView.swift */,
+				EE28A9A22A2796D800736689 /* CommunityView.swift */,
 				EE28A9A42A27976D00736689 /* QuestionView.swift */,
 			);
 			path = BottomNavigator;
@@ -290,11 +287,10 @@
 			files = (
 				EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */,
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
-				EE28A99F2A27913700736689 /* MusicView.swift in Sources */,
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
 				EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */,
 				EE28A99D2A27912900736689 /* CalendarView.swift in Sources */,
-				EE28A9A32A2796D800736689 /* BreathingView.swift in Sources */,
+				EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

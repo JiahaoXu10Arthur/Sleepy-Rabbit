@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-struct BreathingView: View {
+struct CommunityView: View {
     var body: some View {
         VStack {
-            Image(systemName: "wind")
+            Image(systemName: "person.2")
                 .foregroundColor(.blue)
-            Text("This is a breather")
+            Text("This is a community")
         }
     }
 }
 
 struct BreathingView_Previews: PreviewProvider {
     static var previews: some View {
-        BreathingView()
+        CommunityView()
     }
 }

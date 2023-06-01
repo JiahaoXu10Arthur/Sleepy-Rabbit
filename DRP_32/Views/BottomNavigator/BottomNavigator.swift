@@ -12,29 +12,23 @@ struct BottomNavigator: View {
     
     var body: some View {
             TabView(selection: $selectedTab) {
-                MusicView()
+                CalendarView()
                     .tabItem {
-                        Label("Music", systemImage: "music.note")
+                        Label("Routine", systemImage: "calendar")
                     }
                     .tag(0)
                 
-                CalendarView()
+                CommunityView()
                     .tabItem {
-                        Label("Calendar", systemImage: "calendar")
+                        Label("Community", systemImage: "person.2")
                     }
                     .tag(1)
-                
-                BreathingView()
-                    .tabItem {
-                        Label("Breathing", systemImage: "wind")
-                    }
-                    .tag(2)
                 
                 QuestionView()
                     .tabItem {
                         Label("Questions", systemImage: "questionmark.bubble")
                     }
-                    .tag(3)
+                    .tag(2)
             }
         }
 }
