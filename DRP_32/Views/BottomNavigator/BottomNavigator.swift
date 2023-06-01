@@ -17,11 +17,20 @@ struct BottomNavigator: View {
         case question
     }
     
-    let tabBarColor = UIColor(red: 0.1, green: 0.1, blue: 0.3, alpha: 1.0)
+    let tabBarColor = UIColor(red: 0.1, green: 0.1, blue: 0.3, alpha: 0.8)
+    let selectedTabItemColor = UIColor(red: 0.6, green: 0.6, blue: 0.8, alpha: 1.0)
+    let unselectedTabItemColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+
+
   
     
     init() {
-           UITabBar.appearance().backgroundColor = tabBarColor
+        UITabBar.appearance().backgroundColor = tabBarColor
+        UITabBar.appearance().tintColor = selectedTabItemColor
+        UITabBar.appearance().unselectedItemTintColor = unselectedTabItemColor
+
+    
+
     }
     
     var body: some View {
