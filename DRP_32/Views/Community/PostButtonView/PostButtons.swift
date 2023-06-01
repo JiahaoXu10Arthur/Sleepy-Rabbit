@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct PostButtons: View {
+    @State private var isShowingTipPost = false
+
     var body: some View {
+        
+        
         HStack(alignment: .center) {
             Button(action: {
-                print("button pressed")
-            }) {
                 
+                isShowingTipPost = true
+            }) {
                 Text("Tip")
                     .font(.title)
                     .foregroundColor(.white)
@@ -21,8 +25,11 @@ struct PostButtons: View {
                     .background(Color.green)
                     .cornerRadius(15)
                     .padding()
-                
             }
+            .sheet(isPresented: $isShowingTipPost) {
+                TipPostView(isShowing: $isShowingTipPost)
+            }
+            
             
             Spacer()
             Button(action: {

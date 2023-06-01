@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TipRow: View {
     @State private var showDetail = false
+    
     var tip: Tip
     var body: some View {
         HStack {

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		538D90892A29300900A80AAB /* PostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D90882A29300900A80AAB /* PostPage.swift */; };
+		538D90892A29300900A80AAB /* TipPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D90882A29300900A80AAB /* TipPostView.swift */; };
 		53DEDE392A28D6DC005A0829 /* TipRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE382A28D6DC005A0829 /* TipRow.swift */; };
 		53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3A2A28D6FC005A0829 /* TipList.swift */; };
 		53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3C2A28D712005A0829 /* TipDetail.swift */; };
@@ -48,7 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		538D90882A29300900A80AAB /* PostPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPage.swift; sourceTree = "<group>"; };
+		538D90882A29300900A80AAB /* TipPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipPostView.swift; sourceTree = "<group>"; };
 		53DEDE382A28D6DC005A0829 /* TipRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipRow.swift; sourceTree = "<group>"; };
 		53DEDE3A2A28D6FC005A0829 /* TipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipList.swift; sourceTree = "<group>"; };
 		53DEDE3C2A28D712005A0829 /* TipDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDetail.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				E6E0D3122A28E0F5003DD154 /* PostButtons.swift */,
-				538D90882A29300900A80AAB /* PostPage.swift */,
+				538D90882A29300900A80AAB /* TipPostView.swift */,
 			);
 			path = PostButtonView;
 			sourceTree = "<group>";
@@ -360,7 +360,7 @@
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
 				53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */,
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
-				538D90892A29300900A80AAB /* PostPage.swift in Sources */,
+				538D90892A29300900A80AAB /* TipPostView.swift in Sources */,
 				EE28A9B22A28E47900736689 /* Tip.swift in Sources */,
 				E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */,
 				EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */,
