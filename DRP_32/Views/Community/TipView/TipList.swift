@@ -28,18 +28,6 @@ struct TipList: View {
             .refreshable {
                 modelData.fetchData()
             }
-            Button {
-                print("posting")
-                postData(urlString: "https://drp32-backend.herokuapp.com/tips",data: testTip) { (returnVal, error) in
-                    if let returnVal = returnVal {
-                        print(returnVal)
-                    } else if let error = error {
-                        print(error)
-                    }
-                }
-            } label: {
-                Text("Post")
-            }
         }
     }
 }
