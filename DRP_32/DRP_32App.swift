@@ -12,6 +12,7 @@ struct DRP_32App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(ModelData.shared)
         }
     }
 }
