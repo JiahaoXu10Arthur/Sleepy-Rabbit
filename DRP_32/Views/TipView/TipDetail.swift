@@ -17,7 +17,7 @@ struct TipDetail: View {
 struct TipDetail_Previews: PreviewProvider {
     static var previews: some View {
         let sample: Tip = Tip(title: "title",  tag: "tag", detail: "detail")
-        if let tips = ModelData().tips, !tips.isEmpty {
+        if let tips = ModelData.shared.tips, !tips.isEmpty {
             TipDetail(tip: tips[0])
         } else {
             TipDetail(tip: sample)

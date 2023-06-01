@@ -34,31 +34,32 @@ struct BottomNavigator: View {
     }
     
     var body: some View {
-            TabView(selection: $selection) {
-                CalendarView()
-                    .tabItem {
-                        Label("Routine", systemImage: "calendar")
-                    }
-                    .tag(Tab.routine)
+        TabView(selection: $selection) {
+            CalendarView()
+                .tabItem {
+                    Label("Routine", systemImage:"calendar")
+                }
+                .tag(Tab.routine)
                 
-                TipList()
-                    .tabItem {
-                        Label("Community", systemImage: "person.2")
-                    }
-                    .tag(Tab.community)
+            TipList()
+                .tabItem {
+                    Label("Community", systemImage:"person.2")
+                }
+                .tag(Tab.community)
                 
                 
-                QuestionView()
-                    .tabItem {
-                        Label("Questions", systemImage: "questionmark.bubble")
-                    }
-                    .tag(Tab.question)
-            }
+            QuestionView()
+                .tabItem {
+                    Label("Questions", systemImage:"questionmark.bubble")
+                }
+                .tag(Tab.question)
         }
+    }
 }
 
 struct BottomNavigator_Previews: PreviewProvider {
     static var previews: some View {
         BottomNavigator()
+            .environmentObject(ModelData.shared)
     }
 }

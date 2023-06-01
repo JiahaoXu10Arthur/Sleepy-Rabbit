@@ -24,20 +24,20 @@ class FetchUsersTests: XCTestCase {
     
     func testCanAddTodo() {
         let expectation = self.expectation(description: "Posting")
-        var returnedData: Todo?
+        var returnedData: Tip?
         var returnedError: Error?
         let data = Todo(title: "TonnyTangdsb")
 
-        postData(urlString: urlString, data: data) { (todo, error) in
+        postData(urlString: "https://drp32-backend.herokuapp.com/tips", data: Tip(title: "Test", tag: "test", detail: "test")) { (todo, error) in
             returnedData = todo
             returnedError = error
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 10, handler: nil)
+        waitForExpectations(timeout: 30, handler: nil)
         
         XCTAssertNil(returnedError)
-        XCTAssertEqual((returnedData ?? Todo(title: "")).title, "TonnyTangdsb")
+        XCTAssertEqual((returnedData ?? Tip(title: "", tag: "test", detail: "test")).title, "Test")
     }
 
     func testCanFetchTodos() {
@@ -66,5 +66,9 @@ class FetchUsersTests: XCTestCase {
 
         XCTAssertNil(fetchedError)
         XCTAssertEqual((fetchedDatas ?? []).count, 0)
+    }
+    
+    func testPostTip() {
+        postTip(tip: Tip(title: "Test", tag: "test", detail: "test"))
     }
 }

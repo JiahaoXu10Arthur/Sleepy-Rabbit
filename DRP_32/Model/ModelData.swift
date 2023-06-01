@@ -15,10 +15,8 @@ class ModelData: ObservableObject {
     // Property to store the fetched data
     @Published var tips: [Tip]?
 
-    init() {
+    private init() {
         fetchData()
-       
-    
     } // Prevents others from creating their own instances
 
     func fetchData() {

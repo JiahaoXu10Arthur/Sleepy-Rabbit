@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TipList: View {
     @EnvironmentObject var modelData: ModelData
-
+    let testTip: Tip = Tip(title: "test", tag: "test", detail: "test")
     
     var tips: [Tip] {
         modelData.tips ?? []
@@ -17,21 +17,29 @@ struct TipList: View {
     
     
     var body: some View {
-        
-        
-        ScrollView {
-            
-            ForEach(tips) { tip in
-                
-                
-                TipRow(tip: tip)
+        VStack {
+            ScrollView {
+                ForEach(tips) { tip in
+                    TipRow(tip: tip)
+                }
+                .listStyle(.plain)
+                .background(Color.clear)
             }
-            .listStyle(.plain)
-            
-            .background(Color.clear)
-        }
-        .refreshable {
-            modelData.fetchData()
+            .refreshable {
+                modelData.fetchData()
+            }
+            Button {
+                print("posting")
+                postData(urlString: "https://drp32-backend.herokuapp.com/tips",data: testTip) { (returnVal, error) in
+                    if let returnVal = returnVal {
+                        print(returnVal)
+                    } else if let error = error {
+                        print(error)
+                    }
+                }
+            } label: {
+                Text("Post")
+            }
         }
     }
 }
@@ -39,7 +47,6 @@ struct TipList: View {
 struct TipList_Previews: PreviewProvider {
     static var previews: some View {
         TipList()
-            .environmentObject(ModelData())
+            .environmentObject(ModelData.shared)
     }
 }
-
