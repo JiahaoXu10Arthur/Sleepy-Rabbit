@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		538D90892A29300900A80AAB /* PostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D90882A29300900A80AAB /* PostPage.swift */; };
 		53DEDE392A28D6DC005A0829 /* TipRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE382A28D6DC005A0829 /* TipRow.swift */; };
 		53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3A2A28D6FC005A0829 /* TipList.swift */; };
 		53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3C2A28D712005A0829 /* TipDetail.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		538D90882A29300900A80AAB /* PostPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPage.swift; sourceTree = "<group>"; };
 		53DEDE382A28D6DC005A0829 /* TipRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipRow.swift; sourceTree = "<group>"; };
 		53DEDE3A2A28D6FC005A0829 /* TipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipList.swift; sourceTree = "<group>"; };
 		53DEDE3C2A28D712005A0829 /* TipDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDetail.swift; sourceTree = "<group>"; };
@@ -97,6 +99,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		538D90872A292D5200A80AAB /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				EE28A9A22A2796D800736689 /* CommunityView.swift */,
+				53DEDE352A28D593005A0829 /* TipView */,
+				E6E0D3112A28E0CF003DD154 /* PostButtonView */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
 		53DEDE352A28D593005A0829 /* TipView */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				E6E0D3122A28E0F5003DD154 /* PostButtons.swift */,
+				538D90882A29300900A80AAB /* PostPage.swift */,
 			);
 			path = PostButtonView;
 			sourceTree = "<group>";
@@ -120,7 +133,6 @@
 			children = (
 				EE8015072A278D1500137787 /* BottomNavigator.swift */,
 				EE28A99C2A27912900736689 /* CalendarView.swift */,
-				EE28A9A22A2796D800736689 /* CommunityView.swift */,
 				EE28A9A42A27976D00736689 /* QuestionView.swift */,
 			);
 			path = BottomNavigator;
@@ -147,9 +159,8 @@
 		EE8015062A278CA500137787 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				538D90872A292D5200A80AAB /* Community */,
 				EECEE48E2A24F9F400249177 /* ContentView.swift */,
-				E6E0D3112A28E0CF003DD154 /* PostButtonView */,
-				53DEDE352A28D593005A0829 /* TipView */,
 				EE28A9A62A27982C00736689 /* BottomNavigator */,
 			);
 			path = Views;
@@ -349,6 +360,7 @@
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
 				53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */,
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
+				538D90892A29300900A80AAB /* PostPage.swift in Sources */,
 				EE28A9B22A28E47900736689 /* Tip.swift in Sources */,
 				E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */,
 				EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */,
