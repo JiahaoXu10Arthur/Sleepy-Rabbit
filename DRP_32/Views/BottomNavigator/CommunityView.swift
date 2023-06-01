@@ -16,6 +16,6 @@ struct CommunityView: View {
 struct BreathingView_Previews: PreviewProvider {
     static var previews: some View {
         CommunityView()
-            .environmentObject(ModelData())
+            .environmentObject(ModelData.shared)
     }
 }
