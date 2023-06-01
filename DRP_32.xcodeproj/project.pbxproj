@@ -10,6 +10,7 @@
 		53DEDE392A28D6DC005A0829 /* TipRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE382A28D6DC005A0829 /* TipRow.swift */; };
 		53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3A2A28D6FC005A0829 /* TipList.swift */; };
 		53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3C2A28D712005A0829 /* TipDetail.swift */; };
+		E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E0D3122A28E0F5003DD154 /* PostButtons.swift */; };
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
 		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
 		EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A42A27976D00736689 /* QuestionView.swift */; };
@@ -46,6 +47,7 @@
 		53DEDE382A28D6DC005A0829 /* TipRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipRow.swift; sourceTree = "<group>"; };
 		53DEDE3A2A28D6FC005A0829 /* TipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipList.swift; sourceTree = "<group>"; };
 		53DEDE3C2A28D712005A0829 /* TipDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDetail.swift; sourceTree = "<group>"; };
+		E6E0D3122A28E0F5003DD154 /* PostButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButtons.swift; sourceTree = "<group>"; };
 		EE28A99C2A27912900736689 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		EE28A9A22A2796D800736689 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		EE28A9A42A27976D00736689 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 			path = TipView;
 			sourceTree = "<group>";
 		};
+		E6E0D3112A28E0CF003DD154 /* PostButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				E6E0D3122A28E0F5003DD154 /* PostButtons.swift */,
+			);
+			path = PostButtonView;
+			sourceTree = "<group>";
+		};
 		EE28A9A62A27982C00736689 /* BottomNavigator */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +139,7 @@
 		EE8015062A278CA500137787 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E6E0D3112A28E0CF003DD154 /* PostButtonView */,
 				53DEDE352A28D593005A0829 /* TipView */,
 				EECEE48E2A24F9F400249177 /* ContentView.swift */,
 				EE28A9A62A27982C00736689 /* BottomNavigator */,
@@ -329,6 +340,7 @@
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
 				53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */,
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
+				E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */,
 				EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */,
 				EE28A99D2A27912900736689 /* CalendarView.swift in Sources */,
 				53DEDE392A28D6DC005A0829 /* TipRow.swift in Sources */,
