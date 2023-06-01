@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Tip: Codable {
+struct Tip: Codable, Identifiable {
     var id: UUID?
     var title: String
     var tag: String

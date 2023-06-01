@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct TipList: View {
-    var intList: [Int] = Array(1...8)
+    @EnvironmentObject var modelData: ModelData
+
+    
+    var tips: [Tip] {
+        modelData.tips ?? []
+    }
     
     
     var body: some View {
@@ -16,16 +21,14 @@ struct TipList: View {
         
         ScrollView {
             
-            ForEach(intList, id: \.self) { item in
+            ForEach(tips) { tip in
                 
-                TipRow()
+                
+                TipRow(tip: tip)
             }
-
-            
             .listStyle(.plain)
             
             .background(Color.clear)
-            .navigationTitle("Landmarks")
         }
     }
 }
@@ -33,6 +36,7 @@ struct TipList: View {
 struct TipList_Previews: PreviewProvider {
     static var previews: some View {
         TipList()
+            .environmentObject(ModelData())
     }
 }
 

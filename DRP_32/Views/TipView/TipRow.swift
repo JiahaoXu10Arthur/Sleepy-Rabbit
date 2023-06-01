@@ -9,13 +9,14 @@ import SwiftUI
 
 struct TipRow: View {
     @State private var showDetail = false
+    var tip: Tip
     var body: some View {
         HStack {
-            Text("Tip of the Day")
+            Text(tip.title)
                 .font(.title)
             
             Spacer()
-            Text("sleeping habit")
+            Text(tip.tag)
                 .font(.subheadline)
                 .padding()
                 .background(Color.purple)
@@ -25,15 +26,15 @@ struct TipRow: View {
         }
         .padding()
         .overlay(
-                        RoundedRectangle(cornerRadius: 15)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
+            RoundedRectangle(cornerRadius: 15)
+                .stroke(Color.gray, lineWidth: 1)
+        )
         .padding()
         .onTapGesture {
             self.showDetail = true
         }
         .sheet(isPresented: $showDetail) {
-            TipDetail()
+            TipDetail(tip: tip)
         }
     }
     
@@ -41,7 +42,16 @@ struct TipRow: View {
 
 struct TipRow_Previews: PreviewProvider {
     static var previews: some View {
-        TipRow()
+        let sample: Tip = Tip(title: "title",  tag: "tag", detail: "detail")
+        if let tips = ModelData().tips, !tips.isEmpty {
+            TipRow(tip: tips[0])
+        } else {
+            TipRow(tip: sample)
+        }
+
+    
+        
+    
     }
 }
 

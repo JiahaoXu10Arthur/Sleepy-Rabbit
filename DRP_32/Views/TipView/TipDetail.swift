@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct TipDetail: View {
+    var tip: Tip
     var body: some View {
-        Text("ssj")
+        Text(tip.detail)
     }
 }
 
 struct TipDetail_Previews: PreviewProvider {
     static var previews: some View {
-        TipDetail()
+        let sample: Tip = Tip(title: "title",  tag: "tag", detail: "detail")
+        if let tips = ModelData().tips, !tips.isEmpty {
+            TipDetail(tip: tips[0])
+        } else {
+            TipDetail(tip: sample)
+        }
+        
     }
 }
 
