@@ -7,7 +7,7 @@
 
 import Foundation
 
-func fetchDatas(urlString: String, completion: @escaping ([Todo]?, Error?) -> Void) {
+func fetchDatas<T: Codable>(urlString: String, completion: @escaping ([T]?, Error?) -> Void) {
     let url = URL(string: urlString)!
     let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
         if let error = error {
@@ -15,7 +15,7 @@ func fetchDatas(urlString: String, completion: @escaping ([Todo]?, Error?) -> Vo
         } else if let data = data {
             do {
                 let decoder = JSONDecoder()
-                let todos = try decoder.decode([Todo].self, from: data)
+                let todos = try decoder.decode([T].self, from: data)
                 completion(todos, nil)
             } catch {
                 completion(nil, error)
