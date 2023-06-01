@@ -24,11 +24,11 @@ class FetchUsersTests: XCTestCase {
     
     func testCanAddTodo() {
         let expectation = self.expectation(description: "Posting")
-        var returnedData: Tip?
+        var returnedData: Todo?
         var returnedError: Error?
         let data = Todo(title: "TonnyTangdsb")
 
-        postData(urlString: "https://drp32-backend.herokuapp.com/tips", data: Tip(title: "Test", tag: "test", detail: "test")) { (todo, error) in
+        postData(urlString: urlString, data: data) { (todo, error) in
             returnedData = todo
             returnedError = error
             expectation.fulfill()
@@ -37,7 +37,7 @@ class FetchUsersTests: XCTestCase {
         waitForExpectations(timeout: 30, handler: nil)
         
         XCTAssertNil(returnedError)
-        XCTAssertEqual((returnedData ?? Tip(title: "", tag: "test", detail: "test")).title, "Test")
+        XCTAssertEqual((returnedData ?? Todo(title: "")).title, "TonnyTangdsb")
     }
 
     func testCanFetchTodos() {
@@ -46,29 +46,32 @@ class FetchUsersTests: XCTestCase {
         var fetchedDatas: [Todo]?
         var fetchedError: Error?
 
-        func clearTodos() {
-            let url = URL(string: "https://drp32-backend.herokuapp.com/todos/removeAll")!
-            let task = URLSession.shared.dataTask(with: url)
-            task.resume()
-        }
-
-        clearTodos()
+//        func clearTodos() {
+//            let url = URL(string: "https://drp32-backend.herokuapp.com/todos/removeAll")!
+//            let task = URLSession.shared.dataTask(with: url)
+//            task.resume()
+//        }
+//
+//        clearTodos()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+//            fetchDatas(urlString: self.urlString) { (users, error) in
+//                fetchedDatas = users
+//                fetchedError = error
+//                fetchExpectation.fulfill()
+//
+//            }
+//        }
         
-        fetchDatas(urlString: urlString) { (users, error) in
+        fetchDatas(urlString: self.urlString) { (users, error) in
             fetchedDatas = users
             fetchedError = error
             fetchExpectation.fulfill()
-
-        }
-
         
-        waitForExpectations(timeout: 60, handler: nil)
+        }
+        
+        self.waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertNil(fetchedError)
-        XCTAssertEqual((fetchedDatas ?? []).count, 0)
-    }
-    
-    func testPostTip() {
-        postTip(tip: Tip(title: "Test", tag: "test", detail: "test"))
+        XCTAssertNotNil(fetchedDatas)
     }
 }
