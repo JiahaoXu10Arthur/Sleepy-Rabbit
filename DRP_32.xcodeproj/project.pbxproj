@@ -10,6 +10,8 @@
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
 		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
 		EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A42A27976D00736689 /* QuestionView.swift */; };
+		EE28A9A92A28ADC700736689 /* HttpOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A82A28ADC700736689 /* HttpOperations.swift */; };
+		EE28A9AE2A28B4F300736689 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9AD2A28B4F300736689 /* Todo.swift */; };
 		EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8015072A278D1500137787 /* BottomNavigator.swift */; };
 		EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECEE48C2A24F9F400249177 /* DRP_32App.swift */; };
 		EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECEE48E2A24F9F400249177 /* ContentView.swift */; };
@@ -41,6 +43,8 @@
 		EE28A99C2A27912900736689 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		EE28A9A22A2796D800736689 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		EE28A9A42A27976D00736689 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		EE28A9A82A28ADC700736689 /* HttpOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpOperations.swift; sourceTree = "<group>"; };
+		EE28A9AD2A28B4F300736689 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		EE8015072A278D1500137787 /* BottomNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavigator.swift; sourceTree = "<group>"; };
 		EECEE4892A24F9F400249177 /* DRP_32.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRP_32.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECEE48C2A24F9F400249177 /* DRP_32App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRP_32App.swift; sourceTree = "<group>"; };
@@ -90,6 +94,22 @@
 			path = BottomNavigator;
 			sourceTree = "<group>";
 		};
+		EE28A9A72A28AD1500736689 /* Communicate */ = {
+			isa = PBXGroup;
+			children = (
+				EE28A9A82A28ADC700736689 /* HttpOperations.swift */,
+			);
+			path = Communicate;
+			sourceTree = "<group>";
+		};
+		EE28A9AA2A28AF1300736689 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE28A9AD2A28B4F300736689 /* Todo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EE8015062A278CA500137787 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,8 +142,10 @@
 		EECEE48B2A24F9F400249177 /* DRP_32 */ = {
 			isa = PBXGroup;
 			children = (
-				EE8015062A278CA500137787 /* Views */,
 				EECEE48C2A24F9F400249177 /* DRP_32App.swift */,
+				EE28A9AA2A28AF1300736689 /* Model */,
+				EE28A9A72A28AD1500736689 /* Communicate */,
+				EE8015062A278CA500137787 /* Views */,
 				EECEE4902A24F9F500249177 /* Assets.xcassets */,
 				EECEE4922A24F9F500249177 /* Preview Content */,
 			);
@@ -285,11 +307,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE28A9A92A28ADC700736689 /* HttpOperations.swift in Sources */,
 				EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */,
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
 				EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */,
 				EE28A99D2A27912900736689 /* CalendarView.swift in Sources */,
+				EE28A9AE2A28B4F300736689 /* Todo.swift in Sources */,
 				EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
