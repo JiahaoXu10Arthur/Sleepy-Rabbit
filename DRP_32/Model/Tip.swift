@@ -9,7 +9,9 @@ import Foundation
 
 struct Tip: Codable {
     var id: UUID?
-    var tip: String
+    var title: String
+    var tag: String
+    var detail: String
     var author: String?
     var date: Date?
     var likes: Int?
