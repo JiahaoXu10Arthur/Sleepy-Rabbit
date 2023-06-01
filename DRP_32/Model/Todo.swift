@@ -8,6 +8,6 @@
 import Foundation
 
 struct Todo: Hashable, Codable, Identifiable {
-    var id: UUID
+    var id: UUID?
     var title: String
 }
