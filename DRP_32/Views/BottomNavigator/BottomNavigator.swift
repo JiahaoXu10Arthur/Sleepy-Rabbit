@@ -41,7 +41,7 @@ struct BottomNavigator: View {
                 }
                 .tag(Tab.routine)
                 
-            TipList()
+            CommunityView()
                 .tabItem {
                     Label("Community", systemImage:"person.2")
                 }

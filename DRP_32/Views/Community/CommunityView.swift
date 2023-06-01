@@ -9,7 +9,12 @@ import SwiftUI
 
 struct CommunityView: View {
     var body: some View {
-        TipList()
+        
+        VStack {
+            PostButtons()
+            Divider()
+            TipList()
+        }
     }
 }
 
