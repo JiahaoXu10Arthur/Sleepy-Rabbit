@@ -41,7 +41,7 @@ struct BottomNavigator: View {
                     }
                     .tag(Tab.routine)
                 
-                TipList()
+                CommunityView()
                     .tabItem {
                         Label("Community", systemImage: "person.2")
                     }
@@ -60,5 +60,6 @@ struct BottomNavigator: View {
 struct BottomNavigator_Previews: PreviewProvider {
     static var previews: some View {
         BottomNavigator()
+            .environmentObject(ModelData())
     }
 }

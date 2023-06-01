@@ -9,16 +9,13 @@ import SwiftUI
 
 struct CommunityView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "person.2")
-                .foregroundColor(.blue)
-            Text("This is a community")
-        }
+        TipList()
     }
 }
 
 struct BreathingView_Previews: PreviewProvider {
     static var previews: some View {
         CommunityView()
+            .environmentObject(ModelData())
     }
 }

@@ -22,8 +22,6 @@ struct TipList: View {
         ScrollView {
             
             ForEach(tips) { tip in
-                
-                
                 TipRow(tip: tip)
             }
             .listStyle(.plain)
