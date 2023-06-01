@@ -30,6 +30,9 @@ struct TipList: View {
             
             .background(Color.clear)
         }
+        .refreshable {
+            modelData.fetchData()
+        }
     }
 }
 

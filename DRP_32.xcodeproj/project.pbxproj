@@ -147,9 +147,9 @@
 		EE8015062A278CA500137787 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EECEE48E2A24F9F400249177 /* ContentView.swift */,
 				E6E0D3112A28E0CF003DD154 /* PostButtonView */,
 				53DEDE352A28D593005A0829 /* TipView */,
-				EECEE48E2A24F9F400249177 /* ContentView.swift */,
 				EE28A9A62A27982C00736689 /* BottomNavigator */,
 			);
 			path = Views;
