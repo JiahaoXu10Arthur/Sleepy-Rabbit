@@ -14,7 +14,7 @@ struct TipPostView: View {
     @State private var titleInput = ""
     @State private var tagInput = ""
     @State private var detailInput = ""
-    let maxTitleLength = 20
+    let maxTitleLength = 30
 
     var body: some View {
         NavigationView {

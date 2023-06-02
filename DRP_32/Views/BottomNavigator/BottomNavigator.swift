@@ -25,15 +25,21 @@ struct BottomNavigator: View {
   
     
     init() {
-        UITabBar.appearance().backgroundColor = tabBarColor
         UITabBar.appearance().tintColor = selectedTabItemColor
         UITabBar.appearance().unselectedItemTintColor = unselectedTabItemColor
-
-    
+        UITabBar.appearance().isTranslucent = false
+        if #available(iOS 15.0, *) {
+               let appearance = UITabBarAppearance()
+               appearance.configureWithOpaqueBackground()
+               appearance.backgroundColor = tabBarColor
+               UITabBar.appearance().standardAppearance = appearance
+               UITabBar.appearance().scrollEdgeAppearance = UITabBar.appearance().standardAppearance
+           }
 
     }
     
     var body: some View {
+        
         TabView(selection: $selection) {
             CalendarView()
                 .tabItem {
@@ -54,6 +60,7 @@ struct BottomNavigator: View {
                 }
                 .tag(Tab.question)
         }
+        
     }
 }
 
