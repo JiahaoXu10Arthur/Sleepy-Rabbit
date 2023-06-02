@@ -12,21 +12,6 @@ struct TipDetail: View {
     var body: some View {
         
         VStack {
-            
-            HStack {
-                Text(tip.title)
-                    .font(.largeTitle)
-                .padding()
-                Text(tip.tag)
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.purple)
-                    .foregroundColor(.yellow)
-                    .cornerRadius(15)
-            }
-            .padding()
-            
-
             Text(tip.detail)
                 .font(.title)
                 .padding()
