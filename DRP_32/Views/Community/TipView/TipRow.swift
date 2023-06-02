@@ -40,9 +40,9 @@ struct TipRow: View {
                 
                 Button {
                     withAnimation {
-                        withAnimation {
-                            showDetail.toggle()
-                        }
+                        
+                        showDetail.toggle()
+                        
                     }
                 } label: {
                     Label("Graph", systemImage: "chevron.right.circle")
