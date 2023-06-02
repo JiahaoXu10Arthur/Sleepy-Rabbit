@@ -26,7 +26,7 @@ class ModelData: ObservableObject {
                 self.tips = []
                 print("Error fetching data: \(error)")
             } else if let fetchedData = fetchedData {
-                self.tips = fetchedData
+                self.tips = fetchedData.reversed()
             }
         }
     }
