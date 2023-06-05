@@ -14,9 +14,12 @@ class ModelData: ObservableObject {
 
     // Property to store the fetched data
     @Published var tips: [Tip]?
+    
+    @Published var aiTip: Tip?
 
     private init() {
         fetchData()
+        getAnAiTip() { _ in}
     } // Prevents others from creating their own instances
 
     func fetchData() {
@@ -30,4 +33,20 @@ class ModelData: ObservableObject {
             }
         }
     }
+    
+    func getAnAiTip(completion: @escaping (Tip?) -> Void) {
+        let url = "https://drp32-backend.herokuapp.com/getRandomTip"
+        fetchOneData(urlString: url) { (tip: Tip?, error) in
+            if let tip = tip {
+                self.aiTip = tip
+            } else {
+                self.aiTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
+            }
+            DispatchQueue.main.async {
+                    completion(tip)
+                }
+        }
+        
+    }
+
 }
