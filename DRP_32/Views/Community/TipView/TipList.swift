@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TipList: View {
+    @State var showFab = true
+    @State var scrollOffset: CGFloat = 0.00
+    
     @EnvironmentObject var modelData: ModelData
     let testTip: Tip = Tip(title: "test", tag: "test", detail: "test")
     
@@ -17,19 +20,17 @@ struct TipList: View {
     
     
     var body: some View {
-        VStack {
-            ScrollView {
+        VStack (alignment: .leading) {
                 ForEach(tips) { tip in
                     TipRow(tip: tip)
                 }
                 .listStyle(.plain)
                 .background(Color.clear)
             }
-            .refreshable {
-                modelData.fetchData()
-            }
-        }
     }
+    
+    
+ 
 }
 
 struct TipList_Previews: PreviewProvider {

@@ -21,7 +21,7 @@ struct PostButtons: View {
                 Text("Tip")
                     .font(.title)
                     .foregroundColor(.white)
-                    .frame(width: 150, height: 100)
+                    .frame(width: 150, height: 60)
                     .background(Color.green)
                     .cornerRadius(15)
                     .padding()
@@ -38,7 +38,7 @@ struct PostButtons: View {
                 Text("Schedule")
                     .font(.title)
                     .foregroundColor(.white)
-                    .frame(width: 150, height: 100)
+                    .frame(width: 150, height: 60)
                     .background(Color.green)
                     .cornerRadius(15)
                     .padding()
@@ -48,6 +48,7 @@ struct PostButtons: View {
            
             
         }.padding()
+            
     }
 }
 
