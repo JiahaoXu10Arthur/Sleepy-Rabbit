@@ -74,4 +74,17 @@ class FetchUsersTests: XCTestCase {
         XCTAssertNil(fetchedError)
         XCTAssertNotNil(fetchedDatas)
     }
+    
+    func testAiTip() {
+        let exp = expectation(description: "Getting tip")
+        getAiTip() { tip in
+            if let tip = tip {
+                print(tip)
+            } else {
+                print("failed")
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 60.0)
+    }
 }
