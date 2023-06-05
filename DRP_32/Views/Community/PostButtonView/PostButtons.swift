@@ -18,7 +18,7 @@ struct PostButtons: View {
                 
                 isShowingTipPost = true
             }) {
-                Text("Tip")
+                Text("Tipsssss")
                     .font(.title)
                     .foregroundColor(.white)
                     .frame(width: 150, height: 60)
