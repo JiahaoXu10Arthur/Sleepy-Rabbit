@@ -17,10 +17,6 @@ struct CommunityView: View {
         
         ScrollView {
             
-            PostButtons()
-            
-            Divider()
-            
             TipList()
             
                 .background(GeometryReader {
@@ -53,21 +49,7 @@ struct CommunityView: View {
     }
     
     fileprivate func createFab() -> some View {
-            return Button(action: {
-            }, label: {
-                Image(systemName: "plus")
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .frame(width: 40, height: 40, alignment: .center)
-            })
-            .padding(8)
-            .background(Color.blue)
-            .cornerRadius(15)
-            .padding(8)
-            .shadow(radius: 3,
-                    x: 3,
-                    y: 3)
-            .transition(.scale)
+            PostButtons()
         }
     
 }
