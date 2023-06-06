@@ -54,7 +54,7 @@ struct BottomNavigator: View {
                 .tag(Tab.community)
                 
                 
-            QuestionView()
+            TipPageView()
                 .tabItem {
                     Label("Questions", systemImage:"questionmark.bubble")
                 }

@@ -41,7 +41,7 @@ struct NewTipButton: View {
             .foregroundColor(.white)
             .cornerRadius(10)
             .sheet(isPresented: $isShowingQueryView) {
-                QueryView(isShowing: $isShowingQueryView)
+                QueryView(isShowing: $isShowingQueryView, isLoading: $isLoading)
             }
 
         }

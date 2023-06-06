@@ -16,7 +16,6 @@ struct TipPageView: View {
                 .padding()
             
             NewTipButton(isLoading: $isLoading)
-                .padding()
         }
     }
 }

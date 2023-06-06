@@ -15,7 +15,9 @@ class ModelData: ObservableObject {
     // Property to store the fetched data
     @Published var tips: [Tip]?
     
-    @Published var aiTip: Tip?
+    @Published var showingTip: Tip?
+    
+    @Published var queryTip: Tip?
 
     private init() {
         fetchData()
@@ -38,15 +40,28 @@ class ModelData: ObservableObject {
         let url = "https://drp32-backend.herokuapp.com/getRandomTip"
         fetchOneData(urlString: url) { (tip: Tip?, error) in
             if let tip = tip {
-                self.aiTip = tip
+                self.showingTip = tip
             } else {
-                self.aiTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
+                self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
             }
             DispatchQueue.main.async {
                     completion(tip)
                 }
         }
-        
+    }
+    
+    func getQueryTip(query: Query, completion: @escaping (Tip?) -> Void) {
+        let url = "https://drp32-backend.herokuapp.com/getQueryTip"
+        postData(urlString: url, data: query) { (tip: Tip?, error) in
+            if let tip = tip {
+                self.showingTip = tip
+            } else {
+                self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
+            }
+            DispatchQueue.main.async {
+                    completion(tip)
+                }
+        }
     }
 
 }

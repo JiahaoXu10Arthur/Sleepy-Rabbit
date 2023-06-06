@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct QueryView: View {
+    @EnvironmentObject var modelData: ModelData
     @Binding var isShowing: Bool
+    @Binding var isLoading: Bool
     
     // store user input
     @State private var queryInput = ""
@@ -37,6 +39,10 @@ struct QueryView: View {
                 Text("Cancel")
             }, trailing: Button(action: {
                 isShowing = false
+                isLoading = true
+                modelData.getQueryTip(query: Query(query: queryInput)) { _ in
+                    isLoading = false
+                }
             }) {
                 Text("Send")
             })
@@ -46,6 +52,7 @@ struct QueryView: View {
 
 struct QueryView_Previews: PreviewProvider {
     static var previews: some View {
-        QueryView(isShowing: .constant(true))
+        QueryView(isShowing: .constant(true), isLoading: .constant(false))
+            .environmentObject(ModelData.shared)
     }
 }
