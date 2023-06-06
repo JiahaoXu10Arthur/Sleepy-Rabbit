@@ -12,7 +12,7 @@ struct RandomTipView: View {
     @Binding var isLoading: Bool
     
     var tip: Tip {
-        modelData.showingTip ?? Tip(title: "Loading...", tag: "", detail: "")
+        modelData.showingTip ?? Tip(title: "Loading...", tag: " ", detail: " ")
     }
 
     var body: some View {
@@ -35,30 +35,19 @@ struct RandomTipView: View {
                             .font(.title)
                             .foregroundColor(.secondary)
                         
-                        Text(tip.detail)
-                            .font(.title2)
-                            .padding(.top, 15)
+                        ScrollView {
+                            Text(tip.detail)
+                                .font(.title2)
+                                .padding(.top, 15)
+                        }
+                        .frame(height: geometry.size.height * 0.6)
                     }
-                        
-        //                Button(action: {
-        //                    isLoading = true
-        //                    modelData.getAnAiTip() { _ in
-        //                        isLoading = false
-        //                    }
-        //                }) {
-        //                    Text("Get New Tip")
-        //                        .font(.title)
-        //                        .padding()
-        //                        .background(Color.blue)
-        //                        .foregroundColor(.white)
-        //                        .cornerRadius(10)
-        //                }
                 }
                 .padding()
                 .background(Color.white)
                 .cornerRadius(15)
                 .shadow(radius: 10)
-            .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.9)
+                .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.9)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         }

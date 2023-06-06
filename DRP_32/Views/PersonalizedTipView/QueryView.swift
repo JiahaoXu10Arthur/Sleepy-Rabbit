@@ -30,6 +30,7 @@ struct QueryView: View {
                 Divider()
                 
                 Text("The inquiry can include the sleep issues you're experiencing, along with any restrictions you'd like to impose on the generated advice.")
+                    .padding()
                 Spacer()
             }
             .navigationBarTitle(Text("New Tip"), displayMode: .inline)

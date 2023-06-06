@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BottomNavigator: View {
-    
+    @EnvironmentObject var modelData: ModelData
     @State private var selection: Tab = .routine
 
     enum Tab {

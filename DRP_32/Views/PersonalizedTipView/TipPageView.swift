@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TipPageView: View {
-    @State private var isLoading = false
+    @State var isLoading: Bool = false
     
     var body: some View {
         VStack {

@@ -21,7 +21,7 @@ struct NewTipButton: View {
                 }
             }) {
                 Text("Random Tip")
-                    .font(.title)
+                    .font(.title2)
                     .frame(maxWidth: .infinity)
             }
             .padding()
@@ -33,7 +33,7 @@ struct NewTipButton: View {
                 isShowingQueryView = true
             } label: {
                 Text("Query Tip")
-                    .font(.title)
+                    .font(.title2)
                     .frame(maxWidth: .infinity)
             }
             .padding()
