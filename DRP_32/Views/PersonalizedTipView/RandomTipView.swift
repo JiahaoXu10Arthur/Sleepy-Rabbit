@@ -12,7 +12,7 @@ struct RandomTipView: View {
     @Binding var isLoading: Bool
     
     var tip: Tip {
-        modelData.showingTip ?? Tip(title: "Loading...", tag: " ", detail: " ")
+        modelData.showingTip ?? Tip(title: "Loading...", tag: " ", detail: "")
     }
 
     var body: some View {
@@ -21,7 +21,7 @@ struct RandomTipView: View {
         GeometryReader { geometry in
             VStack {
                 VStack(alignment: .leading) {
-                    if isLoading {
+                    if (isLoading || modelData.isLoading) {
                         ProgressView()
                             .scaleEffect(2)
                             .padding()

@@ -18,10 +18,14 @@ class ModelData: ObservableObject {
     @Published var showingTip: Tip?
     
     @Published var queryTip: Tip?
+    
+    @Published var isLoading: Bool = true
 
     private init() {
         fetchData()
-        getAnAiTip() { _ in}
+        getAnAiTip() { _ in
+            self.isLoading = false
+        }
     } // Prevents others from creating their own instances
 
     func fetchData() {
