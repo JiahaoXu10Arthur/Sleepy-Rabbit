@@ -30,7 +30,7 @@ struct TipRow: View {
                         .font(.callout)
                         .multilineTextAlignment(.leading)
                         .padding()
-                        .frame(width: 70.0, height: 30.0)
+                        .frame(height: 30.0)
                         .background(Color.purple)
                         .foregroundColor(.yellow)
                         .cornerRadius(100)
