@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		538B38F52A2F54B300A8DBED /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538B38F42A2F54B200A8DBED /* Task.swift */; };
 		538D90892A29300900A80AAB /* TipPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D90882A29300900A80AAB /* TipPostView.swift */; };
 		538D909C2A2A093200A80AAB /* TipRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D909B2A2A093200A80AAB /* TipRow.swift */; };
 		53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3A2A28D6FC005A0829 /* TipList.swift */; };
 		53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3C2A28D712005A0829 /* TipDetail.swift */; };
+		53E961642A2E43B700983207 /* BedTimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E961632A2E43B700983207 /* BedTimeSettingView.swift */; };
 		E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E0D3122A28E0F5003DD154 /* PostButtons.swift */; };
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
 		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
@@ -49,10 +51,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		538B38F42A2F54B200A8DBED /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		538D90882A29300900A80AAB /* TipPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipPostView.swift; sourceTree = "<group>"; };
 		538D909B2A2A093200A80AAB /* TipRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipRow.swift; sourceTree = "<group>"; };
 		53DEDE3A2A28D6FC005A0829 /* TipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipList.swift; sourceTree = "<group>"; };
 		53DEDE3C2A28D712005A0829 /* TipDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDetail.swift; sourceTree = "<group>"; };
+		53E961632A2E43B700983207 /* BedTimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedTimeSettingView.swift; sourceTree = "<group>"; };
 		E6E0D3122A28E0F5003DD154 /* PostButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButtons.swift; sourceTree = "<group>"; };
 		EE28A99C2A27912900736689 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		EE28A9A22A2796D800736689 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
@@ -101,6 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		536719412A2E0E41005CA434 /* Routine */ = {
+			isa = PBXGroup;
+			children = (
+				53E961632A2E43B700983207 /* BedTimeSettingView.swift */,
+			);
+			path = Routine;
+			sourceTree = "<group>";
+		};
 		538D90872A292D5200A80AAB /* Community */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +166,7 @@
 				EE28A9AD2A28B4F300736689 /* Todo.swift */,
 				EE28A9B12A28E47900736689 /* Tip.swift */,
 				EE28A9B72A28F0E500736689 /* ModelData.swift */,
+				538B38F42A2F54B200A8DBED /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -368,6 +381,7 @@
 			files = (
 				EE28A9A92A28ADC700736689 /* HttpOperations.swift in Sources */,
 				EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */,
+				53E961642A2E43B700983207 /* BedTimeSettingView.swift in Sources */,
 				538D909C2A2A093200A80AAB /* TipRow.swift in Sources */,
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
 				EE31C99C2A2E1AEA00DD6ADF /* RandomTip.swift in Sources */,
@@ -379,6 +393,7 @@
 				EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */,
 				EE28A99D2A27912900736689 /* CalendarView.swift in Sources */,
 				53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */,
+				538B38F52A2F54B300A8DBED /* Task.swift in Sources */,
 				EE28A9AE2A28B4F300736689 /* Todo.swift in Sources */,
 				EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */,
 				EE28A9B82A28F0E500736689 /* ModelData.swift in Sources */,

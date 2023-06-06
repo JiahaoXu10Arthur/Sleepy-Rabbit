@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    // Detect if user has onboarded
+    @AppStorage("userOnboarded") var userOnboarded: Bool = true//false
+    
     var body: some View {
-        BottomNavigator()
+        if userOnboarded {
+            BottomNavigator()
+        } else {
+            //OnboardingView()
+            VStack {
+                Text ("Tap button to onboard user.")
+                    .font (Font.system(size: 50))
+                Button( action: {
+                    userOnboarded = true
+                }) {
+                    Text ("Tap Me")
+                        .font (Font.system(size: 80))
+                }
+            }
+            
+        }
+        
     }
 }
 

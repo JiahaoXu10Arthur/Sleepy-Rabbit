@@ -85,9 +85,5 @@ struct SwiftUIView_Previews: PreviewProvider {
                 .padding()
             Spacer()
         }
-            
-    
-        
-        
     }
 }
