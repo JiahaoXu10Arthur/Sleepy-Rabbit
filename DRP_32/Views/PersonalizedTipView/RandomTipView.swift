@@ -29,7 +29,6 @@ struct RandomTipView: View {
                         Text(tip.title)
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                            .padding(.bottom, 10)
                         
                         Text(tip.tag)
                             .font(.title)
