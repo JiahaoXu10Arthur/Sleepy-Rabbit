@@ -9,11 +9,7 @@ import SwiftUI
 
 struct CalendarView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "calendar")
-                .foregroundColor(.blue)
-            Text("This is a Calendar")
-        }
+        TaskListView()
     }
 }
 
