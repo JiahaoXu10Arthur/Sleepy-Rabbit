@@ -22,6 +22,7 @@
 		53E054F72A2FDC9F001E8340 /* WakeUpTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054F62A2FDC9F001E8340 /* WakeUpTimePickerView.swift */; };
 		53E054F92A30A749001E8340 /* TimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054F82A30A749001E8340 /* TimeLineView.swift */; };
 		53E054FD2A30A9EB001E8340 /* TimeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054FC2A30A9EB001E8340 /* TimeCellView.swift */; };
+		53E055052A30E1AF001E8340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055042A30E1AF001E8340 /* AppDelegate.swift */; };
 		E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E0D3122A28E0F5003DD154 /* PostButtons.swift */; };
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
 		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
@@ -80,6 +81,7 @@
 		53E054F62A2FDC9F001E8340 /* WakeUpTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimePickerView.swift; sourceTree = "<group>"; };
 		53E054F82A30A749001E8340 /* TimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineView.swift; sourceTree = "<group>"; };
 		53E054FC2A30A9EB001E8340 /* TimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCellView.swift; sourceTree = "<group>"; };
+		53E055042A30E1AF001E8340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = DRP_32/AppDelegate.swift; sourceTree = "<group>"; };
 		E6E0D3122A28E0F5003DD154 /* PostButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButtons.swift; sourceTree = "<group>"; };
 		EE28A99C2A27912900736689 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		EE28A9A22A2796D800736689 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
@@ -238,7 +240,6 @@
 				EE9B1DE12A2F52E7003AAC1C /* PersonalizedTipView */,
 				53E054EF2A2FC80B001E8340 /* OnboardView */,
 				539663B22A2F5805007187BF /* RoutineView */,
-				EE31C99D2A2E293400DD6ADF /* RandomTipView */,
 				538D90872A292D5200A80AAB /* Community */,
 				EECEE48E2A24F9F400249177 /* ContentView.swift */,
 				EE28A9A62A27982C00736689 /* BottomNavigator */,
@@ -261,6 +262,7 @@
 		EECEE4802A24F9F400249177 = {
 			isa = PBXGroup;
 			children = (
+				53E055042A30E1AF001E8340 /* AppDelegate.swift */,
 				539663BF2A2F5EA0007187BF /* Resource */,
 				EECEE48B2A24F9F400249177 /* DRP_32 */,
 				EECEE49C2A24F9F500249177 /* DRP_32Tests */,
@@ -459,12 +461,13 @@
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
 				EE31C99C2A2E1AEA00DD6ADF /* RandomTipView.swift in Sources */,
 				53E054EE2A2FC016001E8340 /* OnboardingView.swift in Sources */,
-				EE31C99C2A2E1AEA00DD6ADF /* RandomTip.swift in Sources */,
+				EE31C99C2A2E1AEA00DD6ADF /* RandomTipView.swift in Sources */,
 				539663C32A2F662F007187BF /* TaskListView.swift in Sources */,
 				53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */,
 				53E054FD2A30A9EB001E8340 /* TimeCellView.swift in Sources */,
 				53E054F72A2FDC9F001E8340 /* WakeUpTimePickerView.swift in Sources */,
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
+				53E055052A30E1AF001E8340 /* AppDelegate.swift in Sources */,
 				538D90892A29300900A80AAB /* TipPostView.swift in Sources */,
 				EE28A9B22A28E47900736689 /* Tip.swift in Sources */,
 				EE9B1DE72A2F5C55003AAC1C /* NewTipButton.swift in Sources */,
