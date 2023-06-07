@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BottomNavigator: View {
-    
     @State private var selection: Tab = .routine
 
     enum Tab {
@@ -54,7 +53,7 @@ struct BottomNavigator: View {
                 .tag(Tab.community)
                 
                 
-            QuestionView()
+            TipPageView()
                 .tabItem {
                     Label("Questions", systemImage:"questionmark.bubble")
                 }

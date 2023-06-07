@@ -52,7 +52,7 @@ struct TipPostView: View {
     func postUserInput() {
         // Here you can do something with the userInput, like posting it to a server
         print("posting")
-        postData(urlString: "https://drp32-backend.herokuapp.com/tips",data: Tip(title: titleInput, tag: tagInput, detail: detailInput)) { (returnVal, error) in
+        postData(urlString: "https://drp32-backend.herokuapp.com/tips",data: Tip(title: titleInput, tag: tagInput, detail: detailInput)) { (returnVal: Tip?, error) in
             if let returnVal = returnVal {
                 print(returnVal)
                 ModelData.shared.fetchData()

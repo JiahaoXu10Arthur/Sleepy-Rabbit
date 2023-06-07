@@ -43,7 +43,7 @@ func fetchOneData<T: Codable>(urlString: String, completion: @escaping (T?, Erro
     task.resume()
 }
 
-func postData<T: Codable>(urlString: String, data: T, completion: @escaping (T?, Error?) -> Void) {
+func postData<T: Codable, S: Codable>(urlString: String, data: S, completion: @escaping (T?, Error?) -> Void) {
     let url = URL(string: urlString)!
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
