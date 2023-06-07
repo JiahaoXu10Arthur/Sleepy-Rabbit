@@ -18,14 +18,19 @@ extension AnyTransition {
 
 struct TipRow: View {
     @State private var showDetail = false
+    @State private var like: Bool = false
+    @State private var num: Int = 10
     
     var tip: Tip
     var body: some View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(tip.title)
-                        .font(.title)
+                    HStack {
+                        Text(tip.title)
+                            .font(.title)
+                        LikeButton(like: $like, num: $num)
+                    }
                     Text(tip.tag)
                         .font(.callout)
                         .multilineTextAlignment(.leading)
