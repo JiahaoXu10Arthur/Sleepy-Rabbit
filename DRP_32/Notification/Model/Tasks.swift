@@ -31,76 +31,32 @@
 /// THE SOFTWARE.
 
 import Foundation
-import UserNotifications
-import CoreLocation
 
-class NotificationManager: ObservableObject {
-  static let shared = NotificationManager()
-  @Published var settings: UNNotificationSettings?
-  
-  func requestAuthorization(completion: @escaping  (Bool) -> Void) {
-    UNUserNotificationCenter.current()
-      .requestAuthorization(options: [.alert, .sound, .badge]) { granted, _  in
+struct Tasks: Identifiable, Codable {
+  var id = UUID().uuidString
+  var name: String
+  var completed = false
+  var reminderEnabled = false
+  var reminder: Reminder
+}
 
-        self.fetchNotificationSettings()
+enum ReminderType: Int, CaseIterable, Identifiable, Codable {
+  case time
+  case calendar
+  case location
+  var id: Int { self.rawValue }
+}
 
-        completion(granted)
-      }
-  }
+struct Reminder: Codable {
+  var timeInterval: TimeInterval?
+  var date: Date?
+  var location: LocationReminder?
+  var reminderType: ReminderType = .time
+  var repeats = false
+}
 
-  func fetchNotificationSettings() {
-    // 1
-    UNUserNotificationCenter.current().getNotificationSettings { settings in
-      // 2
-      DispatchQueue.main.async {
-        self.settings = settings
-      }
-    }
-  }
-  
-  // 1
-  func scheduleNotification(task: Tasks) {
-    // 2
-    let content = UNMutableNotificationContent()
-    content.title = task.name
-    content.body = "Gentle reminder for your task!"
-
-    // 3
-    var trigger: UNNotificationTrigger?
-    switch task.reminder.reminderType {
-      
-    case .time:
-      if let timeInterval = task.reminder.timeInterval {
-        trigger = UNTimeIntervalNotificationTrigger(
-          timeInterval: timeInterval,
-          repeats: task.reminder.repeats)
-      }
-      
-    case .calendar:
-      if let date = task.reminder.date {
-        trigger = UNCalendarNotificationTrigger(
-          dateMatching: Calendar.current.dateComponents(
-            [.day, .month, .year, .hour, .minute],
-            from: date),
-          repeats: task.reminder.repeats)
-      }
-    default:
-      return
-    }
-
-    // 4
-    if let trigger = trigger {
-      let request = UNNotificationRequest(
-        identifier: task.id,
-        content: content,
-        trigger: trigger)
-      // 5
-      UNUserNotificationCenter.current().add(request) { error in
-        if let error = error {
-          print(error)
-        }
-      }
-    }
-  }
-
+struct LocationReminder: Codable {
+  var latitude: Double
+  var longitude: Double
+  var radius: Double
 }

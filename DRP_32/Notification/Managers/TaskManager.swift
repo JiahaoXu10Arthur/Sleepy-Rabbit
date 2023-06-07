@@ -36,13 +36,13 @@ class TaskManager: ObservableObject {
   static let shared = TaskManager()                     // An instance
   let taskPersistenceManager = TaskPersistenceManager()
 
-  @Published var tasks: [Task] = []
+  @Published var tasks: [Tasks] = []
 
   init() {
     loadTasks()
   }
 
-  func save(task: Task) {
+  func save(task: Tasks) {
     tasks.append(task)
     DispatchQueue.global().async {
       self.taskPersistenceManager.save(tasks: self.tasks)
@@ -59,13 +59,13 @@ class TaskManager: ObservableObject {
 
   func addNewTask(_ taskName: String, _ reminder: Reminder?) {
     if let reminder = reminder {
-      save(task: Task(name: taskName, reminderEnabled: true, reminder: reminder))
+      save(task: Tasks(name: taskName, reminderEnabled: true, reminder: reminder))
     } else {
-      save(task: Task(name: taskName, reminderEnabled: false, reminder: Reminder()))
+      save(task: Tasks(name: taskName, reminderEnabled: false, reminder: Reminder()))
     }
   }
 
-  func remove(task: Task) {
+  func remove(task: Tasks) {
     tasks.removeAll {
       $0.id == task.id
     }
@@ -74,7 +74,7 @@ class TaskManager: ObservableObject {
     }
   }
 
-  func markTaskComplete(task: Task) {
+  func markTaskComplete(task: Tasks) {
     if let row = tasks.firstIndex(where: { $0.id == task.id }) {
       var updatedTask = task
       updatedTask.completed = true
