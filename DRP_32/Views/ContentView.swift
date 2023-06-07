@@ -9,25 +9,34 @@ import SwiftUI
 
 struct ContentView: View {
     // Detect if user has onboarded
-    @AppStorage("userOnboarded") var userOnboarded: Bool = true//false
+    @AppStorage("showOnboarding") var showOnboarding: Bool = true//false
     
     var body: some View {
-        if userOnboarded {
-            BottomNavigator()
-        } else {
-            //OnboardingView()
-            VStack {
-                Text ("Tap button to onboard user.")
-                    .font (Font.system(size: 50))
-                Button( action: {
-                    userOnboarded = true
-                }) {
-                    Text ("Tap Me")
-                        .font (Font.system(size: 80))
+        VStack {
+            Button(action: {
+                showOnboarding = true
+                print(showOnboarding)
+            }) {
+                HStack(spacing: 8) {
+                    Text("Re-Start")
+                    
+                    Image(systemName: "arrow.right.circle")
+                        .imageScale(.large)
                 }
-            }
-            
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(
+                    Capsule().strokeBorder(Color.black, lineWidth: 1.25)
+                )
+            } //: BUTTON
+            .accentColor(Color.black)
+            BottomNavigator()
         }
+        //OnboardingView()
+        .fullScreenCover(isPresented: $showOnboarding, content: {
+            OnboardingView(showOnboarding: $showOnboarding)
+            //OnboardingView(showOnboarding: $showOnboarding)
+        })
         
     }
 }

@@ -10,9 +10,18 @@
 		538B38F52A2F54B300A8DBED /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538B38F42A2F54B200A8DBED /* Task.swift */; };
 		538D90892A29300900A80AAB /* TipPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D90882A29300900A80AAB /* TipPostView.swift */; };
 		538D909C2A2A093200A80AAB /* TipRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D909B2A2A093200A80AAB /* TipRow.swift */; };
+		539663BB2A2F5B04007187BF /* BedTimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539663BA2A2F5B04007187BF /* BedTimeSettingView.swift */; };
+		539663BD2A2F5B3A007187BF /* TaskCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539663BC2A2F5B3A007187BF /* TaskCellView.swift */; };
+		539663C12A2F5EF6007187BF /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 539663C02A2F5EF6007187BF /* tasks.json */; };
+		539663C32A2F662F007187BF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539663C22A2F662F007187BF /* TaskListView.swift */; };
 		53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3A2A28D6FC005A0829 /* TipList.swift */; };
 		53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3C2A28D712005A0829 /* TipDetail.swift */; };
-		53E961642A2E43B700983207 /* BedTimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E961632A2E43B700983207 /* BedTimeSettingView.swift */; };
+		53E054EE2A2FC016001E8340 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054ED2A2FC016001E8340 /* OnboardingView.swift */; };
+		53E054F12A2FC822001E8340 /* StartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054F02A2FC822001E8340 /* StartButtonView.swift */; };
+		53E054F52A2FD883001E8340 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054F42A2FD883001E8340 /* CustomDatePicker.swift */; };
+		53E054F72A2FDC9F001E8340 /* WakeUpTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054F62A2FDC9F001E8340 /* WakeUpTimePickerView.swift */; };
+		53E054F92A30A749001E8340 /* TimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054F82A30A749001E8340 /* TimeLineView.swift */; };
+		53E054FD2A30A9EB001E8340 /* TimeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054FC2A30A9EB001E8340 /* TimeCellView.swift */; };
 		E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E0D3122A28E0F5003DD154 /* PostButtons.swift */; };
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
 		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
@@ -54,9 +63,18 @@
 		538B38F42A2F54B200A8DBED /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		538D90882A29300900A80AAB /* TipPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipPostView.swift; sourceTree = "<group>"; };
 		538D909B2A2A093200A80AAB /* TipRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipRow.swift; sourceTree = "<group>"; };
+		539663BA2A2F5B04007187BF /* BedTimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedTimeSettingView.swift; sourceTree = "<group>"; };
+		539663BC2A2F5B3A007187BF /* TaskCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellView.swift; sourceTree = "<group>"; };
+		539663C02A2F5EF6007187BF /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
+		539663C22A2F662F007187BF /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		53DEDE3A2A28D6FC005A0829 /* TipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipList.swift; sourceTree = "<group>"; };
 		53DEDE3C2A28D712005A0829 /* TipDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDetail.swift; sourceTree = "<group>"; };
-		53E961632A2E43B700983207 /* BedTimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedTimeSettingView.swift; sourceTree = "<group>"; };
+		53E054ED2A2FC016001E8340 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		53E054F02A2FC822001E8340 /* StartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButtonView.swift; sourceTree = "<group>"; };
+		53E054F42A2FD883001E8340 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		53E054F62A2FDC9F001E8340 /* WakeUpTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimePickerView.swift; sourceTree = "<group>"; };
+		53E054F82A30A749001E8340 /* TimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineView.swift; sourceTree = "<group>"; };
+		53E054FC2A30A9EB001E8340 /* TimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCellView.swift; sourceTree = "<group>"; };
 		E6E0D3122A28E0F5003DD154 /* PostButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButtons.swift; sourceTree = "<group>"; };
 		EE28A99C2A27912900736689 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		EE28A9A22A2796D800736689 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
@@ -105,14 +123,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		536719412A2E0E41005CA434 /* Routine */ = {
-			isa = PBXGroup;
-			children = (
-				53E961632A2E43B700983207 /* BedTimeSettingView.swift */,
-			);
-			path = Routine;
-			sourceTree = "<group>";
-		};
 		538D90872A292D5200A80AAB /* Community */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,25 @@
 			path = Community;
 			sourceTree = "<group>";
 		};
+		539663B22A2F5805007187BF /* RoutineView */ = {
+			isa = PBXGroup;
+			children = (
+				53E054FE2A30B6C1001E8340 /* Setting */,
+				53E054F82A30A749001E8340 /* TimeLineView.swift */,
+				53E054FC2A30A9EB001E8340 /* TimeCellView.swift */,
+			);
+			path = RoutineView;
+			sourceTree = "<group>";
+		};
+		539663BF2A2F5EA0007187BF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				539663C02A2F5EF6007187BF /* tasks.json */,
+			);
+			name = Resource;
+			path = DRP_32/Resource;
+			sourceTree = "<group>";
+		};
 		53DEDE352A28D593005A0829 /* TipView */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +160,27 @@
 				538D909B2A2A093200A80AAB /* TipRow.swift */,
 			);
 			path = TipView;
+			sourceTree = "<group>";
+		};
+		53E054EF2A2FC80B001E8340 /* OnboardView */ = {
+			isa = PBXGroup;
+			children = (
+				53E054ED2A2FC016001E8340 /* OnboardingView.swift */,
+				53E054F02A2FC822001E8340 /* StartButtonView.swift */,
+			);
+			path = OnboardView;
+			sourceTree = "<group>";
+		};
+		53E054FE2A30B6C1001E8340 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				539663BA2A2F5B04007187BF /* BedTimeSettingView.swift */,
+				539663BC2A2F5B3A007187BF /* TaskCellView.swift */,
+				539663C22A2F662F007187BF /* TaskListView.swift */,
+				53E054F42A2FD883001E8340 /* CustomDatePicker.swift */,
+				53E054F62A2FDC9F001E8340 /* WakeUpTimePickerView.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		E6E0D3112A28E0CF003DD154 /* PostButtonView */ = {
@@ -182,6 +232,8 @@
 		EE8015062A278CA500137787 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				53E054EF2A2FC80B001E8340 /* OnboardView */,
+				539663B22A2F5805007187BF /* RoutineView */,
 				EE31C99D2A2E293400DD6ADF /* RandomTipView */,
 				538D90872A292D5200A80AAB /* Community */,
 				EECEE48E2A24F9F400249177 /* ContentView.swift */,
@@ -193,6 +245,7 @@
 		EECEE4802A24F9F400249177 = {
 			isa = PBXGroup;
 			children = (
+				539663BF2A2F5EA0007187BF /* Resource */,
 				EECEE48B2A24F9F400249177 /* DRP_32 */,
 				EECEE49C2A24F9F500249177 /* DRP_32Tests */,
 				EECEE4A62A24F9F500249177 /* DRP_32UITests */,
@@ -355,6 +408,7 @@
 			files = (
 				EECEE4942A24F9F500249177 /* Preview Assets.xcassets in Resources */,
 				EECEE4912A24F9F500249177 /* Assets.xcassets in Resources */,
+				539663C12A2F5EF6007187BF /* tasks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,13 +433,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				539663BB2A2F5B04007187BF /* BedTimeSettingView.swift in Sources */,
+				539663BD2A2F5B3A007187BF /* TaskCellView.swift in Sources */,
 				EE28A9A92A28ADC700736689 /* HttpOperations.swift in Sources */,
 				EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */,
-				53E961642A2E43B700983207 /* BedTimeSettingView.swift in Sources */,
+				53E054F92A30A749001E8340 /* TimeLineView.swift in Sources */,
 				538D909C2A2A093200A80AAB /* TipRow.swift in Sources */,
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
+				53E054EE2A2FC016001E8340 /* OnboardingView.swift in Sources */,
 				EE31C99C2A2E1AEA00DD6ADF /* RandomTip.swift in Sources */,
+				539663C32A2F662F007187BF /* TaskListView.swift in Sources */,
 				53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */,
+				53E054FD2A30A9EB001E8340 /* TimeCellView.swift in Sources */,
+				53E054F72A2FDC9F001E8340 /* WakeUpTimePickerView.swift in Sources */,
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
 				538D90892A29300900A80AAB /* TipPostView.swift in Sources */,
 				EE28A9B22A28E47900736689 /* Tip.swift in Sources */,
@@ -394,7 +454,9 @@
 				EE28A99D2A27912900736689 /* CalendarView.swift in Sources */,
 				53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */,
 				538B38F52A2F54B300A8DBED /* Task.swift in Sources */,
+				53E054F52A2FD883001E8340 /* CustomDatePicker.swift in Sources */,
 				EE28A9AE2A28B4F300736689 /* Todo.swift in Sources */,
+				53E054F12A2FC822001E8340 /* StartButtonView.swift in Sources */,
 				EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */,
 				EE28A9B82A28F0E500736689 /* ModelData.swift in Sources */,
 			);
@@ -556,7 +618,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DRP_32/Preview Content\"";
-				DEVELOPMENT_TEAM = 9TV733BDJL;
+				DEVELOPMENT_TEAM = D5AN9Y8KCR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -569,7 +631,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP28203452;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP2820345;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -585,7 +647,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DRP_32/Preview Content\"";
-				DEVELOPMENT_TEAM = 9TV733BDJL;
+				DEVELOPMENT_TEAM = D5AN9Y8KCR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -598,7 +660,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP28203452;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP2820345;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

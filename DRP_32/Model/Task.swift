@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct Task {
-    var isCompleted = false
-    var title: String
-    var hour: Int
-    var minute: Int
+struct Task: Identifiable, Equatable{
+    let id = UUID()
+    let title: String
+    let hour: Int
+    let minute: Int
+    var startHour = 0
+    var startMinute = 0
 }
