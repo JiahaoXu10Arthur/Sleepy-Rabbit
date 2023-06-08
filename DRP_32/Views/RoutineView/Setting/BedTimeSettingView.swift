@@ -30,7 +30,6 @@ struct BedTimeSettingView: View {
     @AppStorage("bedHour") var bedHour = 0
     @AppStorage("bedMinute") var bedMinute = 0
     
-    
     private let hours = [Int](0...24)
     private let minutes = [Int](0...60)
     
@@ -83,7 +82,7 @@ struct BedTimeSettingView: View {
                              
                         HStack {
                             VStack {
-                                Text("Wake up \n Time")
+                                Text("Wake up \nTime")
                                     .font(.title3)
                             }
                             WakeUpTimePickerView(wakeHour: $wakeHour, wakeMinute: $wakeMinute)
@@ -92,14 +91,14 @@ struct BedTimeSettingView: View {
                         }
                         HStack {
                             VStack {
-                                Text("Sleeping \n Time")
+                                Text("Sleeping\nDuration")
                                     .font(.title3)
                             }
                             CustomDatePicker(sleepHour: $sleepHour, sleepMinute: $sleepMinute)
                                 .frame(height: 100.0)
                         }
                     }
-                Section (header: Text("Select Your Routine")
+                Section (header: Text("Select Bed Time Routine")
                     .font(.title3)
                     .fontWeight(.bold)
                     .foregroundColor(Color.black)){

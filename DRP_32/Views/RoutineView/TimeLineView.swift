@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct TimeLineView: View {
+    @EnvironmentObject var modelData: ModelData
+    var tasks: [Task] {
+        modelData.chosenTasks
+    }
     static private let maxHours = 24
     static private let maxMinutes = 60
     private let hours = [Int](0...Self.maxHours)
@@ -16,12 +20,24 @@ struct TimeLineView: View {
         let hourString = String(format: "%02d", time)
         return hourString
     }
-    let cTasks: [Task] = [Task(title: "Task 1", hour: 1, minute: 30, startHour: 3, startMinute: 21), Task(title: "Task 2", hour: 0, minute: 5, startHour: 10, startMinute: 55), Task(title: "Task 3", hour: 3, minute: 51, startHour: 22, startMinute: 30)]
-    let hourHeight = 50.0
+    let hourHeight = 75.0
+    let header = CGFloat(38)
     
     var body: some View {
-        ScrollView {
-            ZStack(alignment: .topLeading) {
+        VStack(alignment: .leading) {
+            HStack {
+                Text("Routine")
+                    .font(.title)
+                    .multilineTextAlignment(.leading)
+                    .bold()
+                    .padding()
+            }
+            .font(.title)
+            
+            Divider()
+            
+            ScrollView {
+                ZStack(alignment: .topLeading) {
                     VStack(alignment: .leading, spacing: 0) {
                         ForEach(hours, id: \.self) { hour in
                             HStack {
@@ -33,19 +49,20 @@ struct TimeLineView: View {
                             }.frame(height: hourHeight)
                         }
                     }
-                ForEach(cTasks) { task in
-                    if nextDay(task) {
-                        sleepCell(task)
+                    ForEach(tasks) { task in
+                        if nextDay(task) {
+                            sleepCell(task)
+                        }
+                        taskCell(task)
                     }
-                    taskCell(task)
                 }
             }
+            .padding()
         }
-        .padding()
     }
     
     func nextDay(_ task: Task) -> Bool {
-        var duration = Double(task.hour) + Double(task.minute) / 60
+        let duration = Double(task.hour) + Double(task.minute) / 60
         let hour = task.startHour
         let minute = task.startMinute
         let total = Double(hour) + (Double(minute) / 60) + duration
@@ -67,34 +84,31 @@ struct TimeLineView: View {
         
         let height = Double(duration) * hourHeight
         let offset = Double(hour) * (hourHeight)
-                      + Double(minute)/60 * hourHeight
+        + Double(minute)/60 * hourHeight
         
         
-
+        
         return VStack(alignment: .leading) {
-            
-            ZStack(alignment: .topLeading) {
-                VStack(alignment: .leading) {
-                    Text("\(formatTime(_:hour)):\(formatTime(_:minute))   \(task.hour)h \(task.minute)m")
-                        .font(.caption)
-                    Text(task.title).bold()
-                }
-                .font(.caption)
-                Text("")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(4)
-                    .frame(height: height, alignment: .top)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(.teal).opacity(0.5)
-                        )
-                    .offset(y: 26)
+            HStack {
+                Text("\(formatTime(_:hour)):\(formatTime(_:minute))   \(task.hour)h \(task.minute)m")
+                
+                Text(task.title).bold()
             }
-            
-            
+           
         }
+        .font(.caption)
+        
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(4)
+        .frame(height: height, alignment: .top)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(.teal).opacity(0.5).border(.white)
+        )
+        .offset(y: header)
         .padding(.trailing, 60)
         .offset(x: 56, y: offset)
+        
     }
     func sleepCell(_ task: Task) -> some View {
         
@@ -105,29 +119,26 @@ struct TimeLineView: View {
         let height = Double(duration) * hourHeight
         return VStack(alignment: .leading) {
             
-            ZStack(alignment: .topLeading) {
-                VStack(alignment: .leading) {
-                    Text("\(formatTime(_:hour)):\(formatTime(_:minute))   \(task.hour)h \(task.minute)m")
-                        .font(.caption)
-                    Text(task.title).bold()
-                }
-                .font(.caption)
-                Text("")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(4)
-                    .frame(height: height, alignment: .top)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(.teal).opacity(0.5)
-                        )
-                    .offset(y: 26)
+            
+            HStack {
+                Text("\(formatTime(_:hour)):\(formatTime(_:minute))   \(task.hour)h \(task.minute)m")
+                    .font(.caption)
+                Text(task.title).bold()
             }
             
-            
         }
+        .font(.caption)
+        
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(4)
+        .frame(height: height, alignment: .top)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(.teal).opacity(0.5)
+        )
+        .offset(y: header)
         .padding(.trailing, 60)
         .offset(x: 56, y: 0)
-    
     }
     
 }
@@ -135,5 +146,6 @@ struct TimeLineView: View {
 struct TimeLineView_Previews: PreviewProvider {
     static var previews: some View {
         TimeLineView()
+            .environmentObject(ModelData.shared)
     }
 }
