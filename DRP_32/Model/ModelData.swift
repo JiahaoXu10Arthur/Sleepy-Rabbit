@@ -32,16 +32,18 @@ class ModelData: ObservableObject {
     @Published var isLoading: Bool = true
 
     private init() {
-        fetchTipofTheDay() { _ in}
         if let data = UserDefaults.standard.data(forKey: "chosenTasks"),
            let tasks = try? JSONDecoder().decode([Task].self, from: data) {
             chosenTasks = tasks
         } else {
             chosenTasks = []
         }
+        fetchTipofTheDay() { _ in}
         fetchData()
         getAnAiTip() { _ in
-            self.isLoading = false
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
         }
     } // Prevents others from creating their own instances
 
@@ -111,9 +113,9 @@ class ModelData: ObservableObject {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             DispatchQueue.main.async {
                 if error != nil {
-                    completion(true)
-                } else if data != nil {
                     completion(false)
+                } else if data != nil {
+                    completion(true)
                 }
             }
         }
