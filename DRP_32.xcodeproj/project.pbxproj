@@ -340,7 +340,6 @@
 			isa = PBXGroup;
 			children = (
 				EECEE48C2A24F9F400249177 /* DRP_32App.swift */,
-				E66F1D0C2A30EED80033A520 /* Notification */,
 				EE28A9AA2A28AF1300736689 /* Model */,
 				EE28A9A72A28AD1500736689 /* Communicate */,
 				EE8015062A278CA500137787 /* Views */,
@@ -509,11 +508,9 @@
 			files = (
 				53E055082A312BEE001E8340 /* RandomTipView.swift in Sources */,
 				EE9B1DE92A2F6C71003AAC1C /* Query.swift in Sources */,
-				E66F1D1E2A30EED80033A520 /* CreateTaskView.swift in Sources */,
 				539663BB2A2F5B04007187BF /* BedTimeSettingView.swift in Sources */,
 				539663BD2A2F5B3A007187BF /* TaskCellView.swift in Sources */,
 				EE28A9A92A28ADC700736689 /* HttpOperations.swift in Sources */,
-				E66F1D1D2A30EED80033A520 /* TaskListViews.swift in Sources */,
 				EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */,
 				53E054F92A30A749001E8340 /* TimeLineView.swift in Sources */,
 				538D909C2A2A093200A80AAB /* TipRow.swift in Sources */,
@@ -534,8 +531,6 @@
 				E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */,
 				EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */,
 				EE9B1DEB2A30A987003AAC1C /* LikeButton.swift in Sources */,
-				E66F1D1F2A30EED80033A520 /* NotificationSettingsView.swift in Sources */,
-				E66F1D1C2A30EED80033A520 /* Tasks.swift in Sources */,
 				EE28A99D2A27912900736689 /* CalendarView.swift in Sources */,
 				53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */,
 				EE9B1DE32A2F5346003AAC1C /* QueryView.swift in Sources */,
@@ -546,7 +541,6 @@
 				53E054F12A2FC822001E8340 /* StartButtonView.swift in Sources */,
 				EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */,
 				EE28A9B82A28F0E500736689 /* ModelData.swift in Sources */,
-				E66F1D1B2A30EED80033A520 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
