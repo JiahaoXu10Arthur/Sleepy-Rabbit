@@ -23,14 +23,6 @@
 		53E054F92A30A749001E8340 /* TimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054F82A30A749001E8340 /* TimeLineView.swift */; };
 		53E054FD2A30A9EB001E8340 /* TimeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054FC2A30A9EB001E8340 /* TimeCellView.swift */; };
 		53E055052A30E1AF001E8340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055042A30E1AF001E8340 /* AppDelegate.swift */; };
-		E66F1D182A30EED80033A520 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66F1D0E2A30EED80033A520 /* NotificationManager.swift */; };
-		E66F1D192A30EED80033A520 /* TaskPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66F1D0F2A30EED80033A520 /* TaskPersistenceManager.swift */; };
-		E66F1D1A2A30EED80033A520 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66F1D102A30EED80033A520 /* TaskManager.swift */; };
-		E66F1D1B2A30EED80033A520 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66F1D112A30EED80033A520 /* LocationManager.swift */; };
-		E66F1D1C2A30EED80033A520 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66F1D132A30EED80033A520 /* Tasks.swift */; };
-		E66F1D1D2A30EED80033A520 /* TaskListViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66F1D152A30EED80033A520 /* TaskListViews.swift */; };
-		E66F1D1E2A30EED80033A520 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66F1D162A30EED80033A520 /* CreateTaskView.swift */; };
-		E66F1D1F2A30EED80033A520 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66F1D172A30EED80033A520 /* NotificationSettingsView.swift */; };
 		E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E0D3122A28E0F5003DD154 /* PostButtons.swift */; };
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
 		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
@@ -90,14 +82,6 @@
 		53E054F82A30A749001E8340 /* TimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineView.swift; sourceTree = "<group>"; };
 		53E054FC2A30A9EB001E8340 /* TimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCellView.swift; sourceTree = "<group>"; };
 		53E055042A30E1AF001E8340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = DRP_32/AppDelegate.swift; sourceTree = "<group>"; };
-		E66F1D0E2A30EED80033A520 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		E66F1D0F2A30EED80033A520 /* TaskPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPersistenceManager.swift; sourceTree = "<group>"; };
-		E66F1D102A30EED80033A520 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
-		E66F1D112A30EED80033A520 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		E66F1D132A30EED80033A520 /* Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
-		E66F1D152A30EED80033A520 /* TaskListViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListViews.swift; sourceTree = "<group>"; };
-		E66F1D162A30EED80033A520 /* CreateTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
-		E66F1D172A30EED80033A520 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		E6E0D3122A28E0F5003DD154 /* PostButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButtons.swift; sourceTree = "<group>"; };
 		EE28A99C2A27912900736689 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		EE28A9A22A2796D800736689 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
@@ -211,45 +195,6 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		E66F1D0C2A30EED80033A520 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				E66F1D0D2A30EED80033A520 /* Managers */,
-				E66F1D122A30EED80033A520 /* Model */,
-				E66F1D142A30EED80033A520 /* Views */,
-			);
-			path = Notification;
-			sourceTree = "<group>";
-		};
-		E66F1D0D2A30EED80033A520 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				E66F1D0E2A30EED80033A520 /* NotificationManager.swift */,
-				E66F1D0F2A30EED80033A520 /* TaskPersistenceManager.swift */,
-				E66F1D102A30EED80033A520 /* TaskManager.swift */,
-				E66F1D112A30EED80033A520 /* LocationManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		E66F1D122A30EED80033A520 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E66F1D132A30EED80033A520 /* Tasks.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E66F1D142A30EED80033A520 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E66F1D152A30EED80033A520 /* TaskListViews.swift */,
-				E66F1D162A30EED80033A520 /* CreateTaskView.swift */,
-				E66F1D172A30EED80033A520 /* NotificationSettingsView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		E6E0D3112A28E0CF003DD154 /* PostButtonView */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,7 +285,6 @@
 			isa = PBXGroup;
 			children = (
 				EECEE48C2A24F9F400249177 /* DRP_32App.swift */,
-				E66F1D0C2A30EED80033A520 /* Notification */,
 				EE28A9AA2A28AF1300736689 /* Model */,
 				EE28A9A72A28AD1500736689 /* Communicate */,
 				EE8015062A278CA500137787 /* Views */,
@@ -508,11 +452,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE9B1DE92A2F6C71003AAC1C /* Query.swift in Sources */,
-				E66F1D1E2A30EED80033A520 /* CreateTaskView.swift in Sources */,
 				539663BB2A2F5B04007187BF /* BedTimeSettingView.swift in Sources */,
 				539663BD2A2F5B3A007187BF /* TaskCellView.swift in Sources */,
 				EE28A9A92A28ADC700736689 /* HttpOperations.swift in Sources */,
-				E66F1D1D2A30EED80033A520 /* TaskListViews.swift in Sources */,
 				EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */,
 				53E054F92A30A749001E8340 /* TimeLineView.swift in Sources */,
 				538D909C2A2A093200A80AAB /* TipRow.swift in Sources */,
@@ -527,16 +469,11 @@
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
 				53E055052A30E1AF001E8340 /* AppDelegate.swift in Sources */,
 				538D90892A29300900A80AAB /* TipPostView.swift in Sources */,
-				E66F1D1A2A30EED80033A520 /* TaskManager.swift in Sources */,
-				E66F1D182A30EED80033A520 /* NotificationManager.swift in Sources */,
-				E66F1D192A30EED80033A520 /* TaskPersistenceManager.swift in Sources */,
 				EE28A9B22A28E47900736689 /* Tip.swift in Sources */,
 				EE9B1DE72A2F5C55003AAC1C /* NewTipButton.swift in Sources */,
 				E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */,
 				EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */,
 				EE9B1DEB2A30A987003AAC1C /* LikeButton.swift in Sources */,
-				E66F1D1F2A30EED80033A520 /* NotificationSettingsView.swift in Sources */,
-				E66F1D1C2A30EED80033A520 /* Tasks.swift in Sources */,
 				EE28A99D2A27912900736689 /* CalendarView.swift in Sources */,
 				53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */,
 				EE9B1DE32A2F5346003AAC1C /* QueryView.swift in Sources */,
@@ -547,7 +484,6 @@
 				53E054F12A2FC822001E8340 /* StartButtonView.swift in Sources */,
 				EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */,
 				EE28A9B82A28F0E500736689 /* ModelData.swift in Sources */,
-				E66F1D1B2A30EED80033A520 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
