@@ -10,10 +10,14 @@ import SwiftUI
 struct StartButtonView: View {
     @EnvironmentObject var settings: UserSettings
     
-    var bedHour: Int { settings.bedHour}
-    var bedMinute: Int { settings.bedMinute}
-    var sleepHour: Int { settings.sleepHour}
-    var sleepMinute: Int { settings.sleepMinute}
+    var bedHour: Int { settings.bedHour }
+    var bedMinute: Int { settings.bedMinute }
+    var sleepHour: Int { settings.sleepHour }
+    var sleepMinute: Int { settings.sleepMinute }
+    var wakeHour: Int { settings.wakeHour }
+    var wakeMinute: Int { settings.wakeMinute }
+    
+    
     
     @State private var startHour = 0
     @State private var startMinute = 0
@@ -26,8 +30,7 @@ struct StartButtonView: View {
             let sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute)
             startHour = bedHour
             startMinute = bedMinute
-            print("startHour: \(startHour)")
-            
+
             var tasks: [Task] = [sleep]
             
             for task in settings.chosenTasks {
@@ -35,6 +38,19 @@ struct StartButtonView: View {
             }
             
             settings.chosenTasks = tasks
+            
+            startHour = wakeHour
+            startMinute = wakeMinute
+            
+            print("Start Hour: \(startHour) : \(startMinute)")
+            
+            tasks = []
+            
+            for task in settings.wakeUpTasks {
+                tasks.append(updateTask2(task: task))
+            }
+            print("\(tasks)")
+            settings.wakeUpTasks = tasks
         
         }) {
             
@@ -72,9 +88,24 @@ struct StartButtonView: View {
         updateStart(hour: task.hour, minute: task.minute)
         return Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute)
     }
- 
     
+    func updateStart2(hour: Int, minute: Int) {
+        startHour = startHour + hour
+        startMinute = startMinute + minute
+        if startMinute > 59 {
+            startMinute = startMinute - 60
+            startHour += 1
+        }
+        if startHour > 23 {
+            startHour = startHour - 24
+        }
+    }
     
+    func updateTask2(task: Task) -> Task {
+        var task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute)
+        updateStart2(hour: task.hour, minute: task.minute)
+        return task
+    }
 }
 
 struct StartButtonView_Previews: PreviewProvider {

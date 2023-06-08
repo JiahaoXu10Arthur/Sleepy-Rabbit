@@ -18,6 +18,13 @@ struct ContentView: View {
             Button(action: {
                 settings.showOnboarding = true
                 settings.chosenTasks.removeAll()
+                settings.wakeUpTasks.removeAll()
+                settings.bedHour = 0
+                settings.bedMinute = 0
+                settings.sleepHour = 0
+                settings.sleepMinute = 0
+                settings.wakeHour = 0
+                settings.wakeMinute = 0
             }) {
                 HStack(spacing: 8) {
                     Text("Re-Start")

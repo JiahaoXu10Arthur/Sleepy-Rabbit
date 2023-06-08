@@ -67,5 +67,7 @@ struct BottomNavigator_Previews: PreviewProvider {
     static var previews: some View {
         BottomNavigator()
             .environmentObject(ModelData.shared)
+            .environmentObject(UserSettings.shared)
+    
     }
 }

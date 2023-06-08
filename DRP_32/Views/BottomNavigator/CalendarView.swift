@@ -17,5 +17,7 @@ struct Calendar_Previews: PreviewProvider {
     static var previews: some View {
         CalendarView()
             .environmentObject(ModelData.shared)
+            .environmentObject(UserSettings.shared)
+    
     }
 }

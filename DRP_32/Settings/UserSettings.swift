@@ -30,6 +30,12 @@ class UserSettings: ObservableObject {
                }
     }
     
+    @Published var wakeUpTasks: [Task] {
+        didSet {
+            saveTasks2()
+        }
+    }
+    
     @Published var showOnboarding: Bool = true
     
     init() {
@@ -41,11 +47,23 @@ class UserSettings: ObservableObject {
             chosenTasks = []
         }
         
+        if let data2 = UserDefaults.standard.data(forKey: "wakeUpTasks"),
+           let tasks2 = try? JSONDecoder().decode([Task].self, from: data2) {
+            wakeUpTasks = tasks2
+        } else {
+            wakeUpTasks = []
+        }
+        
     }
     private func saveTasks() {
             if let data = try? JSONEncoder().encode(chosenTasks) {
                 UserDefaults.standard.set(data, forKey: "chosenTasks")
             }
         }
+    private func saveTasks2() {
+        if let data = try? JSONEncoder().encode(wakeUpTasks) {
+            UserDefaults.standard.set(data, forKey: "wakeUpTasks")
+        }
+    }
 
 }

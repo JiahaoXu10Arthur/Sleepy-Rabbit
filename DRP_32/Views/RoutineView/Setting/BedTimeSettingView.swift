@@ -85,7 +85,7 @@ struct BedTimeSettingView: View {
             
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NextButton(bedHour: $bedHour, bedMinute: $bedMinute, sleepHour: $sleepHour, sleepMinute: $sleepMinute)
+                    NextButton(bedHour: $bedHour, bedMinute: $bedMinute, sleepHour: $sleepHour, sleepMinute: $sleepMinute, wakeHour: $wakeHour, wakeMinute: $wakeMinute)
                 }
             }
             

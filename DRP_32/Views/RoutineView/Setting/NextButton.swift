@@ -14,6 +14,10 @@ struct NextButton: View {
     @Binding var bedMinute: Int
     @Binding var sleepHour: Int
     @Binding var sleepMinute: Int
+    @Binding var wakeHour: Int
+    @Binding var wakeMinute: Int
+    
+    
     @State private var isLinkActive = false
      var body: some View {
          NavigationLink(destination: BedTimeRoutineView(), isActive: $isLinkActive) {
@@ -40,6 +44,8 @@ struct NextButton: View {
                  settings.bedMinute = bedMinute
                  settings.sleepHour = sleepHour
                  settings.sleepMinute = sleepMinute
+                 settings.wakeHour = wakeHour
+                 settings.wakeMinute = wakeMinute
                  isLinkActive = true // Activate the navigation
              }
          )
@@ -49,7 +55,7 @@ struct NextButton: View {
 
 struct NextButton_Previews: PreviewProvider {
     static var previews: some View {
-        NextButton(bedHour: .constant(0), bedMinute: .constant(0), sleepHour: .constant(0), sleepMinute: .constant(0))
+        NextButton(bedHour: .constant(0), bedMinute: .constant(0), sleepHour: .constant(0), sleepMinute: .constant(0), wakeHour: .constant(0), wakeMinute: .constant(0))
             .environmentObject(UserSettings.shared)
     
     }

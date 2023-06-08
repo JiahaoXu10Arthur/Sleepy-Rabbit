@@ -14,20 +14,31 @@ struct BedTimeRoutineView: View {
     }
     
     var body: some View {
-            
-            List {
-                ForEach(tasks) { task in
-                    TaskCellView(task: task)
+        
+        List {
+            ForEach(tasks) { task in
+                TaskCellView(task: task)
+            }
+        }
+        .navigationTitle(Text("BedTime Routine"))
+        .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: WakeUpRoutineView()) {
+                    HStack(spacing: 8) {
+                        Text("Next")
+                        Image(systemName: "arrow.right.circle")
+                            .imageScale(.large)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(
+                        Capsule().strokeBorder(Color.white, lineWidth: 1.25)
+                    )
                 }
             }
-            .navigationTitle(Text("BedTime Routine"))
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                                       StartButtonView()
-                                   }
-            }
-            
+        }
+        
         
     }
 }

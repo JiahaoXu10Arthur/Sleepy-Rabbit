@@ -26,6 +26,8 @@
 		53E0550F2A32003E001E8340 /* BedTimeRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E0550E2A32003E001E8340 /* BedTimeRoutineView.swift */; };
 		53E055122A3204F3001E8340 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055112A3204F2001E8340 /* UserSettings.swift */; };
 		53E055142A321BDA001E8340 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055132A321BDA001E8340 /* NextButton.swift */; };
+		53E055162A326816001E8340 /* WakeUpTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055152A326816001E8340 /* WakeUpTaskCell.swift */; };
+		53E055182A32689A001E8340 /* WakeUpRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055172A32689A001E8340 /* WakeUpRoutineView.swift */; };
 		E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E0D3122A28E0F5003DD154 /* PostButtons.swift */; };
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
 		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
@@ -88,6 +90,8 @@
 		53E0550E2A32003E001E8340 /* BedTimeRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedTimeRoutineView.swift; sourceTree = "<group>"; };
 		53E055112A3204F2001E8340 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		53E055132A321BDA001E8340 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		53E055152A326816001E8340 /* WakeUpTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTaskCell.swift; sourceTree = "<group>"; };
+		53E055172A32689A001E8340 /* WakeUpRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpRoutineView.swift; sourceTree = "<group>"; };
 		E66F1D0E2A30EED80033A520 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		E66F1D0F2A30EED80033A520 /* TaskPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPersistenceManager.swift; sourceTree = "<group>"; };
 		E66F1D102A30EED80033A520 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
@@ -202,19 +206,10 @@
 				53E054F62A2FDC9F001E8340 /* WakeUpTimePickerView.swift */,
 				53E0550E2A32003E001E8340 /* BedTimeRoutineView.swift */,
 				53E055132A321BDA001E8340 /* NextButton.swift */,
+				53E055152A326816001E8340 /* WakeUpTaskCell.swift */,
+				53E055172A32689A001E8340 /* WakeUpRoutineView.swift */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		53E055092A31F263001E8340 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				E66F1D102A30EED80033A520 /* TaskManager.swift */,
-				53E055062A311ECF001E8340 /* Try.swift */,
-				E66F1D0E2A30EED80033A520 /* NotificationManager.swift */,
-				E66F1D0F2A30EED80033A520 /* TaskPersistenceManager.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		53E055102A3204DC001E8340 /* Settings */ = {
@@ -510,6 +505,7 @@
 				53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */,
 				53E054F72A2FDC9F001E8340 /* WakeUpTimePickerView.swift in Sources */,
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
+				53E055162A326816001E8340 /* WakeUpTaskCell.swift in Sources */,
 				53E055052A30E1AF001E8340 /* AppDelegate.swift in Sources */,
 				538D90892A29300900A80AAB /* TipPostView.swift in Sources */,
 				EE28A9B22A28E47900736689 /* Tip.swift in Sources */,
@@ -519,6 +515,7 @@
 				EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */,
 				EE9B1DEB2A30A987003AAC1C /* LikeButton.swift in Sources */,
 				53E055142A321BDA001E8340 /* NextButton.swift in Sources */,
+				53E055182A32689A001E8340 /* WakeUpRoutineView.swift in Sources */,
 				EE28A99D2A27912900736689 /* CalendarView.swift in Sources */,
 				53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */,
 				EE9B1DE32A2F5346003AAC1C /* QueryView.swift in Sources */,

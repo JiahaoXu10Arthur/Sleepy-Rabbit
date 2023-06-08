@@ -12,6 +12,10 @@ struct TimeLineView: View {
     var tasks: [Task] {
         settings.chosenTasks
     }
+    var tasks2: [Task] {
+        settings.wakeUpTasks
+    }
+    
     static private let maxHours = 24
     static private let maxMinutes = 60
     private let hours = [Int](0...Self.maxHours)
@@ -21,7 +25,7 @@ struct TimeLineView: View {
         return hourString
     }
     let hourHeight = 75.0
-    let header = CGFloat(38)
+    let header = CGFloat(37)
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -55,6 +59,12 @@ struct TimeLineView: View {
                         }
                         taskCell(task)
                     }
+                    ForEach(tasks2) { task in
+                        if nextDay(task) {
+                            sleepCell(task)
+                        }
+                        taskCell(task)
+                    }
                 }
             }
             .padding()
@@ -66,6 +76,7 @@ struct TimeLineView: View {
         let hour = task.startHour
         let minute = task.startMinute
         let total = Double(hour) + (Double(minute) / 60) + duration
+        print("\(task.title)")
         return total > 24
     }
     
@@ -85,9 +96,7 @@ struct TimeLineView: View {
         let height = Double(duration) * hourHeight
         let offset = Double(hour) * (hourHeight)
         + Double(minute)/60 * hourHeight
-        
-        
-        
+
         return VStack(alignment: .leading) {
             HStack {
                 Text("\(formatTime(_:hour)):\(formatTime(_:minute))   \(task.hour)h \(task.minute)m")
@@ -103,11 +112,11 @@ struct TimeLineView: View {
         .frame(height: height, alignment: .top)
         .background(
             RoundedRectangle(cornerRadius: 8)
-                .fill(.teal).opacity(0.5).border(.white)
+                .fill(.teal).opacity(0.5).border(.white, width: 1)
         )
         .offset(y: header)
-        .padding(.trailing, 60)
-        .offset(x: 56, y: offset)
+        .padding(.trailing, 59)
+        .offset(x: 57, y: offset)
         
     }
     func sleepCell(_ task: Task) -> some View {
@@ -118,8 +127,6 @@ struct TimeLineView: View {
         
         let height = Double(duration) * hourHeight
         return VStack(alignment: .leading) {
-            
-            
             HStack {
                 Text("\(formatTime(_:hour)):\(formatTime(_:minute))   \(task.hour)h \(task.minute)m")
                     .font(.caption)
@@ -137,8 +144,8 @@ struct TimeLineView: View {
                 .fill(.teal).opacity(0.5)
         )
         .offset(y: header)
-        .padding(.trailing, 60)
-        .offset(x: 56, y: 0)
+        .padding(.trailing, 59)
+        .offset(x: 57, y: 0)
     }
     
 }
