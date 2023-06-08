@@ -46,11 +46,11 @@ struct BottomNavigator: View {
                 }
                 .tag(Tab.routine)
                 
-            CommunityView()
-                .tabItem {
-                    Label("Community", systemImage:"person.2")
-                }
-                .tag(Tab.community)
+//            CommunityView()
+//                .tabItem {
+//                    Label("Community", systemImage:"person.2")
+//                }
+//                .tag(Tab.community)
                 
                 
             TipPageView()

@@ -12,7 +12,7 @@ struct RandomTipView: View {
     @Binding var isLoading: Bool
     
     var tip: Tip {
-        modelData.showingTip ?? Tip(title: "Loading...", tag: " ", detail: "")
+        modelData.showingTip ?? Tip(title: "Failed", tag: ":(", detail: "Please check your internet connection.")
     }
 
     var body: some View {

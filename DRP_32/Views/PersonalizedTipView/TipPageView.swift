@@ -8,19 +8,27 @@
 import SwiftUI
 
 struct TipPageView: View {
+    @EnvironmentObject var modelData: ModelData
     @State var isLoading: Bool = false
+    var tipofTheDay: Tip {
+        modelData.tipOfTheDay ?? Tip(title: "Get Tip Failed", tag: ":(", detail: "Please check your internet connection.")
+    }
     
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 3) {
                 ScrollView {
                     VStack(spacing: 3) {
-                        TipRow(tip: Tip(title: "Tip of the day", tag: "#sleep#chatGPT", detail: "Drinking warm milk before bed has been shown to improve sleep quality and reduce anxiety. It relaxes the nervous system, helping you fall asleep more easily and stay asleep throughout the night. Get a cup of warm milk 30-60 minutes before bedtime to enjoy its benefits."))
+                        TipRow(tip: tipofTheDay)
                         
                         RandomTipView(isLoading: $isLoading)
                         .frame(height: geometry.size.height * 0.7)
                     }
                 }
+                .refreshable {
+                    ModelData.shared.fetchTipofTheDay() {_ in}
+                }
+                
                 NewTipButton(isLoading: $isLoading)
             }
         }
