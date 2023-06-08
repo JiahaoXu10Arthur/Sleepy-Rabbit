@@ -10,12 +10,14 @@ import SwiftUI
 struct ContentView: View {
     // Detect if user has onboarded
     @AppStorage("showOnboarding") var showOnboarding: Bool = true//false
+    @EnvironmentObject var modelData: ModelData
     
     var body: some View {
         VStack {
             Button(action: {
                 showOnboarding = true
                 print(showOnboarding)
+                modelData.chosenTasks.removeAll()
             }) {
                 HStack(spacing: 8) {
                     Text("Re-Start")

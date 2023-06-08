@@ -12,7 +12,13 @@ struct OnboardingView: View {
     
     var body: some View {
         TabView{
-            Text("Welcome")
+            VStack {
+                Text("Welcome")
+                HStack {
+                    Text("Start")
+                    Image(systemName: "chevron.forward.2")
+                }
+            }
             BedTimeSettingView(showOnboarding: $showOnboarding)
             
         }.tabViewStyle(.page)

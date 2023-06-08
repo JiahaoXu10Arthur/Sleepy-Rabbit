@@ -21,8 +21,9 @@
 		53E054F52A2FD883001E8340 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054F42A2FD883001E8340 /* CustomDatePicker.swift */; };
 		53E054F72A2FDC9F001E8340 /* WakeUpTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054F62A2FDC9F001E8340 /* WakeUpTimePickerView.swift */; };
 		53E054F92A30A749001E8340 /* TimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054F82A30A749001E8340 /* TimeLineView.swift */; };
-		53E054FD2A30A9EB001E8340 /* TimeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054FC2A30A9EB001E8340 /* TimeCellView.swift */; };
 		53E055052A30E1AF001E8340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055042A30E1AF001E8340 /* AppDelegate.swift */; };
+		53E055072A311ECF001E8340 /* Try.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055062A311ECF001E8340 /* Try.swift */; };
+		53E055082A312BEE001E8340 /* RandomTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31C99B2A2E1AEA00DD6ADF /* RandomTipView.swift */; };
 		E66F1D182A30EED80033A520 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66F1D0E2A30EED80033A520 /* NotificationManager.swift */; };
 		E66F1D192A30EED80033A520 /* TaskPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66F1D0F2A30EED80033A520 /* TaskPersistenceManager.swift */; };
 		E66F1D1A2A30EED80033A520 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66F1D102A30EED80033A520 /* TaskManager.swift */; };
@@ -40,7 +41,6 @@
 		EE28A9B02A28CB5000736689 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9AF2A28CB5000736689 /* DatabaseTests.swift */; };
 		EE28A9B22A28E47900736689 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9B12A28E47900736689 /* Tip.swift */; };
 		EE28A9B82A28F0E500736689 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9B72A28F0E500736689 /* ModelData.swift */; };
-		EE31C99C2A2E1AEA00DD6ADF /* RandomTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31C99B2A2E1AEA00DD6ADF /* RandomTipView.swift */; };
 		EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8015072A278D1500137787 /* BottomNavigator.swift */; };
 		EE9B1DE32A2F5346003AAC1C /* QueryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B1DE22A2F5346003AAC1C /* QueryView.swift */; };
 		EE9B1DE52A2F5A3F003AAC1C /* TipPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B1DE42A2F5A3F003AAC1C /* TipPageView.swift */; };
@@ -88,8 +88,8 @@
 		53E054F42A2FD883001E8340 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		53E054F62A2FDC9F001E8340 /* WakeUpTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimePickerView.swift; sourceTree = "<group>"; };
 		53E054F82A30A749001E8340 /* TimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineView.swift; sourceTree = "<group>"; };
-		53E054FC2A30A9EB001E8340 /* TimeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCellView.swift; sourceTree = "<group>"; };
 		53E055042A30E1AF001E8340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = DRP_32/AppDelegate.swift; sourceTree = "<group>"; };
+		53E055062A311ECF001E8340 /* Try.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Try.swift; sourceTree = "<group>"; };
 		E66F1D0E2A30EED80033A520 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		E66F1D0F2A30EED80033A520 /* TaskPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPersistenceManager.swift; sourceTree = "<group>"; };
 		E66F1D102A30EED80033A520 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
@@ -166,7 +166,6 @@
 			children = (
 				53E054FE2A30B6C1001E8340 /* Setting */,
 				53E054F82A30A749001E8340 /* TimeLineView.swift */,
-				53E054FC2A30A9EB001E8340 /* TimeCellView.swift */,
 			);
 			path = RoutineView;
 			sourceTree = "<group>";
@@ -217,6 +216,7 @@
 				E66F1D0D2A30EED80033A520 /* Managers */,
 				E66F1D122A30EED80033A520 /* Model */,
 				E66F1D142A30EED80033A520 /* Views */,
+				53E055062A311ECF001E8340 /* Try.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -507,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53E055082A312BEE001E8340 /* RandomTipView.swift in Sources */,
 				EE9B1DE92A2F6C71003AAC1C /* Query.swift in Sources */,
 				E66F1D1E2A30EED80033A520 /* CreateTaskView.swift in Sources */,
 				539663BB2A2F5B04007187BF /* BedTimeSettingView.swift in Sources */,
@@ -517,17 +518,15 @@
 				53E054F92A30A749001E8340 /* TimeLineView.swift in Sources */,
 				538D909C2A2A093200A80AAB /* TipRow.swift in Sources */,
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
-				EE31C99C2A2E1AEA00DD6ADF /* RandomTipView.swift in Sources */,
 				53E054EE2A2FC016001E8340 /* OnboardingView.swift in Sources */,
-				EE31C99C2A2E1AEA00DD6ADF /* RandomTipView.swift in Sources */,
 				539663C32A2F662F007187BF /* TaskListView.swift in Sources */,
 				53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */,
-				53E054FD2A30A9EB001E8340 /* TimeCellView.swift in Sources */,
 				53E054F72A2FDC9F001E8340 /* WakeUpTimePickerView.swift in Sources */,
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
 				53E055052A30E1AF001E8340 /* AppDelegate.swift in Sources */,
 				538D90892A29300900A80AAB /* TipPostView.swift in Sources */,
 				E66F1D1A2A30EED80033A520 /* TaskManager.swift in Sources */,
+				53E055072A311ECF001E8340 /* Try.swift in Sources */,
 				E66F1D182A30EED80033A520 /* NotificationManager.swift in Sources */,
 				E66F1D192A30EED80033A520 /* TaskPersistenceManager.swift in Sources */,
 				EE28A9B22A28E47900736689 /* Tip.swift in Sources */,

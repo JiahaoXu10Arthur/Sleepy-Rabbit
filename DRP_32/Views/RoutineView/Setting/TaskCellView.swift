@@ -31,7 +31,6 @@ struct TaskCellView: View {
                             modelData.chosenTasks.remove(at: index)
                         }
                     }
-                    print( "\(modelData.chosenTasks.first?.title)")
                 }
             
             VStack(alignment: .leading, spacing: 8) {

@@ -9,12 +9,13 @@ import SwiftUI
 
 struct CalendarView: View {
     var body: some View {
-        TaskListView()
+        TimeLineView()
     }
 }
 
 struct Calendar_Previews: PreviewProvider {
     static var previews: some View {
         CalendarView()
+            .environmentObject(ModelData.shared)
     }
 }

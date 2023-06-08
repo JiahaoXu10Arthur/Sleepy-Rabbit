@@ -12,9 +12,14 @@ class ModelData: ObservableObject {
     // Make DatabaseManager a singleton
     static let shared = ModelData()
     
-    @Published var tasks: [Task] = [Task(title: "Task 1", hour: 1, minute: 30), Task(title: "Task 2", hour: 0, minute: 21), Task(title: "Task 3", hour: 3, minute: 51)]
-    @Published var chosenTasks: [Task] = []
+    @Published var tasks: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+    @Published var chosenTasks: [Task] {
+        didSet {
+                   saveTasks()
+               }
+    }
 
+    
     // Property to store the fetched data
     @Published var tips: [Tip]?
     
@@ -25,12 +30,24 @@ class ModelData: ObservableObject {
     @Published var isLoading: Bool = true
 
     private init() {
+        if let data = UserDefaults.standard.data(forKey: "chosenTasks"),
+           let tasks = try? JSONDecoder().decode([Task].self, from: data) {
+            chosenTasks = tasks
+        } else {
+            chosenTasks = []
+        }
         fetchData()
         getAnAiTip() { _ in
             self.isLoading = false
         }
     } // Prevents others from creating their own instances
 
+    private func saveTasks() {
+            if let data = try? JSONEncoder().encode(chosenTasks) {
+                UserDefaults.standard.set(data, forKey: "chosenTasks")
+            }
+        }
+    
     func fetchData() {
         let urlString = "https://drp32-backend.herokuapp.com/tips/all"
         fetchDatas(urlString: urlString) { (fetchedData: [Tip]?, error) in
