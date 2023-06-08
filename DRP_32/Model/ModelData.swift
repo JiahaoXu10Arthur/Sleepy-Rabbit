@@ -22,9 +22,12 @@ class ModelData: ObservableObject {
     
     @Published var queryTip: Tip?
     
+    @Published var tipOfTheDay: Tip?
+    
     @Published var isLoading: Bool = true
 
     private init() {
+        fetchTipofTheDay() { _ in}
         fetchData()
         getAnAiTip() { _ in
             self.isLoading = false
@@ -46,14 +49,14 @@ class ModelData: ObservableObject {
     func getAnAiTip(completion: @escaping (Tip?) -> Void) {
         let url = "https://drp32-backend.herokuapp.com/getRandomTip"
         fetchOneData(urlString: url) { (tip: Tip?, error) in
-            if let tip = tip {
-                self.showingTip = tip
-            } else {
-                self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
-            }
             DispatchQueue.main.async {
-                    completion(tip)
+                if let tip = tip {
+                    self.showingTip = tip
+                } else {
+                    self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
                 }
+                completion(tip)
+            }
         }
     }
     
@@ -69,6 +72,35 @@ class ModelData: ObservableObject {
                     completion(tip)
                 }
         }
+    }
+    
+    func fetchTipofTheDay(completion: @escaping (Tip?) -> Void) {
+        let url = "https://drp32-backend.herokuapp.com/tips/daily"
+        fetchOneData(urlString: url) { (tip: Tip?, error) in
+            DispatchQueue.main.async {
+                if let tip = tip {
+                    self.tipOfTheDay = tip
+                } else {
+                    self.tipOfTheDay = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
+                }
+                completion(tip)
+            }
+        }
+    }
+    
+    func updateLike(like: Bool, completion: @escaping (Bool) -> Void) {
+        let url1 = like ? "https://drp32-backend.herokuapp.com/tips/like" : "https://drp32-backend.herokuapp.com/tips/dislike"
+        let url = URL(string: url1)!
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            DispatchQueue.main.async {
+                if error != nil {
+                    completion(true)
+                } else if data != nil {
+                    completion(false)
+                }
+            }
+        }
+        task.resume()
     }
     
     func load<T: Decodable>(_ filename: String) -> T {

@@ -29,7 +29,7 @@ struct TipRow: View {
                     HStack {
                         Text(tip.title)
                             .font(.title)
-                        LikeButton(like: $like, num: $num)
+                        LikeButton(like: $like, num: tip.likes ?? 999)
                     }
                     Text(tip.tag)
                         .font(.callout)

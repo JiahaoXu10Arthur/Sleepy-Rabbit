@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct LikeButton: View {
+    @EnvironmentObject var modelData: ModelData
     @Binding var like: Bool
-    @Binding var num: Int
+    var num: Int
     
     var body: some View {
         HStack {
             Button {
                 like.toggle()
-                if like {
-                    num += 1
-                } else {
-                    num -= 1
+                modelData.updateLike(like: like) { success in
+                    print(success)
+                    if success {
+                        modelData.fetchTipofTheDay() { _ in }
+                    }
                 }
             } label: {
                 Label("Toggle like", systemImage: like ? "hand.thumbsup.fill" : "hand.thumbsup")
@@ -33,6 +35,6 @@ struct LikeButton: View {
 
 struct LikeButton_Previews: PreviewProvider {
     static var previews: some View {
-        LikeButton(like: .constant(true), num: .constant(10))
+        LikeButton(like: .constant(true), num: 10)
     }
 }
