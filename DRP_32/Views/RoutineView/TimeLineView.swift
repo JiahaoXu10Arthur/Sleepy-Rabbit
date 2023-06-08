@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct TimeLineView: View {
-    @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var settings: UserSettings
     var tasks: [Task] {
-        modelData.chosenTasks
+        settings.chosenTasks
     }
     static private let maxHours = 24
     static private let maxMinutes = 60
@@ -146,6 +146,6 @@ struct TimeLineView: View {
 struct TimeLineView_Previews: PreviewProvider {
     static var previews: some View {
         TimeLineView()
-            .environmentObject(ModelData.shared)
+            .environmentObject(UserSettings.shared)
     }
 }

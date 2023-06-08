@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskCellView: View {
-    @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var settings: UserSettings
     
     @State var task: Task
     
@@ -22,16 +22,6 @@ struct TaskCellView: View {
                 .frame(width: 20, height: 20)
                 .foregroundColor(
                     isChosen ? .green : .gray)
-                .onTapGesture {
-                    isChosen = !isChosen
-                    if isChosen {
-                        modelData.chosenTasks.append(task)
-                    } else {
-                        if let index = modelData.chosenTasks.firstIndex(of: task) {
-                            modelData.chosenTasks.remove(at: index)
-                        }
-                    }
-                }
             
             VStack(alignment: .leading, spacing: 8) {
                 Text(task.title)
@@ -40,6 +30,17 @@ struct TaskCellView: View {
                
             }
         }
+        .onTapGesture {
+            isChosen = !isChosen
+            if isChosen {
+                settings.chosenTasks.append(task)
+            } else {
+                if let index = settings.chosenTasks.firstIndex(of: task) {
+                    settings.chosenTasks.remove(at: index)
+                }
+            }
+        }
+
     }
 }
 
@@ -48,6 +49,6 @@ struct TaskCellView_Previews: PreviewProvider {
         let task = Task(title: "Task Title", hour: 12, minute: 30)
         
         TaskCellView(task: task)
-            .environmentObject(ModelData.shared)
+            .environmentObject(UserSettings.shared)
     }
 }

@@ -8,27 +8,50 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @Binding var showOnboarding: Bool
-    
+
     var body: some View {
-        TabView{
+        NavigationStack {
             VStack {
-                Text("Welcome")
-                HStack {
-                    Text("Start")
-                    Image(systemName: "chevron.forward.2")
+                Spacer()
+                Text("Hello")
+                
+                    .font(.system(size: 48, weight: .semibold))
+                    .padding(.bottom)
+                Text("TODO: Design This page")
+                    .padding()
+                Spacer()
+                
+                
+                NavigationLink(destination: BedTimeSettingView()) {
+                    Text("Get Started")
+                        .font(.headline)
                 }
             }
-            BedTimeSettingView(showOnboarding: $showOnboarding)
-            
-        }.tabViewStyle(.page)
+            .padding()
+        }
     }
+    
+//    var body: some View {
+//        TabView{
+//            VStack {
+//                Text("Welcome")
+//                HStack {
+//                    Text("Start")
+//                    Image(systemName: "chevron.forward.2")
+//                }
+//            }
+//            BedTimeSettingView(showOnboarding: $showOnboarding)
+//
+//        }.tabViewStyle(.page)
+//            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+//    }
 }
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView(showOnboarding: .constant(true))
-            .environmentObject(ModelData.shared)
+        OnboardingView()
+            .environmentObject(UserSettings.shared)
+            
         
     }
 }

@@ -9,15 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     // Detect if user has onboarded
-    @AppStorage("showOnboarding") var showOnboarding: Bool = true//false
+    @EnvironmentObject var settings: UserSettings
     @EnvironmentObject var modelData: ModelData
-    
+
     var body: some View {
+        
         VStack {
             Button(action: {
-                showOnboarding = true
-                print(showOnboarding)
-                modelData.chosenTasks.removeAll()
+                settings.showOnboarding = true
+                settings.chosenTasks.removeAll()
             }) {
                 HStack(spacing: 8) {
                     Text("Re-Start")
@@ -34,11 +34,11 @@ struct ContentView: View {
             .accentColor(Color.black)
             BottomNavigator()
         }
-        //OnboardingView()
-        .fullScreenCover(isPresented: $showOnboarding, content: {
-            OnboardingView(showOnboarding: $showOnboarding)
-            //OnboardingView(showOnboarding: $showOnboarding)
+        .fullScreenCover(isPresented: $settings.showOnboarding, content: {
+            OnboardingView()
         })
+    
+        
         
     }
 }
@@ -47,5 +47,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(ModelData.shared)
+            .environmentObject(UserSettings.shared)
     }
 }

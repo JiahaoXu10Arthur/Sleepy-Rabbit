@@ -15,6 +15,7 @@ struct DRP_32App: App {
         WindowGroup {
             ContentView()
                 .environmentObject(ModelData.shared)
+                .environmentObject(UserSettings.shared)
         }
     }
 }

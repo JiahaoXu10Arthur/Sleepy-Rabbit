@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct CustomDatePicker: View {
+    @EnvironmentObject var settings: UserSettings
+    
     @Binding var sleepHour: Int
+    
     @Binding var sleepMinute: Int
     
-    static private let maxHours = 24
-    static private let maxMinutes = 60
+    static private let maxHours = 23
+    static private let maxMinutes = 59
     private let hours = [Int](0...Self.maxHours)
     private let minutes = [Int](0...Self.maxMinutes)
     
@@ -51,5 +54,7 @@ struct CustomDatePicker: View {
 struct CustomDatePicker_Previews: PreviewProvider {
     static var previews: some View {
         CustomDatePicker(sleepHour: .constant(0), sleepMinute: .constant(0))
+            .environmentObject(UserSettings.shared)
+    
     }
 }

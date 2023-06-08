@@ -8,45 +8,50 @@
 import SwiftUI
 
 struct StartButtonView: View {
-    @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var settings: UserSettings
     
-    @Binding var showOnboarding: Bool
-    @Binding var bedHour: Int
-    @Binding var bedMinute: Int
-    @Binding var sleepHour: Int
-    @Binding var sleepMinute: Int
+    var bedHour: Int { settings.bedHour}
+    var bedMinute: Int { settings.bedMinute}
+    var sleepHour: Int { settings.sleepHour}
+    var sleepMinute: Int { settings.sleepMinute}
     
     @State private var startHour = 0
     @State private var startMinute = 0
     
     var body: some View {
         Button(action: {
-            showOnboarding = false
-            modelData.chosenTasks = modelData.chosenTasks.filter { $0.title != "Sleep" }
+            settings.showOnboarding = false
+            settings.chosenTasks = settings.chosenTasks.filter { $0.title != "Sleep"}
+            
             let sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute)
             startHour = bedHour
             startMinute = bedMinute
+            print("startHour: \(startHour)")
             
             var tasks: [Task] = [sleep]
             
-            for task in modelData.chosenTasks {
+            for task in settings.chosenTasks {
                 tasks.append(updateTask(task: task))
             }
             
-            modelData.chosenTasks = tasks
+            settings.chosenTasks = tasks
         
         }) {
-            HStack(spacing: 8) {
-                Text("Start")
-                
-                Image(systemName: "arrow.right.circle")
-                    .imageScale(.large)
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
-            .background(
-                Capsule().strokeBorder(Color.white, lineWidth: 1.25)
-            )
+            
+                HStack(spacing: 8) {
+                    Text("Start")
+                    
+                    Image(systemName: "arrow.right.circle")
+                        .imageScale(.large)
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(
+                    Capsule().strokeBorder(Color.white, lineWidth: 1.25)
+                )
+            
+
+            
         } //: BUTTON
         
     }
@@ -74,10 +79,9 @@ struct StartButtonView: View {
 
 struct StartButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        StartButtonView(showOnboarding: .constant(true), bedHour: .constant(14), bedMinute: .constant(51), sleepHour: .constant(12), sleepMinute: .constant(21))
-            .preferredColorScheme(.dark)
+        StartButtonView()
             .previewLayout(.sizeThatFits)
-            .environmentObject(ModelData.shared)
+            .environmentObject(UserSettings.shared)
     
     }
 }

@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct WakeUpTimePickerView: View {
+    
     @Binding var wakeHour: Int
     @Binding var wakeMinute: Int
     
-    static private let maxHours = 24
-    static private let maxMinutes = 60
+    static private let maxHours = 23
+    static private let maxMinutes = 59
     private let hours = [Int](0...Self.maxHours)
     private let minutes = [Int](0...Self.maxMinutes)
     
@@ -59,5 +60,6 @@ struct WakeUpTimePickerView: View {
 struct WakeUpTimePickerView_Previews: PreviewProvider {
     static var previews: some View {
         WakeUpTimePickerView(wakeHour: .constant(0), wakeMinute: .constant(0))
+
     }
 }
