@@ -24,12 +24,6 @@ class ModelData: ObservableObject {
     @Published var isLoading: Bool = true
 
     private init() {
-        if let data = UserDefaults.standard.data(forKey: "chosenTasks"),
-           let tasks = try? JSONDecoder().decode([Task].self, from: data) {
-            chosenTasks = tasks
-        } else {
-            chosenTasks = []
-        }
         fetchTipofTheDay() { _ in}
         fetchData()
         getAnAiTip() { _ in
