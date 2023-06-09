@@ -51,6 +51,11 @@ struct NewTipButton: View {
             .sheet(isPresented: $isShowingQueryView) {
                 QueryView(isShowing: $isShowingQueryView, isLoading: $isLoading, isDisabled: $isDisabled)
             }
+            .onChange(of: isShowingQueryView) { newValue in
+                if (!newValue && !isLoading) {
+                    isDisabled = false
+                }
+            }
 
         }
         .padding()
