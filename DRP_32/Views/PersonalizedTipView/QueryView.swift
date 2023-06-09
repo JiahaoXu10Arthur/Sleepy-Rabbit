@@ -43,6 +43,7 @@ struct QueryView: View {
             }
             .navigationBarTitle(Text("New Tip"), displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
+                isDisabled = false
                 isShowing = false
             }) {
                 Text("Cancel")

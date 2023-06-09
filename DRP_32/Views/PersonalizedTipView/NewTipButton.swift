@@ -43,6 +43,7 @@ struct NewTipButton: View {
                     .font(.title2)
                     .frame(maxWidth: .infinity)
             }
+            .disabled(isDisabled)
             .padding()
             .background(Color.blue)
             .foregroundColor(.white)
@@ -50,7 +51,6 @@ struct NewTipButton: View {
             .sheet(isPresented: $isShowingQueryView) {
                 QueryView(isShowing: $isShowingQueryView, isLoading: $isLoading, isDisabled: $isDisabled)
             }
-            .disabled(isDisabled)
 
         }
         .padding()
