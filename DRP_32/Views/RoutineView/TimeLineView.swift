@@ -10,10 +10,10 @@ import SwiftUI
 struct TimeLineView: View {
     @EnvironmentObject var settings: UserSettings
     var tasks: [Task] {
-        settings.chosenTasks
+        settings.bedTimeChosenTasks
     }
     var tasks2: [Task] {
-        settings.wakeUpTasks
+        settings.wakeUpChosenTasks
     }
     
     static private let maxHours = 24

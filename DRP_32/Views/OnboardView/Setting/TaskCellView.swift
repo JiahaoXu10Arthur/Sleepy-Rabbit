@@ -33,10 +33,10 @@ struct TaskCellView: View {
         .onTapGesture {
             isChosen = !isChosen
             if isChosen {
-                settings.chosenTasks.append(task)
+                settings.bedTimeChosenTasks.append(task)
             } else {
-                if let index = settings.chosenTasks.firstIndex(of: task) {
-                    settings.chosenTasks.remove(at: index)
+                if let index = settings.bedTimeChosenTasks.firstIndex(of: task) {
+                    settings.bedTimeChosenTasks.remove(at: index)
                 }
             }
         }

@@ -25,7 +25,7 @@ struct StartButtonView: View {
     var body: some View {
         Button(action: {
             settings.showOnboarding = false
-            settings.chosenTasks = settings.chosenTasks.filter { $0.title != "Sleep"}
+            settings.bedTimeChosenTasks = settings.bedTimeChosenTasks.filter { $0.title != "Sleep"}
             
             let sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute)
             startHour = bedHour
@@ -33,11 +33,11 @@ struct StartButtonView: View {
 
             var tasks: [Task] = [sleep]
             
-            for task in settings.chosenTasks {
+            for task in settings.bedTimeChosenTasks {
                 tasks.append(updateTask(task: task))
             }
             
-            settings.chosenTasks = tasks
+            settings.bedTimeChosenTasks = tasks
             
             startHour = wakeHour
             startMinute = wakeMinute
@@ -46,11 +46,11 @@ struct StartButtonView: View {
             
             tasks = []
             
-            for task in settings.wakeUpTasks {
+            for task in settings.wakeUpChosenTasks {
                 tasks.append(updateTask2(task: task))
             }
             print("\(tasks)")
-            settings.wakeUpTasks = tasks
+            settings.wakeUpChosenTasks = tasks
         
         }) {
             
@@ -102,7 +102,7 @@ struct StartButtonView: View {
     }
     
     func updateTask2(task: Task) -> Task {
-        var task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute)
+        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute)
         updateStart2(hour: task.hour, minute: task.minute)
         return task
     }
