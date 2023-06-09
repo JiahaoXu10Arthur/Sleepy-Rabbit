@@ -11,6 +11,7 @@ struct QueryView: View {
     @EnvironmentObject var modelData: ModelData
     @Binding var isShowing: Bool
     @Binding var isLoading: Bool
+    @Binding var isDisabled: Bool
     
     // store user input
     @State private var queryInput = ""
@@ -29,12 +30,20 @@ struct QueryView: View {
                 
                 Divider()
                 
-                Text("The inquiry can include the sleep issues you're experiencing, along with any restrictions you'd like to impose on the generated advice.")
-                    .padding()
+                VStack {
+                    Text("The inquiry can include the sleep issues you're experiencing, along with any restrictions you'd like to impose on the generated advice.")
+                    HStack {
+                        Text("*This functionality is powered by chatGPT.")
+                            .bold()
+                        Spacer()
+                    }
+                    .padding(.leading)
+                }
                 Spacer()
             }
             .navigationBarTitle(Text("New Tip"), displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
+                isDisabled = false
                 isShowing = false
             }) {
                 Text("Cancel")
@@ -42,7 +51,10 @@ struct QueryView: View {
                 isShowing = false
                 isLoading = true
                 modelData.getQueryTip(query: Query(query: queryInput)) { _ in
-                    isLoading = false
+                    DispatchQueue.main.async {
+                        isLoading = false
+                        isDisabled = false
+                    }
                 }
             }) {
                 Text("Send")
@@ -53,7 +65,7 @@ struct QueryView: View {
 
 struct QueryView_Previews: PreviewProvider {
     static var previews: some View {
-        QueryView(isShowing: .constant(true), isLoading: .constant(false))
+        QueryView(isShowing: .constant(true), isLoading: .constant(false), isDisabled: .constant(false))
             .environmentObject(ModelData.shared)
     }
 }

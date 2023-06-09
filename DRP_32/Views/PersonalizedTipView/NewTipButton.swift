@@ -11,37 +11,50 @@ struct NewTipButton: View {
     @EnvironmentObject var modelData: ModelData
     @Binding var isLoading: Bool
     @State private var isShowingQueryView = false
+    @State private var isDisabled = false
     
     var body: some View {
         HStack {
             Button(action: {
+                isDisabled = true
                 isLoading = true
                 modelData.getAnAiTip() { _ in
-                    isLoading = false
+                    DispatchQueue.main.async {
+                        isLoading = false
+                        isDisabled = false
+                    }
                 }
             }) {
                 Text("Random Tip")
                     .font(.title2)
                     .frame(maxWidth: .infinity)
             }
+            .disabled(isDisabled)
             .padding()
             .background(Color.blue)
             .foregroundColor(.white)
             .cornerRadius(10)
             
             Button {
+                isDisabled = true
                 isShowingQueryView = true
             } label: {
                 Text("Query Tip")
                     .font(.title2)
                     .frame(maxWidth: .infinity)
             }
+            .disabled(isDisabled)
             .padding()
             .background(Color.blue)
             .foregroundColor(.white)
             .cornerRadius(10)
             .sheet(isPresented: $isShowingQueryView) {
-                QueryView(isShowing: $isShowingQueryView, isLoading: $isLoading)
+                QueryView(isShowing: $isShowingQueryView, isLoading: $isLoading, isDisabled: $isDisabled)
+            }
+            .onChange(of: isShowingQueryView) { newValue in
+                if (!newValue && !isLoading) {
+                    isDisabled = false
+                }
             }
 
         }
