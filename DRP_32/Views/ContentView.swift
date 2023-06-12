@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
     // Detect if user has onboarded
     @EnvironmentObject var settings: UserSettings
     @EnvironmentObject var modelData: ModelData
@@ -36,10 +37,10 @@ struct ContentView: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
                 .background(
-                    Capsule().strokeBorder(Color.black, lineWidth: 1.25)
+                    Capsule().strokeBorder(colorScheme == .dark ? Color.white : Color.black, lineWidth: 1.25)
                 )
             } //: BUTTON
-            .accentColor(Color.black)
+            .accentColor(colorScheme == .dark ? Color.white : Color.black)
             BottomNavigator()
         }
         .fullScreenCover(isPresented: $settings.showOnboarding, content: {
