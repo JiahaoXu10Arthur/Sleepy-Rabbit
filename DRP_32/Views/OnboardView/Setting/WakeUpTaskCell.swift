@@ -33,10 +33,10 @@ struct WakeUpTaskCell: View {
         .onTapGesture {
             isChosen = !isChosen
             if isChosen {
-                settings.wakeUpTasks.append(task)
+                settings.wakeUpChosenTasks.append(task)
             } else {
-                if let index = settings.wakeUpTasks.firstIndex(of: task) {
-                    settings.wakeUpTasks.remove(at: index)
+                if let index = settings.wakeUpChosenTasks.firstIndex(of: task) {
+                    settings.wakeUpChosenTasks.remove(at: index)
                 }
             }
         }

@@ -28,6 +28,8 @@
 		53E055142A321BDA001E8340 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055132A321BDA001E8340 /* NextButton.swift */; };
 		53E055162A326816001E8340 /* WakeUpTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055152A326816001E8340 /* WakeUpTaskCell.swift */; };
 		53E055182A32689A001E8340 /* WakeUpRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055172A32689A001E8340 /* WakeUpRoutineView.swift */; };
+		53E0551B2A3348B9001E8340 /* AddButtonVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E0551A2A3348B9001E8340 /* AddButtonVIew.swift */; };
+		53E055202A33502B001E8340 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E0551F2A33502B001E8340 /* NewTaskView.swift */; };
 		E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E0D3122A28E0F5003DD154 /* PostButtons.swift */; };
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
 		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
@@ -92,6 +94,8 @@
 		53E055132A321BDA001E8340 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		53E055152A326816001E8340 /* WakeUpTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTaskCell.swift; sourceTree = "<group>"; };
 		53E055172A32689A001E8340 /* WakeUpRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpRoutineView.swift; sourceTree = "<group>"; };
+		53E0551A2A3348B9001E8340 /* AddButtonVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonVIew.swift; sourceTree = "<group>"; };
+		53E0551F2A33502B001E8340 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskView.swift; sourceTree = "<group>"; };
 		E66F1D0E2A30EED80033A520 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		E66F1D0F2A30EED80033A520 /* TaskPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPersistenceManager.swift; sourceTree = "<group>"; };
 		E66F1D102A30EED80033A520 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
@@ -162,8 +166,9 @@
 		539663B22A2F5805007187BF /* RoutineView */ = {
 			isa = PBXGroup;
 			children = (
-				53E054FE2A30B6C1001E8340 /* Setting */,
 				53E054F82A30A749001E8340 /* TimeLineView.swift */,
+				53E0551A2A3348B9001E8340 /* AddButtonVIew.swift */,
+				53E0551F2A33502B001E8340 /* NewTaskView.swift */,
 			);
 			path = RoutineView;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 		53E054EF2A2FC80B001E8340 /* OnboardView */ = {
 			isa = PBXGroup;
 			children = (
+				53E054FE2A30B6C1001E8340 /* Setting */,
 				53E054ED2A2FC016001E8340 /* OnboardingView.swift */,
 				53E0550C2A31F709001E8340 /* WelcomeView.swift */,
 				53E054F02A2FC822001E8340 /* StartButtonView.swift */,
@@ -494,9 +500,11 @@
 				EE9B1DE92A2F6C71003AAC1C /* Query.swift in Sources */,
 				539663BB2A2F5B04007187BF /* BedTimeSettingView.swift in Sources */,
 				EE75C78E2A31FC6A00626199 /* TipofTheDayView.swift in Sources */,
+				53E0551B2A3348B9001E8340 /* AddButtonVIew.swift in Sources */,
 				539663BD2A2F5B3A007187BF /* TaskCellView.swift in Sources */,
 				EE28A9A92A28ADC700736689 /* HttpOperations.swift in Sources */,
 				EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */,
+				53E055202A33502B001E8340 /* NewTaskView.swift in Sources */,
 				53E054F92A30A749001E8340 /* TimeLineView.swift in Sources */,
 				538D909C2A2A093200A80AAB /* TipRow.swift in Sources */,
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,

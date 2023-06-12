@@ -24,13 +24,17 @@ class UserSettings: ObservableObject {
     @Published var wakeMinute = 0
     
     @Published var tasks: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
-    @Published var chosenTasks: [Task] {
+    
+    @Published var bedTimeTasks: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+    @Published var wakeUpTasks: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+    
+    @Published var bedTimeChosenTasks: [Task] {
         didSet {
                    saveTasks()
                }
     }
     
-    @Published var wakeUpTasks: [Task] {
+    @Published var wakeUpChosenTasks: [Task] {
         didSet {
             saveTasks2()
         }
@@ -42,26 +46,26 @@ class UserSettings: ObservableObject {
         self.username = UserDefaults.standard.object(forKey: "username") as? String ?? ""
         if let data = UserDefaults.standard.data(forKey: "chosenTasks"),
            let tasks = try? JSONDecoder().decode([Task].self, from: data) {
-            chosenTasks = tasks
+            bedTimeChosenTasks = tasks
         } else {
-            chosenTasks = []
+            bedTimeChosenTasks = []
         }
         
         if let data2 = UserDefaults.standard.data(forKey: "wakeUpTasks"),
            let tasks2 = try? JSONDecoder().decode([Task].self, from: data2) {
-            wakeUpTasks = tasks2
+            wakeUpChosenTasks = tasks2
         } else {
-            wakeUpTasks = []
+            wakeUpChosenTasks = []
         }
         
     }
     private func saveTasks() {
-            if let data = try? JSONEncoder().encode(chosenTasks) {
+            if let data = try? JSONEncoder().encode(bedTimeChosenTasks) {
                 UserDefaults.standard.set(data, forKey: "chosenTasks")
             }
         }
     private func saveTasks2() {
-        if let data = try? JSONEncoder().encode(wakeUpTasks) {
+        if let data = try? JSONEncoder().encode(wakeUpChosenTasks) {
             UserDefaults.standard.set(data, forKey: "wakeUpTasks")
         }
     }

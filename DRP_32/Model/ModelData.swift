@@ -33,6 +33,10 @@ class ModelData: ObservableObject {
         }
     } // Prevents others from creating their own instances
 
+    func formatTime(_ time: Int) -> String {
+        let hourString = String(format: "%02d", time)
+        return hourString
+    }
     
     func fetchData() {
         let urlString = "https://drp32-backend.herokuapp.com/tips/all"
