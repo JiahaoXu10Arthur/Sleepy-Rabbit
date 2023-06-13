@@ -52,17 +52,23 @@ class ModelData: ObservableObject {
         }
     }
     
-    func getAnAiTip(completion: @escaping (Tip?) -> Void) {
+    func getAnAiTip(retries: Int = 3, completion: @escaping (Tip?) -> Void) {
+        guard retries > 0 else {
+            print("Max retries reached. Fetch failed.")
+            self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
+            return
+        }
+        
         let url = "https://drp32-backend.herokuapp.com/getRandomTip"
         fetchOneData(urlString: url) { (tip: Tip?, error) in
             DispatchQueue.main.async {
                 if let tip = tip {
                     self.showingTip = tip
+                    completion(tip)
                 } else {
-                    print(error)
-                    self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
+                    print("Fetch failed. Retrying...")
+                    self.getAnAiTip(retries: retries - 1, completion: completion)
                 }
-                completion(tip)
             }
         }
     }
