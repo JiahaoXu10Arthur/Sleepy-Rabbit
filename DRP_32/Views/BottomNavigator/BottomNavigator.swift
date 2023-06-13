@@ -26,7 +26,8 @@ struct BottomNavigator: View {
     init() {
         UITabBar.appearance().tintColor = selectedTabItemColor
         UITabBar.appearance().unselectedItemTintColor = unselectedTabItemColor
-        UITabBar.appearance().isTranslucent = false
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().backgroundColor = .white
         if #available(iOS 15.0, *) {
                let appearance = UITabBarAppearance()
                appearance.configureWithOpaqueBackground()
@@ -40,25 +41,21 @@ struct BottomNavigator: View {
     var body: some View {
         
         TabView(selection: $selection) {
-            CalendarView()
+            TimeLineView()
                 .tabItem {
                     Label("Routine", systemImage:"calendar")
                 }
                 .tag(Tab.routine)
-                
-//            CommunityView()
-//                .tabItem {
-//                    Label("Community", systemImage:"person.2")
-//                }
-//                .tag(Tab.community)
-                
-                
+
             TipPageView()
                 .tabItem {
                     Label("Questions", systemImage:"questionmark.bubble")
                 }
                 .tag(Tab.question)
         }
+        .frame(maxHeight: .infinity)
+        .ignoresSafeArea(.all)
+        .edgesIgnoringSafeArea(.bottom)
         
     }
 }

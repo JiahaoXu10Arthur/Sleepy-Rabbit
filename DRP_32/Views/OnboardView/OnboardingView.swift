@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @State var showNotificationSettingsUI = false
+    @EnvironmentObject var settings: UserSettings
     
     var task = Task(title: "Write Down a To-Do List", hour: 0, minute: 20, startHour: 14, startMinute: 56)
     @State private var currentTab = 0
@@ -56,8 +57,6 @@ struct OnboardingView: View {
             
         case is GetStartView.Type: return AnyView(
             GetStartView())
-            
-        
             
         default: return AnyView(EmptyView())
         }

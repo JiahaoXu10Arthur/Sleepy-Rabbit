@@ -1,5 +1,5 @@
 //
-//  StartButtonView.swift
+//  CustomDatePicker.swift
 //  DRP_32
 //
 //  Created by paulodybala on 06/06/2023.
@@ -7,43 +7,64 @@
 
 import SwiftUI
 
-struct StartButtonView: View {
+struct CustomDatePicker: View {
     @EnvironmentObject var settings: UserSettings
+    
+    @Binding var sleepHour: Int
+    
+    @Binding var sleepMinute: Int
+    
+    static private let maxHours = 23
+    static private let maxMinutes = 59
+    private let hours = [Int](0...Self.maxHours)
+    private let minutes = [Int](0...11).map { $0 * 5 }
     
     var bedHour: Int { settings.bedHour }
     var bedMinute: Int { settings.bedMinute }
-    var sleepHour: Int { settings.sleepHour }
-    var sleepMinute: Int { settings.sleepMinute }
     var wakeHour: Int { settings.wakeHour }
     var wakeMinute: Int { settings.wakeMinute }
-    
-    
     
     @State private var startHour = 0
     @State private var startMinute = 0
     
-    var body: some View {
-        Button(action: {
-            settings.showOnboarding = false
-            update()
-        }) {
-            HStack(spacing: 8) {
-                Text("Get Started")
-                
-                Image(systemName: "arrow.right.circle")
-                    .imageScale(.large)
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
-            .background(
-                Capsule().strokeBorder(Color.black, lineWidth: 1.25)
-            )
-            
-            
-        } //: BUTTON
-        
-    }
     
+    var body: some View {
+        GeometryReader { geometry in
+            HStack(spacing: .zero) {
+               
+                Picker(selection: $sleepHour, label: Text("")) {
+                    ForEach(hours, id: \.self) { value in
+                        Text("\(formatTime(_:value)) hr")
+                            .tag(value)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(width: geometry.size.width / 2, alignment: .center)
+                .labelsHidden()
+                .onChange(of: sleepHour) { newValue in
+                    update()
+                }
+                
+                Picker(selection: $sleepMinute, label: Text("")) {
+                    ForEach(minutes, id: \.self) { value in
+                        Text("\(formatTime(_:value)) min")
+                            .tag(value)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
+                .pickerStyle(.wheel)
+                .frame(width: geometry.size.width / 2, alignment: .center)
+                .labelsHidden()
+                .onChange(of: sleepMinute) { newValue in
+                    update()
+                }
+            }
+        }
+    }
+    func formatTime(_ time: Int) -> String {
+        let hourString = String(format: "%02d", time)
+        return hourString
+    }
     func update() {
         settings.bedTimeChosenTasks = settings.bedTimeChosenTasks.filter { $0.title != "Sleep"}
         
@@ -60,8 +81,6 @@ struct StartButtonView: View {
         
         startHour = wakeHour
         startMinute = wakeMinute
-        
-       
         
         tasks = []
         
@@ -112,11 +131,9 @@ struct StartButtonView: View {
     }
 }
 
-struct StartButtonView_Previews: PreviewProvider {
+struct CustomDatePicker_Previews: PreviewProvider {
     static var previews: some View {
-        StartButtonView()
-            .previewLayout(.sizeThatFits)
+        CustomDatePicker(sleepHour: .constant(0), sleepMinute: .constant(0))
             .environmentObject(UserSettings.shared)
-        
     }
 }
