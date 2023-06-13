@@ -36,6 +36,7 @@ struct RandomTipView: View {
                         
                         Text(tip.tag)
                             .font(.title)
+                            .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(.secondary)
                         
                         ScrollView {

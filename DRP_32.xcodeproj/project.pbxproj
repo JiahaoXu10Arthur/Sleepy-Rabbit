@@ -146,6 +146,7 @@
 		EECEE4A32A24F9F500249177 /* DRP_32UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DRP_32UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECEE4A72A24F9F500249177 /* DRP_32UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRP_32UITests.swift; sourceTree = "<group>"; };
 		EECEE4A92A24F9F500249177 /* DRP_32UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRP_32UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EEEDC31F2A3890C2004E8261 /* CachedTips.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CachedTips.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,6 +366,7 @@
 		EECEE48B2A24F9F400249177 /* DRP_32 */ = {
 			isa = PBXGroup;
 			children = (
+				EEEDC31E2A38901F004E8261 /* Resources */,
 				538995712A37574E00071A3E /* Managers */,
 				53E055102A3204DC001E8340 /* Settings */,
 				EECEE48C2A24F9F400249177 /* DRP_32App.swift */,
@@ -401,6 +403,14 @@
 				EECEE4A92A24F9F500249177 /* DRP_32UITestsLaunchTests.swift */,
 			);
 			path = DRP_32UITests;
+			sourceTree = "<group>";
+		};
+		EEEDC31E2A38901F004E8261 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EEEDC31F2A3890C2004E8261 /* CachedTips.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
