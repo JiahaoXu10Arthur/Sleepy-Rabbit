@@ -41,11 +41,13 @@ class ModelData: ObservableObject {
     func fetchData() {
         let urlString = "https://drp32-backend.herokuapp.com/tips/all"
         fetchDatas(urlString: urlString) { (fetchedData: [Tip]?, error) in
-            if let error = error {
-                self.tips = []
-                print("Error fetching data: \(error)")
-            } else if let fetchedData = fetchedData {
-                self.tips = fetchedData.reversed()
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.tips = []
+                    print("Error fetching data: \(error)")
+                } else if let fetchedData = fetchedData {
+                    self.tips = fetchedData.reversed()
+                }
             }
         }
     }
@@ -57,6 +59,7 @@ class ModelData: ObservableObject {
                 if let tip = tip {
                     self.showingTip = tip
                 } else {
+                    print(error)
                     self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
                 }
                 completion(tip)

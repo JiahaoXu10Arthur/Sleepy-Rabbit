@@ -36,6 +36,7 @@ func fetchOneData<T: Codable>(urlString: String, completion: @escaping (T?, Erro
                 let todo = try decoder.decode(T.self, from: data)
                 completion(todo, nil)
             } catch {
+                print(data)
                 completion(nil, error)
             }
         }

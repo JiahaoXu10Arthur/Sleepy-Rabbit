@@ -10,6 +10,8 @@ import SwiftUI
 struct TipPageView: View {
     @EnvironmentObject var modelData: ModelData
     @State var isLoading: Bool = false
+    @State var timer: Timer? = nil
+    
     var tipofTheDay: Tip {
         modelData.tipOfTheDay ?? Tip(title: "Get Tip Failed", tag: ":(", detail: "Please check your internet connection.")
     }
@@ -25,12 +27,30 @@ struct TipPageView: View {
                         .frame(height: geometry.size.height * 0.7)
                     }
                 }
-                .refreshable {
-                    ModelData.shared.fetchTipofTheDay() {_ in}
+                .onAppear{
+                    startTimer()
                 }
+                .onDisappear{
+                    timer?.invalidate()
+                }
+//                .refreshable {
+//                    ModelData.shared.fetchTipofTheDay() {_ in}
+//                }
                 
                 NewTipButton(isLoading: $isLoading)
             }
+        }
+    }
+    
+    func fetchData() {
+        ModelData.shared.fetchTipofTheDay() { _ in
+            self.startTimer()
+        }
+    }
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
+            self.fetchData()
         }
     }
 }
