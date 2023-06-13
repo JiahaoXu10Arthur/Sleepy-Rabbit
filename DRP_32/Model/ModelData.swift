@@ -26,11 +26,17 @@ class ModelData: ObservableObject {
     private init() {
         fetchTipofTheDay() { _ in}
         fetchData()
-        getAnAiTip() { _ in
-            DispatchQueue.main.async {
-                self.isLoading = false
-            }
+//        getAnAiTip() { _ in
+//            DispatchQueue.main.async {
+//                self.isLoading = false
+//            }
+//        }
+        getAndCacheAiTip() { _ in
+//            DispatchQueue.main.async {
+//                self.isLoading = false
+//            }
         }
+        self.isLoading = false
     } // Prevents others from creating their own instances
 
     func formatTime(_ time: Int) -> String {
@@ -56,6 +62,7 @@ class ModelData: ObservableObject {
         guard retries > 0 else {
             print("Max retries reached. Fetch failed.")
             self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
+            completion(nil)
             return
         }
         
@@ -73,10 +80,51 @@ class ModelData: ObservableObject {
         }
     }
     
+    func getAnAiTip1(retries: Int = 3, completion: @escaping (Tip?) -> Void) {
+        guard retries > 0 else {
+            print("Max retries reached. Fetch failed.")
+            completion(nil)
+            return
+        }
+        
+        let url = "https://drp32-backend.herokuapp.com/getRandomTip"
+        fetchOneData(urlString: url) { (tip: Tip?, error) in
+            DispatchQueue.main.async {
+                if let tip = tip {
+                    completion(tip)
+                } else {
+                    print("Fetch failed. Retrying...")
+                    self.getAnAiTip(retries: retries - 1, completion: completion)
+                }
+            }
+        }
+    }
+    
+    func getAndCacheAiTip(completion: @escaping (Tip?) -> Void) {
+        var cachedTips: [Tip] = load("CachedTips.json")
+        if cachedTips.count > 0 {
+            self.showingTip = cachedTips[0]
+            getAnAiTip1() { tip in
+                if let tip = tip {
+                    cachedTips.remove(at: 0)
+                    cachedTips.append(tip)
+                } else {
+                    cachedTips.reverse()
+                }
+                self.write(data: cachedTips, "CachedTips.json")
+                completion(tip)
+            }
+        } else {
+            print("CachedTips JSON file empty")
+            completion(nil)
+        }
+    }
+    
     func getQueryTip(retries: Int = 3, query: Query, completion: @escaping (Tip?) -> Void) {
         guard retries > 0 else {
             print("Max retries reached. Fetch failed.")
             self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
+            completion(nil)
             return
         }
         
@@ -145,6 +193,18 @@ class ModelData: ObservableObject {
         }
     }
 
-
+    func write<T: Encodable>(data: T, _ filename: String) -> Void {
+        guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
+            else {
+                fatalError("Couldn't find \(filename) in main bundle.")
+        }
+        
+        do {
+            let editedData = try JSONEncoder().encode(data)
+            try editedData.write(to: file)
+        } catch {
+            print("Error: \(error)")
+        }
+    }
 
 }

@@ -18,12 +18,12 @@ struct NewTipButton: View {
             Button(action: {
                 isDisabled = true
                 isLoading = true
-                modelData.getAnAiTip() { _ in
+                modelData.getAndCacheAiTip() { _ in
                     DispatchQueue.main.async {
-                        isLoading = false
                         isDisabled = false
                     }
                 }
+                isLoading = false
             }) {
                 Text("Random Tip")
                     .font(.title2)

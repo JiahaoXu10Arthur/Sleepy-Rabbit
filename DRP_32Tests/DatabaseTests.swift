@@ -87,4 +87,12 @@ class FetchUsersTests: XCTestCase {
         }
         wait(for: [exp], timeout: 60.0)
     }
+    
+//    func testCachingTips() {
+//        let exp = expectation(description: "Caching")
+//        ModelData.shared.getAndCacheAiTip() { _ in
+//            exp.fulfill()
+//        }
+//        wait(for: [exp], timeout: 60.0)
+//    }
 }
