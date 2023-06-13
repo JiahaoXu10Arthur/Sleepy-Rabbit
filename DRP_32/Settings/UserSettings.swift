@@ -23,7 +23,9 @@ class UserSettings: ObservableObject {
     @Published var wakeHour = 0
     @Published var wakeMinute = 0
     
-    @Published var tasks: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+    @Published var bedTimeRoutine: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+    
+    @Published var wakeUpRoutine: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
     
     @Published var bedTimeTasks: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
     @Published var wakeUpTasks: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]

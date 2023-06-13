@@ -23,11 +23,6 @@ struct BedTimeSettingView: View {
     private let hours = [Int](0...24)
     private let minutes = [Int](0...60)
     
-    
-    var tasks: [Task] {
-        settings.tasks
-    }
-    
     func formatTime(_ time: Int) -> String {
         let hourString = String(format: "%02d", time)
         return hourString
@@ -52,48 +47,48 @@ struct BedTimeSettingView: View {
      View for the Bed Time Setting
      */
     var body: some View {
-        VStack {
-            Form {
-                Section (header: Text("Sleep Time Setting")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.black)){
-                        Text("Bed Time \(sleepingTime)")
-                            .font(.title3)
-                        
-                        HStack {
-                            VStack {
-                                Text("Wake up \nTime")
-                                    .font(.title3)
-                            }
-                            WakeUpTimePickerView(wakeHour: $wakeHour, wakeMinute: $wakeMinute)
-                                .frame(height: 100.0)
+        NavigationView{
+            VStack {
+                Form {
+                    Section (header: Text("Sleep Time Setting")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.black)){
+                            Text("Bed Time \(sleepingTime)")
+                                .font(.title3)
                             
-                        }
-                        HStack {
-                            VStack {
-                                Text("Sleeping\nDuration")
-                                    .font(.title3)
+                            HStack {
+                                VStack {
+                                    Text("Wake up \nTime")
+                                        .font(.title3)
+                                }
+                                WakeUpTimePickerView(wakeHour: $wakeHour, wakeMinute: $wakeMinute)
+                                    .frame(height: 100.0)
+                                
                             }
-                            CustomDatePicker(sleepHour: $sleepHour, sleepMinute: $sleepMinute)
-                                .frame(height: 100.0)
+                            HStack {
+                                VStack {
+                                    Text("Sleeping\nDuration")
+                                        .font(.title3)
+                                }
+                                CustomDatePicker(sleepHour: $sleepHour, sleepMinute: $sleepMinute)
+                                    .frame(height: 100.0)
+                            }
                         }
-                    }
-            }
-            .navigationTitle(Text("Bed Time Setting"))
-            .navigationBarTitleDisplayMode(.large)
-            
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NextButton(bedHour: $bedHour, bedMinute: $bedMinute, sleepHour: $sleepHour, sleepMinute: $sleepMinute, wakeHour: $wakeHour, wakeMinute: $wakeMinute)
                 }
+                .navigationTitle(Text("Bed Time Setting"))
+                .navigationBarTitleDisplayMode(.large)
+                .navigationViewStyle(StackNavigationViewStyle())
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NextButton(bedHour: $bedHour, bedMinute: $bedMinute, sleepHour: $sleepHour, sleepMinute: $sleepMinute, wakeHour: $wakeHour, wakeMinute: $wakeMinute)
+                    }
+                }
+                
             }
-            
-            
         }
     }
-    
-    
 }
 
 struct BedTimeSettingView_Previews: PreviewProvider {
