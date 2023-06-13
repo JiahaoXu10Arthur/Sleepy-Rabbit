@@ -27,19 +27,11 @@ struct TimeLineView: View {
     let hourHeight = 75.0
     let header = CGFloat(37)
     
+    @State private var isSetting = false
+    @State private var isAdding = false
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("Routine")
-                    .font(.title)
-                    .multilineTextAlignment(.leading)
-                    .bold()
-                    .padding()
-            }
-            .font(.title)
-            
-            Divider()
-            
+        NavigationView {
             ScrollView {
                 ZStack(alignment: .topLeading) {
                     VStack(alignment: .leading, spacing: 0) {
@@ -68,7 +60,37 @@ struct TimeLineView: View {
                 }
             }
             .padding()
+            .navigationTitle(
+                Text("Routine"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isAdding.toggle()
+                    
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        isSetting.toggle()
+                    }) {
+                        Image(systemName: "gearshape")
+                    }
+                }
+            }
+            .fullScreenCover(isPresented: $isSetting) {
+                SettingsView(isSetting: $isSetting)
+            }
+            .fullScreenCover(isPresented: $isAdding) {
+                NewTaskView(isPresented: $isAdding)
+            }
+            
+            
+        
         }
+      
     }
     
     func nextDay(_ task: Task) -> Bool {
@@ -76,7 +98,6 @@ struct TimeLineView: View {
         let hour = task.startHour
         let minute = task.startMinute
         let total = Double(hour) + (Double(minute) / 60) + duration
-        print("\(task.title)")
         return total > 24
     }
     
@@ -96,14 +117,14 @@ struct TimeLineView: View {
         let height = Double(duration) * hourHeight
         let offset = Double(hour) * (hourHeight)
         + Double(minute)/60 * hourHeight
-
+        
         return VStack(alignment: .leading) {
             HStack {
                 Text("\(formatTime(_:hour)):\(formatTime(_:minute))   \(task.hour)h \(task.minute)m")
                 
                 Text(task.title).bold()
             }
-           
+            
         }
         .font(.caption)
         

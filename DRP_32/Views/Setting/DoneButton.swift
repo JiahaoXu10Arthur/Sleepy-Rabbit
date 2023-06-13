@@ -1,13 +1,13 @@
 //
-//  StartButtonView.swift
+//  DoneButton.swift
 //  DRP_32
 //
-//  Created by paulodybala on 06/06/2023.
+//  Created by paulodybala on 13/06/2023.
 //
 
 import SwiftUI
 
-struct StartButtonView: View {
+struct DoneButton: View {
     @EnvironmentObject var settings: UserSettings
     
     var bedHour: Int { settings.bedHour }
@@ -17,29 +17,17 @@ struct StartButtonView: View {
     var wakeHour: Int { settings.wakeHour }
     var wakeMinute: Int { settings.wakeMinute }
     
-    
-    
+    @Binding var isSetting: Bool
+ 
     @State private var startHour = 0
     @State private var startMinute = 0
     
     var body: some View {
         Button(action: {
-            settings.showOnboarding = false
             update()
+            isSetting.toggle()
         }) {
-            HStack(spacing: 8) {
-                Text("Get Started")
-                
-                Image(systemName: "arrow.right.circle")
-                    .imageScale(.large)
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
-            .background(
-                Capsule().strokeBorder(Color.black, lineWidth: 1.25)
-            )
-            
-            
+            Text("Done")
         } //: BUTTON
         
     }
@@ -112,11 +100,9 @@ struct StartButtonView: View {
     }
 }
 
-struct StartButtonView_Previews: PreviewProvider {
+struct DoneButton_Previews: PreviewProvider {
     static var previews: some View {
-        StartButtonView()
-            .previewLayout(.sizeThatFits)
+        DoneButton(isSetting: .constant(true))
             .environmentObject(UserSettings.shared)
-        
     }
 }

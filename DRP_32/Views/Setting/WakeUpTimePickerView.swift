@@ -1,5 +1,5 @@
 //
-//  StartButtonView.swift
+//  WakeUpTimePickerView.swift
 //  DRP_32
 //
 //  Created by paulodybala on 06/06/2023.
@@ -7,41 +7,64 @@
 
 import SwiftUI
 
-struct StartButtonView: View {
+struct WakeUpTimePickerView: View {
+    
+    @Binding var wakeHour: Int
+    @Binding var wakeMinute: Int
+    
+    static private let maxHours = 23
+    static private let maxMinutes = 59
+    private let hours = [Int](0...Self.maxHours)
+    private let minutes = [Int](0...11).map { $0 * 5 }
     @EnvironmentObject var settings: UserSettings
     
     var bedHour: Int { settings.bedHour }
     var bedMinute: Int { settings.bedMinute }
     var sleepHour: Int { settings.sleepHour }
     var sleepMinute: Int { settings.sleepMinute }
-    var wakeHour: Int { settings.wakeHour }
-    var wakeMinute: Int { settings.wakeMinute }
-    
-    
     
     @State private var startHour = 0
     @State private var startMinute = 0
     
+    
+    
     var body: some View {
-        Button(action: {
-            settings.showOnboarding = false
-            update()
-        }) {
-            HStack(spacing: 8) {
-                Text("Get Started")
+        GeometryReader { geometry in
+            HStack(spacing: .zero) {
+               
+                Picker(selection: $wakeHour, label: Text("")) {
+                    ForEach(hours, id: \.self) { value in
+                        Text("\(formatTime(_:value))")
+                            .tag(value)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(width: geometry.size.width * 25 / 51, alignment: .center)
+                .labelsHidden()
+                .onChange(of: wakeHour) { newValue in
+                    update()
+                }
                 
-                Image(systemName: "arrow.right.circle")
-                    .imageScale(.large)
+                Text(":")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .frame(width: geometry.size.width / 51, alignment: .center)
+                
+                Picker(selection: $wakeMinute, label: Text("")) {
+                    ForEach(minutes, id: \.self) { value in
+                        Text("\(formatTime(_:value))")
+                            .tag(value)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
+                .pickerStyle(.wheel)
+                .frame(width: geometry.size.width * 25 / 51, alignment: .center)
+                .labelsHidden()
+                .onChange(of: wakeMinute) { newValue in
+                    update()
+                }
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
-            .background(
-                Capsule().strokeBorder(Color.black, lineWidth: 1.25)
-            )
-            
-            
-        } //: BUTTON
-        
+        }
     }
     
     func update() {
@@ -61,8 +84,6 @@ struct StartButtonView: View {
         startHour = wakeHour
         startMinute = wakeMinute
         
-       
-        
         tasks = []
         
         for task in settings.wakeUpRoutine {
@@ -70,6 +91,11 @@ struct StartButtonView: View {
         }
         
         settings.wakeUpChosenTasks = tasks
+    }
+    
+    func formatTime(_ time: Int) -> String {
+        let hourString = String(format: "%02d", time)
+        return hourString
     }
     
     func updateStart(hour: Int, minute: Int) {
@@ -110,13 +136,12 @@ struct StartButtonView: View {
         
         return task
     }
+    
 }
 
-struct StartButtonView_Previews: PreviewProvider {
+struct WakeUpTimePickerView_Previews: PreviewProvider {
     static var previews: some View {
-        StartButtonView()
-            .previewLayout(.sizeThatFits)
-            .environmentObject(UserSettings.shared)
-        
+        WakeUpTimePickerView(wakeHour: .constant(0), wakeMinute: .constant(0))
+
     }
 }

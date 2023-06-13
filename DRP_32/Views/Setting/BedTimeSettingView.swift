@@ -50,41 +50,46 @@ struct BedTimeSettingView: View {
         NavigationView{
             VStack {
                 Form {
-                    Section (header: Text("Sleep Time Setting")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)){
-                            Text("Bed Time \(sleepingTime)")
-                                .font(.title3)
+                    Section{
+                        Text("Bed Time \(sleepingTime)")
+                            .font(.title3)
+                        
+                        HStack {
+                            VStack {
+                                Text("Wake up \nTime")
+                                    .font(.title3)
+                            }
+                            WakeUpTimePickerView(wakeHour: $wakeHour, wakeMinute: $wakeMinute)
+                                .frame(height: 100.0)
                             
-                            HStack {
-                                VStack {
-                                    Text("Wake up \nTime")
-                                        .font(.title3)
-                                }
-                                WakeUpTimePickerView(wakeHour: $wakeHour, wakeMinute: $wakeMinute)
-                                    .frame(height: 100.0)
-                                
-                            }
-                            HStack {
-                                VStack {
-                                    Text("Sleeping\nDuration")
-                                        .font(.title3)
-                                }
-                                CustomDatePicker(sleepHour: $sleepHour, sleepMinute: $sleepMinute)
-                                    .frame(height: 100.0)
-                            }
                         }
+                        HStack {
+                            VStack {
+                                Text("Sleeping\nDuration")
+                                    .font(.title3)
+                            }
+                            CustomDatePicker(sleepHour: $sleepHour, sleepMinute: $sleepMinute)
+                                .frame(height: 100.0)
+                        }
+                    }
                 }
-                .navigationTitle(Text("Bed Time Setting"))
+                .navigationTitle(Text("Sleep Time Setting")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black))
+                
                 .navigationBarTitleDisplayMode(.large)
                 .navigationViewStyle(StackNavigationViewStyle())
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NextButton(bedHour: $bedHour, bedMinute: $bedMinute, sleepHour: $sleepHour, sleepMinute: $sleepMinute, wakeHour: $wakeHour, wakeMinute: $wakeMinute)
-                    }
+                .onDisappear {
+                    settings.bedHour = bedHour
+                    settings.bedMinute = bedMinute
+                    settings.sleepHour = sleepHour
+                    settings.sleepMinute = sleepMinute
+                    settings.wakeHour = wakeHour
+                    settings.wakeMinute = wakeMinute
                 }
+                
                 
             }
         }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FirstView: View {
     @State var showNotificationSettingsUI = false
-    var task = Task(title: "Write Down a To-Do List", hour: 0, minute: 20, startHour: 14, startMinute: 56)
+    var task = Task(title: "Write Down a To-Do List", hour: 0, minute: 20, startHour: 15, startMinute: 03)
     @Binding var currentTab: Int
     
     var body: some View {

@@ -22,6 +22,8 @@
 		539663BB2A2F5B04007187BF /* BedTimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539663BA2A2F5B04007187BF /* BedTimeSettingView.swift */; };
 		539663BD2A2F5B3A007187BF /* TaskCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539663BC2A2F5B3A007187BF /* TaskCellView.swift */; };
 		539663C12A2F5EF6007187BF /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 539663C02A2F5EF6007187BF /* tasks.json */; };
+		53C34D5E2A3886BE00405939 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C34D5D2A3886BE00405939 /* SettingsView.swift */; };
+		53C34D632A38A02200405939 /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C34D622A38A02200405939 /* DoneButton.swift */; };
 		53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3A2A28D6FC005A0829 /* TipList.swift */; };
 		53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3C2A28D712005A0829 /* TipDetail.swift */; };
 		53E054EE2A2FC016001E8340 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054ED2A2FC016001E8340 /* OnboardingView.swift */; };
@@ -96,6 +98,8 @@
 		539663BA2A2F5B04007187BF /* BedTimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedTimeSettingView.swift; sourceTree = "<group>"; };
 		539663BC2A2F5B3A007187BF /* TaskCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellView.swift; sourceTree = "<group>"; };
 		539663C02A2F5EF6007187BF /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
+		53C34D5D2A3886BE00405939 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		53C34D622A38A02200405939 /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
 		53DEDE3A2A28D6FC005A0829 /* TipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipList.swift; sourceTree = "<group>"; };
 		53DEDE3C2A28D712005A0829 /* TipDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDetail.swift; sourceTree = "<group>"; };
 		53E054ED2A2FC016001E8340 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -223,7 +227,6 @@
 		53E054EF2A2FC80B001E8340 /* OnboardView */ = {
 			isa = PBXGroup;
 			children = (
-				53E054FE2A30B6C1001E8340 /* Setting */,
 				53E054ED2A2FC016001E8340 /* OnboardingView.swift */,
 				53E0550C2A31F709001E8340 /* WelcomeView.swift */,
 				53E054F02A2FC822001E8340 /* StartButtonView.swift */,
@@ -244,6 +247,8 @@
 				53E055132A321BDA001E8340 /* NextButton.swift */,
 				53E055152A326816001E8340 /* WakeUpTaskCell.swift */,
 				53E055172A32689A001E8340 /* WakeUpRoutineView.swift */,
+				53C34D5D2A3886BE00405939 /* SettingsView.swift */,
+				53C34D622A38A02200405939 /* DoneButton.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 		EE8015062A278CA500137787 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				53E054FE2A30B6C1001E8340 /* Setting */,
 				5389957A2A375AD200071A3E /* NotificationSettingsView.swift */,
 				EE9B1DE12A2F52E7003AAC1C /* PersonalizedTipView */,
 				53E054EF2A2FC80B001E8340 /* OnboardView */,
@@ -547,6 +553,7 @@
 				EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */,
 				53E055202A33502B001E8340 /* NewTaskView.swift in Sources */,
 				53E054F92A30A749001E8340 /* TimeLineView.swift in Sources */,
+				53C34D5E2A3886BE00405939 /* SettingsView.swift in Sources */,
 				538D909C2A2A093200A80AAB /* TipRow.swift in Sources */,
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
 				538995772A37574E00071A3E /* TaskPersistenceManager.swift in Sources */,
@@ -581,6 +588,7 @@
 				53E054F12A2FC822001E8340 /* StartButtonView.swift in Sources */,
 				538995812A37E2AD00071A3E /* FirstView.swift in Sources */,
 				EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */,
+				53C34D632A38A02200405939 /* DoneButton.swift in Sources */,
 				EE28A9B82A28F0E500736689 /* ModelData.swift in Sources */,
 				53E055122A3204F3001E8340 /* UserSettings.swift in Sources */,
 				5389957F2A37CF7C00071A3E /* NewTaskButton.swift in Sources */,
@@ -744,7 +752,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DRP_32/Preview Content\"";
-				DEVELOPMENT_TEAM = 9TV733BDJL;
+				DEVELOPMENT_TEAM = 5X76L7RAU4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -757,7 +765,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP282034;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP28203421321;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -773,7 +781,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DRP_32/Preview Content\"";
-				DEVELOPMENT_TEAM = 9TV733BDJL;
+				DEVELOPMENT_TEAM = 5X76L7RAU4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -786,7 +794,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP282034;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP28203412313;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

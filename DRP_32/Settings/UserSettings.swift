@@ -16,12 +16,12 @@ class UserSettings: ObservableObject {
         }
     }
     
-    @Published var bedHour = 0
-    @Published var bedMinute = 0
-    @Published var sleepHour = 0
-    @Published var sleepMinute = 0
-    @Published var wakeHour = 0
-    @Published var wakeMinute = 0
+    @Published var bedHour: Int = 0
+    @Published var bedMinute: Int = 0
+    @Published var sleepHour: Int = 0
+    @Published var sleepMinute: Int = 0
+    @Published var wakeHour: Int = 0
+    @Published var wakeMinute: Int = 0
     
     @Published var bedTimeRoutine: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
     
@@ -42,7 +42,11 @@ class UserSettings: ObservableObject {
         }
     }
     
-    @Published var showOnboarding: Bool = true
+    @Published var showOnboarding: Bool {
+        didSet {
+            saveShow() 
+        }
+    }
     
     init() {
         self.username = UserDefaults.standard.object(forKey: "username") as? String ?? ""
@@ -60,6 +64,13 @@ class UserSettings: ObservableObject {
             wakeUpChosenTasks = []
         }
         
+        if let data3 = UserDefaults.standard.data(forKey: "showOnboarding"),
+           let show = try? JSONDecoder().decode(Bool.self, from: data3) {
+            showOnboarding = show
+        } else {
+            showOnboarding = true
+        }
+        
     }
     private func saveTasks() {
             if let data = try? JSONEncoder().encode(bedTimeChosenTasks) {
@@ -69,6 +80,12 @@ class UserSettings: ObservableObject {
     private func saveTasks2() {
         if let data = try? JSONEncoder().encode(wakeUpChosenTasks) {
             UserDefaults.standard.set(data, forKey: "wakeUpTasks")
+        }
+    }
+    
+    private func saveShow() {
+        if let data = try? JSONEncoder().encode(showOnboarding) {
+            UserDefaults.standard.set(data, forKey: "showOnboarding")
         }
     }
 

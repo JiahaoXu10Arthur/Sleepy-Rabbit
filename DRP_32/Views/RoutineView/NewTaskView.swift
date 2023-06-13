@@ -81,7 +81,7 @@ struct NewTaskView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NewTaskButton(title: $title, hour: $hour, minute: $minute, startHour: $startHour, startMinute: $startMinute, isAutomatic: $isAutomatic, selectedType: $selectedType, detail: $detail, isPresented: $isPresented)
+                    NewTaskButton(title: $title, hour: $hour, minute: $minute, taskHour: $startHour, taskMinute: $startMinute, isAutomatic: $isAutomatic, selectedType: $selectedType, detail: $detail, isPresented: $isPresented)
                 
                 }
             }
