@@ -24,8 +24,6 @@ struct FirstView: View {
                                 showNotificationSettingsUI = true
                             }
                         }
-                        
-                        
                     },
                     label: {
                         Image(systemName: "bell")

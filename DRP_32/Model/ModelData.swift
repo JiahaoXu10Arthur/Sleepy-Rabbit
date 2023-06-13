@@ -73,17 +73,24 @@ class ModelData: ObservableObject {
         }
     }
     
-    func getQueryTip(query: Query, completion: @escaping (Tip?) -> Void) {
+    func getQueryTip(retries: Int = 3, query: Query, completion: @escaping (Tip?) -> Void) {
+        guard retries > 0 else {
+            print("Max retries reached. Fetch failed.")
+            self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
+            return
+        }
+        
         let url = "https://drp32-backend.herokuapp.com/getQueryTip"
         postData(urlString: url, data: query) { (tip: Tip?, error) in
-            if let tip = tip {
-                self.showingTip = tip
-            } else {
-                self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
-            }
             DispatchQueue.main.async {
+                if let tip = tip {
+                    self.showingTip = tip
                     completion(tip)
+                } else {
+                    print("Fetch failed. Retrying...")
+                    self.getQueryTip(retries: retries - 1, query: query, completion: completion)
                 }
+            }
         }
     }
     
