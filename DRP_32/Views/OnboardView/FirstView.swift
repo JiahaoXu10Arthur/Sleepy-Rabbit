@@ -15,37 +15,13 @@ struct FirstView: View {
     var body: some View {
         
             VStack {
-                Button(
-                    action: {
-                        // 1
-                        NotificationManager.shared.requestAuthorization { granted in
-                            // 2
-                            if granted {
-                                showNotificationSettingsUI = true
-                            }
-                        }
-                    },
-                    label: {
-                        Image(systemName: "bell")
-                            .font(.title)
-                            .accentColor(.pink)
-                    })
-                .padding(.trailing)
-                .sheet(isPresented: $showNotificationSettingsUI) {
-                    NotificationSettingsView()
-                }
-                Button(action: { TaskAdaptor.shared.addNewTask(task: task)
-                }) {
-                    Text("Add Task")
-                    
-                }
                 
                 Spacer()
-                Text("Hello")
+                Text("Welcome")
                 
                     .font(.system(size: 48, weight: .semibold))
                     .padding(.bottom)
-                Text("TODO: Design This page")
+                Text("Try to set up your first routine!")
                     .padding()
                 Button(action: {
                     currentTab += 1
