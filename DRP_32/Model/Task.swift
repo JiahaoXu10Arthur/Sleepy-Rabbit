@@ -12,6 +12,7 @@ struct Task: Identifiable, Equatable, Codable{
     let title: String
     let hour: Int
     let minute: Int
-    var startHour = 0
-    var startMinute = 0
+    var startHour = -1
+    var startMinute = -1
+    var detail = ""
 }

@@ -10,36 +10,47 @@ import SwiftUI
 struct BedTimeRoutineView: View {
     @EnvironmentObject var settings: UserSettings
     var tasks: [Task] {
-        settings.tasks
+        settings.bedTimeRoutine
     }
+    @State var isPresented = false
     
     var body: some View {
-        
-        List {
-            ForEach(tasks) { task in
-                TaskCellView(task: task)
-            }
-        }
-        .navigationTitle(Text("BedTime Routine"))
-        .navigationBarTitleDisplayMode(.large)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: WakeUpRoutineView()) {
-                    HStack(spacing: 8) {
-                        Text("Next")
-                        Image(systemName: "arrow.right.circle")
-                            .imageScale(.large)
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
-                    .background(
-                        Capsule().strokeBorder(Color.white, lineWidth: 1.25)
-                    )
+        NavigationView {
+            List {
+                ForEach(tasks) { task in
+                    TaskCellView(task: task)
                 }
+                .onMove(perform: moveRow)
+                .onDelete(perform: deleteRow)
+            }
+            
+            .navigationTitle(Text("BedTime Routine"))
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        isPresented.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
+            
             }
         }
-        
-        
+        .sheet(isPresented: $isPresented) {
+            NewTaskView(isPresented: $isPresented)
+        }
+    }
+    private func deleteRow(at indexSet: IndexSet) {
+        settings.bedTimeRoutine.remove(atOffsets: indexSet)
+    }
+    
+    
+    private func moveRow(source: IndexSet, destination: Int){
+        settings.bedTimeRoutine.move(fromOffsets: source,           toOffset: destination)
     }
 }
 

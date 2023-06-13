@@ -30,10 +30,10 @@ struct StartButtonView: View {
             let sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute)
             startHour = bedHour
             startMinute = bedMinute
-
+            
             var tasks: [Task] = [sleep]
             
-            for task in settings.bedTimeChosenTasks {
+            for task in settings.bedTimeRoutine {
                 tasks.append(updateTask(task: task))
             }
             
@@ -46,27 +46,25 @@ struct StartButtonView: View {
             
             tasks = []
             
-            for task in settings.wakeUpChosenTasks {
+            for task in settings.wakeUpRoutine {
                 tasks.append(updateTask2(task: task))
             }
             print("\(tasks)")
             settings.wakeUpChosenTasks = tasks
-        
+            
         }) {
+            HStack(spacing: 8) {
+                Text("Get Started")
+                
+                Image(systemName: "arrow.right.circle")
+                    .imageScale(.large)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            .background(
+                Capsule().strokeBorder(Color.black, lineWidth: 1.25)
+            )
             
-                HStack(spacing: 8) {
-                    Text("Start")
-                    
-                    Image(systemName: "arrow.right.circle")
-                        .imageScale(.large)
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 10)
-                .background(
-                    Capsule().strokeBorder(Color.white, lineWidth: 1.25)
-                )
-            
-
             
         } //: BUTTON
         
@@ -86,7 +84,10 @@ struct StartButtonView: View {
     
     func updateTask(task: Task) -> Task {
         updateStart(hour: task.hour, minute: task.minute)
-        return Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute)
+        
+        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail)
+        
+        return task
     }
     
     func updateStart2(hour: Int, minute: Int) {
@@ -102,8 +103,9 @@ struct StartButtonView: View {
     }
     
     func updateTask2(task: Task) -> Task {
-        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute)
+        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail)
         updateStart2(hour: task.hour, minute: task.minute)
+        
         return task
     }
 }
@@ -113,6 +115,6 @@ struct StartButtonView_Previews: PreviewProvider {
         StartButtonView()
             .previewLayout(.sizeThatFits)
             .environmentObject(UserSettings.shared)
-    
+        
     }
 }

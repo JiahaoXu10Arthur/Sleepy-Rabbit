@@ -10,27 +10,49 @@ import SwiftUI
 struct WakeUpRoutineView: View {
     @EnvironmentObject var settings: UserSettings
     var tasks: [Task] {
-        settings.tasks
+        settings.wakeUpRoutine
     }
+    @State var isPresented = false
     
     var body: some View {
-            
+        NavigationView{
             List {
                 ForEach(tasks) { task in
                     WakeUpTaskCell(task: task)
                 }
+                .onMove(perform: moveRow)
+                .onDelete(perform: deleteRow)
             }
             .navigationTitle(Text("Wake Up Routine"))
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                                       StartButtonView()
-                                   }
+                    EditButton()
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        isPresented.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
             }
-            
+            .sheet(isPresented: $isPresented) {
+                NewTaskView(isPresented: $isPresented)
+            }
+        }
+        
         
     }
-
+    private func deleteRow(at indexSet: IndexSet) {
+        settings.wakeUpRoutine.remove(atOffsets: indexSet)
+    }
+    
+    
+    private func moveRow(source: IndexSet, destination: Int){
+        settings.wakeUpRoutine.move(fromOffsets: source,           toOffset: destination)
+    }
+    
 }
 
 struct WakeUpRoutineView_Previews: PreviewProvider {

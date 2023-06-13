@@ -10,36 +10,18 @@ import SwiftUI
 struct TaskCellView: View {
     @EnvironmentObject var settings: UserSettings
     
-    @State var task: Task
-    
-    @State var isChosen = false
-    
+    var task: Task
     
     var body: some View {
         HStack {
-            Image(systemName: isChosen ? "checkmark.circle.fill" : "circle")
-                .resizable()
-                .frame(width: 20, height: 20)
-                .foregroundColor(
-                    isChosen ? .green : .gray)
-            
             VStack(alignment: .leading, spacing: 8) {
                 Text(task.title)
                 Text("\(task.hour)h \(task.minute)m")
                     .multilineTextAlignment(.leading)
-               
             }
         }
-        .onTapGesture {
-            isChosen = !isChosen
-            if isChosen {
-                settings.bedTimeChosenTasks.append(task)
-            } else {
-                if let index = settings.bedTimeChosenTasks.firstIndex(of: task) {
-                    settings.bedTimeChosenTasks.remove(at: index)
-                }
-            }
-        }
+        
+        
 
     }
 }

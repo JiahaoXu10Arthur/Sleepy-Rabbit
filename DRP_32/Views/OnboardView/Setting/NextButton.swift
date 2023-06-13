@@ -19,44 +19,29 @@ struct NextButton: View {
     
     
     @State private var isLinkActive = false
-     var body: some View {
-         NavigationLink(destination: BedTimeRoutineView(), isActive: $isLinkActive) {
-             HStack(spacing: 8) {
-                 Text("Next")
-                 Image(systemName: "arrow.right.circle")
-                     .imageScale(.large)
-             }
-             .padding(.horizontal, 16)
-             .padding(.vertical, 10)
-             .background(
-                 Capsule().strokeBorder(Color.white, lineWidth: 1.25)
-             )
-         }
-         .navigationDestination(
-              isPresented: $isLinkActive) {
-                   BedTimeRoutineView()
-                   Text("")
-                       .hidden()
-              }
-         .simultaneousGesture(
-             TapGesture().onEnded {
-                 settings.bedHour = bedHour
-                 settings.bedMinute = bedMinute
-                 settings.sleepHour = sleepHour
-                 settings.sleepMinute = sleepMinute
-                 settings.wakeHour = wakeHour
-                 settings.wakeMinute = wakeMinute
-                 isLinkActive = true // Activate the navigation
-             }
-         )
-     
+    var body: some View {
+        Button(action: {
+            settings.bedHour = bedHour
+            settings.bedMinute = bedMinute
+            settings.sleepHour = sleepHour
+            settings.sleepMinute = sleepMinute
+            settings.wakeHour = wakeHour
+            settings.wakeMinute = wakeMinute
+        }) {
+            HStack(spacing: 8) {
+                Text("Save")
+            }
+            .padding(.vertical, 10)
+        }
+        
     }
+    
 }
 
 struct NextButton_Previews: PreviewProvider {
     static var previews: some View {
         NextButton(bedHour: .constant(0), bedMinute: .constant(0), sleepHour: .constant(0), sleepMinute: .constant(0), wakeHour: .constant(0), wakeMinute: .constant(0))
             .environmentObject(UserSettings.shared)
-    
+        
     }
 }
