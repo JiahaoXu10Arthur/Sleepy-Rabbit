@@ -12,7 +12,7 @@ struct BottomNavigator: View {
 
     enum Tab {
         case routine
-        case community
+        case setting
         case question
     }
     
@@ -52,6 +52,7 @@ struct BottomNavigator: View {
                     Label("Questions", systemImage:"questionmark.bubble")
                 }
                 .tag(Tab.question)
+            
         }
         .frame(maxHeight: .infinity)
         .ignoresSafeArea(.all)

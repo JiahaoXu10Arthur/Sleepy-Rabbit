@@ -13,12 +13,36 @@ struct CellDetailView: View {
     
     var body: some View {
         
-        VStack {
-            
-            
-        }
+        ScrollView {
+
+
+                    VStack(alignment: .leading) {
+                        Text(task.title)
+                            .font(.title)
+
+
+                        HStack {
+                            Text("Begin: \(formatTime(_:task.startHour))")
+                            Spacer()
+                            
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+
+
+                        Divider()
+
+
+                        
+                    }
+                    .padding()
+                }
         .navigationTitle("Routine Detail")
         
+    }
+    func formatTime(_ time: Int) -> String {
+        let hourString = String(format: "%02d", time)
+        return hourString
     }
 }
 

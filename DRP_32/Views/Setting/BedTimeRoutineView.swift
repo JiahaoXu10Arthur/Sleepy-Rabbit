@@ -19,7 +19,7 @@ struct BedTimeRoutineView: View {
         NavigationView {
             Form{
                 
-                Section(footer: Text("A bedtime routine is a set of activities you perform in the same order before going to bed.")) {
+                Section(header: Text("a set of activities you perform in the same order before going to bed.")) {
                     List {
                         ForEach(tasks) { task in
                             TaskCellView(task: task)
@@ -33,13 +33,13 @@ struct BedTimeRoutineView: View {
                 
             }
             
+            
             .navigationTitle(Text("Bedtime Routine"))
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                         .font(.title3)
-                
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {

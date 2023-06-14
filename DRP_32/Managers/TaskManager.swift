@@ -36,15 +36,13 @@ class TaskAdaptor {
   static let shared = TaskAdaptor()
   
     func addNewTask(task: Task) {
-        // 秒数加3为演示用
-        
         let date = Calendar.current.date(bySettingHour: task.startHour, minute: task.startMinute, second: 0, of: Date())
         
         if let date = date {
             let d = Calendar.current.date(byAdding: .minute, value: -5, to: date)
             
             let reminder = Reminder(date: d, reminderType: .calendar, repeats: true)
-            let t = Tasked(id: task.id.uuidString, name: task.title, reminderEnabled: true, reminder: reminder, hour: task.startHour, minute: task.startMinute, startHour: task.startHour, startMinute: task.startMinute, before: task.before)
+            let t = Tasked(id: task.id.uuidString, name: task.title, reminderEnabled: true, reminder: reminder, hour: task.hour, minute: task.minute, startHour: task.startHour, startMinute: task.startMinute, before: task.before)
             TaskManager.shared.save(task: t)
         }
     }
@@ -53,6 +51,11 @@ class TaskAdaptor {
       let t = Tasked(id: task.id.uuidString, name: task.title, reminderEnabled: true, reminder: Reminder(), hour: task.startHour, minute: task.startMinute, startHour: task.startHour, startMinute: task.startMinute, before: task.before)
     TaskManager.shared.remove(task: t)
   }
+    func removeAll() {
+       TaskManager.shared.tasks.forEach{ task in
+         TaskManager.shared.remove(task: task)
+       }
+     }
 }
 
 class TaskManager: ObservableObject {

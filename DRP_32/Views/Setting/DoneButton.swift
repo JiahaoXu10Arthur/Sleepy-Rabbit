@@ -59,6 +59,8 @@ struct DoneButton: View {
         
         settings.wakeUpChosenTasks = tasks
         
+        TaskAdaptor.shared.removeAll()
+
         let notifications = tasks + settings.bedTimeChosenTasks
         for task in notifications {
             TaskAdaptor.shared.addNewTask(task: task)

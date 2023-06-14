@@ -89,7 +89,7 @@ struct WakeUpTimePickerView: View {
         for task in settings.wakeUpRoutine {
             tasks.append(updateTask2(task: task))
         }
-        
+        TaskAdaptor.shared.removeAll()
         settings.wakeUpChosenTasks = tasks
         let notifications = tasks + settings.bedTimeChosenTasks
         for task in notifications {

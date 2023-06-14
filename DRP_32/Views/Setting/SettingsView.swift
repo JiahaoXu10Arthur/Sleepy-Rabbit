@@ -77,7 +77,16 @@ struct SettingsView: View {
                         
                     }
                 }
-                
+                Section(header: Text("For Testing")) {
+                    Button(action: {
+                        settings.showOnboarding = true
+                    }) {
+                        Text("Show Onboarding")
+                            .font(.title2)
+                    } //: BUTTON
+                    
+                }
+            
             }
             .navigationBarTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)

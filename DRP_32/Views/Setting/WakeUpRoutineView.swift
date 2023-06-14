@@ -16,12 +16,17 @@ struct WakeUpRoutineView: View {
     
     var body: some View {
         NavigationView{
-            List {
-                ForEach(tasks) { task in
-                    WakeUpTaskCell(task: task)
+            Form{
+                
+                Section(header: Text(" a set of habits or motions that you go through when you wake up")) {
+                    List {
+                        ForEach(tasks) { task in
+                            WakeUpTaskCell(task: task)
+                        }
+                        .onMove(perform: moveRow)
+                        .onDelete(perform: deleteRow)
+                    }
                 }
-                .onMove(perform: moveRow)
-                .onDelete(perform: deleteRow)
             }
             .navigationTitle(Text("Wake Up Routine"))
             .navigationBarTitleDisplayMode(.large)
