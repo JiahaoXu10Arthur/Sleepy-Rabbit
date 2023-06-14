@@ -28,6 +28,7 @@ class ModelData: ObservableObject {
     private var lock = NSLock()
 
     private init() {
+        setupDataFile()
         fetchTipofTheDay() { _ in}
         fetchData()
 //        getAnAiTip() { _ in
@@ -159,7 +160,7 @@ class ModelData: ObservableObject {
     
     func getAndCacheAiTipSync(completion: @escaping (Tip?) -> Void) {
         lock.lock()
-        var cachedTips: [Tip] = load("CachedTips.json")
+        var cachedTips: [Tip] = urlLoad(getDocumentsDirectory())
         
         // If there are no tips left, or if we're already fetching a tip, return immediately
         if cachedTips.isEmpty || self.isDisabled {
@@ -170,7 +171,7 @@ class ModelData: ObservableObject {
         
         // Remove the first tip and show it
         self.showingTip = cachedTips.removeFirst()
-        self.write(data: cachedTips, "CachedTips.json")
+        self.urlWrite(data: cachedTips, getDocumentsDirectory())
         
         // Set isDisabled to true to prevent fetching more tips until this fetch is finished
         if cachedTips.count == 0 {
@@ -184,7 +185,7 @@ class ModelData: ObservableObject {
             self.lock.lock()
             
             // Load the latest cache
-            cachedTips = self.load("CachedTips.json")
+            cachedTips = self.urlLoad(self.getDocumentsDirectory())
             
             // Append a new tip to the cache
             if let tip = tip {
@@ -193,7 +194,7 @@ class ModelData: ObservableObject {
                 cachedTips.append(Tip(title: "White Noise for Better Sleep", tag: "#sleep#chatGPT", detail: "Playing white noise in the background during sleep can help drown out external noise and create a calming environment. This can lead to better sleep quality and more restful nights."))
             }
             
-            self.write(data: cachedTips, "CachedTips.json")
+            self.urlWrite(data: cachedTips, self.getDocumentsDirectory())
             
             // Fetching is done, allow more tips to be fetched
             self.isDisabled = false
@@ -289,6 +290,65 @@ class ModelData: ObservableObject {
             try editedData.write(to: file)
         } catch {
             print("Error: \(error)")
+        }
+    }
+    
+    func urlLoad<T: Decodable>(_ url: URL) -> T {
+        let data: Data
+        
+        do {
+            data = try Data(contentsOf: url)
+        } catch {
+            fatalError("Couldn't load \(url) from main bundle:\n\(error)")
+        }
+
+        do {
+            let decoder = JSONDecoder()
+            return try decoder.decode(T.self, from: data)
+        } catch {
+            fatalError("Couldn't parse \(url) as \(T.self):\n\(error)")
+        }
+    }
+    
+    func urlWrite<T: Encodable>(data: T, _ url: URL) {
+        do {
+            let editedData = try JSONEncoder().encode(data)
+            try editedData.write(to: url)
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory.appendingPathComponent("CachedTips.json")
+    }
+    
+    func setupDataFile() {
+        let fileURL = getDocumentsDirectory()
+        
+        // Check if file already exists
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            print("File already exists at \(fileURL.path)")
+        } else {
+            // Copy the default data from the bundled file to the Application Support directory
+            if let bundledData = Bundle.main.url(forResource: "CachedTips", withExtension: "json") {
+                do {
+                    let applicationSupportDirectory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+                    do {
+                        try FileManager.default.createDirectory(at: applicationSupportDirectory, withIntermediateDirectories: true, attributes: nil)
+                    } catch {
+                        print("Error creating Application Support directory: \(error)")
+                    }
+
+                    try FileManager.default.copyItem(at: bundledData, to: fileURL)
+                } catch {
+                    print("Error occurred while copying file to document directory: \(error)")
+                }
+            } else {
+                print("Default bundled data not found")
+            }
         }
     }
 

@@ -22,6 +22,7 @@ struct TipPageView: View {
                 ScrollView {
                     VStack(spacing: 3) {
                         TipRow(tip: tipofTheDay)
+                            .padding(.bottom)
                         
                         RandomTipView(isLoading: $isLoading)
                         .frame(height: geometry.size.height * 0.7)

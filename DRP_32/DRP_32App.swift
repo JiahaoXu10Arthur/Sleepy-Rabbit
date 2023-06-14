@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct DRP_32App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var modelData = ModelData.shared
+    @StateObject private var userSetting = UserSettings.shared
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(ModelData.shared)
-                .environmentObject(UserSettings.shared)
+                .environmentObject(modelData)
+                .environmentObject(userSetting)
         }
     }
 }
