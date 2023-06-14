@@ -16,31 +16,6 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            Button(action: {
-                settings.showOnboarding = true
-                settings.bedTimeChosenTasks.removeAll()
-                settings.wakeUpChosenTasks.removeAll()
-                settings.bedHour = 0
-                settings.bedMinute = 0
-                settings.sleepHour = 0
-                settings.sleepMinute = 0
-                settings.wakeHour = 0
-                settings.wakeMinute = 0
-                
-            }) {
-                HStack(spacing: 8) {
-                    Text("Re-Start")
-                    
-                    Image(systemName: "arrow.right.circle")
-                        .imageScale(.large)
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 10)
-                .background(
-                    Capsule().strokeBorder(colorScheme == .dark ? Color.white : Color.black, lineWidth: 1.25)
-                )
-            } //: BUTTON
-            .accentColor(colorScheme == .dark ? Color.white : Color.black)
             BottomNavigator()
         }
         .fullScreenCover(isPresented: $settings.showOnboarding, content: {

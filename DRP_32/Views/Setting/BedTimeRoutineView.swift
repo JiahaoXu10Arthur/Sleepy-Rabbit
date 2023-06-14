@@ -19,7 +19,7 @@ struct BedTimeRoutineView: View {
         NavigationView {
             Form{
                 
-                Section(footer: Text("A bedtime routine is a set of activities you perform in the same order before going to bed.")) {
+                Section(header: Text("a set of activities you perform in the same order before going to bed.")) {
                     List {
                         ForEach(tasks) { task in
                             TaskCellView(task: task)
@@ -29,9 +29,11 @@ struct BedTimeRoutineView: View {
                         .onMove(perform: moveRow)
                         .onDelete(perform: deleteRow)
                     }
+                    Text("Bedtime: \(formatTime(_:settings.bedHour)) : \(formatTime(_:settings.bedMinute))")
                 }
                 
             }
+            
             
             .navigationTitle(Text("Bedtime Routine"))
             .navigationBarTitleDisplayMode(.large)
@@ -39,7 +41,6 @@ struct BedTimeRoutineView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                         .font(.title3)
-                
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -57,6 +58,11 @@ struct BedTimeRoutineView: View {
             NewTaskView(selectedType: "Bedtime", isPresented: $isPresented)
                 
         }
+    }
+    
+    func formatTime(_ time: Int) -> String {
+        let hourString = String(format: "%02d", time)
+        return hourString
     }
     private func deleteRow(at indexSet: IndexSet) {
         settings.bedTimeRoutine.remove(atOffsets: indexSet)

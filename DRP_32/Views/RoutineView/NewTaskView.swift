@@ -150,6 +150,9 @@ struct NewTaskView: View {
                 }
                 
             }
+            .onTapGesture {
+                self.hideKeyboard()
+            }
             .navigationTitle(Text("New Task"))
             .navigationBarTitleDisplayMode(.large)
             .alert(isPresented: $shouldShowValidationAlert, content: { () -> Alert in

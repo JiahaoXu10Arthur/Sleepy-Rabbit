@@ -16,12 +16,18 @@ struct WakeUpRoutineView: View {
     
     var body: some View {
         NavigationView{
-            List {
-                ForEach(tasks) { task in
-                    WakeUpTaskCell(task: task)
+            Form{
+                
+                Section(header: Text(" a set of habits or motions that you go through when you wake up")) {
+                    Text("Wake Up Time: \(formatTime(_:settings.wakeHour)) : \(formatTime(_:settings.wakeMinute))")
+                    List {
+                        ForEach(tasks) { task in
+                            TaskCellView(task: task)
+                        }
+                        .onMove(perform: moveRow)
+                        .onDelete(perform: deleteRow)
+                    }
                 }
-                .onMove(perform: moveRow)
-                .onDelete(perform: deleteRow)
             }
             .navigationTitle(Text("Wake Up Routine"))
             .navigationBarTitleDisplayMode(.large)
@@ -46,6 +52,11 @@ struct WakeUpRoutineView: View {
         }
         
         
+    }
+    
+    func formatTime(_ time: Int) -> String {
+        let hourString = String(format: "%02d", time)
+        return hourString
     }
     private func deleteRow(at indexSet: IndexSet) {
         settings.wakeUpRoutine.remove(atOffsets: indexSet)

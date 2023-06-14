@@ -59,6 +59,8 @@ struct DoneButton: View {
         
         settings.wakeUpChosenTasks = tasks
         
+        TaskAdaptor.shared.removeAll()
+
         let notifications = tasks + settings.bedTimeChosenTasks
         for task in notifications {
             TaskAdaptor.shared.addNewTask(task: task)
@@ -80,7 +82,7 @@ struct DoneButton: View {
     func updateTask(task: Task) -> Task {
         updateStart(hour: task.hour, minute: task.minute)
         
-        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail, referenceLinks: task.referenceLinks, before: task.before)
+        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail, referenceLinks: task.referenceLinks, before: task.before, type: "Bedtime")
         
         return task
     }
@@ -98,7 +100,7 @@ struct DoneButton: View {
     }
     
     func updateTask2(task: Task) -> Task {
-        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail, referenceLinks: task.referenceLinks, before: task.before)
+        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail, referenceLinks: task.referenceLinks, before: task.before, type: "Wake Up")
         updateStart2(hour: task.hour, minute: task.minute)
         
         return task
