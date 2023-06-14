@@ -141,7 +141,7 @@
 		EE9B1DE62A2F5C55003AAC1C /* NewTipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTipButton.swift; sourceTree = "<group>"; };
 		EE9B1DE82A2F6C71003AAC1C /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		EE9B1DEA2A30A987003AAC1C /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
-		EECEE4892A24F9F400249177 /* DRP_32.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRP_32.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EECEE4892A24F9F400249177 /* Sleepy Rabbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sleepy Rabbit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECEE48C2A24F9F400249177 /* DRP_32App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRP_32App.swift; sourceTree = "<group>"; };
 		EECEE48E2A24F9F400249177 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EECEE4902A24F9F500249177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -363,7 +363,7 @@
 		EECEE48A2A24F9F400249177 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EECEE4892A24F9F400249177 /* DRP_32.app */,
+				EECEE4892A24F9F400249177 /* Sleepy Rabbit.app */,
 				EECEE4992A24F9F500249177 /* DRP_32Tests.xctest */,
 				EECEE4A32A24F9F500249177 /* DRP_32UITests.xctest */,
 			);
@@ -437,7 +437,7 @@
 			);
 			name = DRP_32;
 			productName = DRP_32;
-			productReference = EECEE4892A24F9F400249177 /* DRP_32.app */;
+			productReference = EECEE4892A24F9F400249177 /* Sleepy Rabbit.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EECEE4982A24F9F500249177 /* DRP_32Tests */ = {
@@ -776,7 +776,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP28203421321;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Sleepy Rabbit";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -805,7 +805,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP28203412313;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Sleepy Rabbit";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
