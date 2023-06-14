@@ -28,11 +28,15 @@ struct RandomTipView: View {
                             .scaleEffect(2)
                             .padding()
                     } else {
-                        Text(tip.title)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .fixedSize(horizontal: false, vertical: true)
+                        HStack {
+                            Text(tip.title)
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(.primary)
+                            Spacer()
+                            AddToRoutineButton(tip: tip)
+                        }
                         
                         Text(tip.tag)
                             .font(.title)
@@ -65,5 +69,6 @@ struct TestView_Previews: PreviewProvider {
     static var previews: some View {
         RandomTipView(isLoading: .constant(false))
             .environmentObject(ModelData.shared)
+            .environmentObject(UserSettings.shared)
     }
 }

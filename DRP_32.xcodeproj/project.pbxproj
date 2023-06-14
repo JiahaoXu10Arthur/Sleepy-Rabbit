@@ -52,6 +52,9 @@
 		EE28A9B22A28E47900736689 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9B12A28E47900736689 /* Tip.swift */; };
 		EE28A9B82A28F0E500736689 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9B72A28F0E500736689 /* ModelData.swift */; };
 		EE52726E2A38CF7A009468F3 /* CachedTips.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEDC31F2A3890C2004E8261 /* CachedTips.json */; };
+		EE7177492A39F4AC0011AC3B /* AddToRoutineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7177482A39F4AC0011AC3B /* AddToRoutineButton.swift */; };
+		EE71774B2A39FA550011AC3B /* PreFedAddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE71774A2A39FA550011AC3B /* PreFedAddTaskView.swift */; };
+		EE71774D2A3A02870011AC3B /* PreFedNewTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE71774C2A3A02870011AC3B /* PreFedNewTaskButton.swift */; };
 		EE75C78E2A31FC6A00626199 /* TipofTheDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75C78D2A31FC6A00626199 /* TipofTheDayView.swift */; };
 		EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8015072A278D1500137787 /* BottomNavigator.swift */; };
 		EE9B1DE32A2F5346003AAC1C /* QueryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B1DE22A2F5346003AAC1C /* QueryView.swift */; };
@@ -134,6 +137,9 @@
 		EE28A9B12A28E47900736689 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		EE28A9B72A28F0E500736689 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		EE31C99B2A2E1AEA00DD6ADF /* RandomTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomTipView.swift; sourceTree = "<group>"; };
+		EE7177482A39F4AC0011AC3B /* AddToRoutineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToRoutineButton.swift; sourceTree = "<group>"; };
+		EE71774A2A39FA550011AC3B /* PreFedAddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreFedAddTaskView.swift; sourceTree = "<group>"; };
+		EE71774C2A3A02870011AC3B /* PreFedNewTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreFedNewTaskButton.swift; sourceTree = "<group>"; };
 		EE75C78D2A31FC6A00626199 /* TipofTheDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipofTheDayView.swift; sourceTree = "<group>"; };
 		EE8015072A278D1500137787 /* BottomNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavigator.swift; sourceTree = "<group>"; };
 		EE9B1DE22A2F5346003AAC1C /* QueryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryView.swift; sourceTree = "<group>"; };
@@ -343,6 +349,9 @@
 				EE9B1DE62A2F5C55003AAC1C /* NewTipButton.swift */,
 				EE9B1DEA2A30A987003AAC1C /* LikeButton.swift */,
 				EE75C78D2A31FC6A00626199 /* TipofTheDayView.swift */,
+				EE7177482A39F4AC0011AC3B /* AddToRoutineButton.swift */,
+				EE71774A2A39FA550011AC3B /* PreFedAddTaskView.swift */,
+				EE71774C2A3A02870011AC3B /* PreFedNewTaskButton.swift */,
 			);
 			path = PersonalizedTipView;
 			sourceTree = "<group>";
@@ -587,8 +596,11 @@
 				53E055182A32689A001E8340 /* WakeUpRoutineView.swift in Sources */,
 				EE28A99D2A27912900736689 /* CalendarView.swift in Sources */,
 				53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */,
+				EE71774B2A39FA550011AC3B /* PreFedAddTaskView.swift in Sources */,
 				EE9B1DE32A2F5346003AAC1C /* QueryView.swift in Sources */,
+				EE71774D2A3A02870011AC3B /* PreFedNewTaskButton.swift in Sources */,
 				538B38F52A2F54B300A8DBED /* Task.swift in Sources */,
+				EE7177492A39F4AC0011AC3B /* AddToRoutineButton.swift in Sources */,
 				53C34D652A39089D00405939 /* ColoredIconView.swift in Sources */,
 				53E054F52A2FD883001E8340 /* CustomDatePicker.swift in Sources */,
 				538995792A37574E00071A3E /* LocationManager.swift in Sources */,

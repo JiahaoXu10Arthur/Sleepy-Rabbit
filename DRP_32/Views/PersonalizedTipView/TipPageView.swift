@@ -59,5 +59,6 @@ struct TipPageView_Previews: PreviewProvider {
     static var previews: some View {
         TipPageView()
             .environmentObject(ModelData.shared)
+            .environmentObject(UserSettings.shared)
     }
 }
