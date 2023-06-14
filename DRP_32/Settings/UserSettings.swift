@@ -16,12 +16,42 @@ class UserSettings: ObservableObject {
         }
     }
     
-    @Published var bedHour: Int = 0
-    @Published var bedMinute: Int = 0
-    @Published var sleepHour: Int = 0
-    @Published var sleepMinute: Int = 0
-    @Published var wakeHour: Int = 0
-    @Published var wakeMinute: Int = 0
+    @Published var bedHour: Int = 0 {
+        didSet {
+            UserDefaults.standard.set(bedHour, forKey: "bedHour")
+        }
+    }
+    
+    @Published var bedMinute: Int = 0 {
+        didSet {
+            UserDefaults.standard.set(bedMinute, forKey: "bedMinute")
+        }
+    }
+    
+    @Published var sleepHour: Int = 0 {
+        didSet {
+            UserDefaults.standard.set(sleepHour, forKey: "sleepHour")
+        }
+    }
+    
+    @Published var sleepMinute: Int = 15 {
+        didSet {
+            UserDefaults.standard.set(sleepMinute, forKey: "sleepMinute")
+        }
+    }
+    
+    @Published var wakeHour: Int = 0 {
+        didSet {
+            UserDefaults.standard.set(wakeHour, forKey: "wakeHour")
+        }
+    }
+    @Published var wakeMinute: Int = 0 {
+        didSet {
+            UserDefaults.standard.set(wakeMinute, forKey: "wakeMinute")
+        }
+    }
+    
+    
     
     @Published var bedTimeRoutine: [Task] {
         didSet {
@@ -47,8 +77,8 @@ class UserSettings: ObservableObject {
     
     @Published var bedTimeChosenTasks: [Task] {
         didSet {
-                   saveTasks()
-               }
+            saveTasks()
+        }
     }
     
     @Published var wakeUpChosenTasks: [Task] {
@@ -59,7 +89,7 @@ class UserSettings: ObservableObject {
     
     @Published var showOnboarding: Bool {
         didSet {
-            saveShow() 
+            saveShow()
         }
     }
     
@@ -71,6 +101,12 @@ class UserSettings: ObservableObject {
     
     init() {
         self.username = UserDefaults.standard.object(forKey: "username") as? String ?? ""
+        self.bedHour = UserDefaults.standard.integer(forKey: "bedHour")
+        self.bedMinute = UserDefaults.standard.integer(forKey: "bedMinute")
+        self.sleepHour = UserDefaults.standard.integer(forKey: "sleepHour")
+        self.sleepMinute = UserDefaults.standard.integer(forKey: "sleepMinute")
+        self.wakeHour = UserDefaults.standard.integer(forKey: "wakeHour")
+        self.wakeMinute = UserDefaults.standard.integer(forKey: "wakeMinute")
         if let data = UserDefaults.standard.data(forKey: "chosenTasks"),
            let tasks = try? JSONDecoder().decode([Task].self, from: data) {
             bedTimeChosenTasks = tasks
@@ -126,7 +162,7 @@ class UserSettings: ObservableObject {
         } else {
             bedTimeRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Bedtime"), Task(title: "Stretch", hour: 0, minute: 15, type: "Bedtime"), Task(title: "Breathe", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Bedtime"), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20, type: "Bedtime")]
         }
-    
+        
         
     }
     
@@ -157,10 +193,10 @@ class UserSettings: ObservableObject {
     
     
     private func saveTasks() {
-            if let data = try? JSONEncoder().encode(bedTimeChosenTasks) {
-                UserDefaults.standard.set(data, forKey: "chosenTasks")
-            }
+        if let data = try? JSONEncoder().encode(bedTimeChosenTasks) {
+            UserDefaults.standard.set(data, forKey: "chosenTasks")
         }
+    }
     private func saveTasks2() {
         if let data = try? JSONEncoder().encode(wakeUpChosenTasks) {
             UserDefaults.standard.set(data, forKey: "wakeUpTasks")
@@ -178,5 +214,5 @@ class UserSettings: ObservableObject {
             UserDefaults.standard.set(data, forKey: "allowNotification")
         }
     }
-
+    
 }

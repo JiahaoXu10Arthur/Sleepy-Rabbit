@@ -50,7 +50,7 @@ struct BedTimeSettingView: View {
         NavigationView{
             
             Form {
-                Section(footer: Text("Automatic Calculation")){
+                Section(footer: Text("Automatic Calculated")){
                     HStack {
                         ColoredIconView(imageName: "bed.double", foregroundColor: .white, backgroundColor: .blue)
                             .font(.title)
@@ -114,12 +114,14 @@ struct BedTimeSettingView: View {
             .navigationViewStyle(StackNavigationViewStyle())
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .onDisappear {
-                settings.bedHour = bedHour
-                settings.bedMinute = bedMinute
-                settings.sleepHour = sleepHour
-                settings.sleepMinute = sleepMinute
-                settings.wakeHour = wakeHour
-                settings.wakeMinute = wakeMinute
+                DispatchQueue.main.async {
+                    settings.bedHour = bedHour
+                    settings.bedMinute = bedMinute
+                    settings.sleepHour = sleepHour
+                    settings.sleepMinute = sleepMinute
+                    settings.wakeHour = wakeHour
+                    settings.wakeMinute = wakeMinute
+                }
             }
             
         }
