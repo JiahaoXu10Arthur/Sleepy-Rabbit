@@ -15,6 +15,8 @@ extension View {
 }
 #endif
 
+
+
 struct NewTaskView: View {
     @EnvironmentObject var settings: UserSettings
     
@@ -150,9 +152,7 @@ struct NewTaskView: View {
                 }
                 
             }
-            .onTapGesture {
-                self.hideKeyboard()
-            }
+            
             .navigationTitle(Text("New Task"))
             .navigationBarTitleDisplayMode(.large)
             .alert(isPresented: $shouldShowValidationAlert, content: { () -> Alert in
@@ -173,6 +173,7 @@ struct NewTaskView: View {
                 }
             }
         }
+        
     }
         func canOpenURL(_ string: String?) -> Bool {
             var formatterString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
