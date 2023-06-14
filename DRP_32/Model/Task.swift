@@ -17,4 +17,5 @@ struct Task: Identifiable, Equatable, Codable{
     var detail = ""
     var referenceLinks: [String] = []
     var before = 5
+    var type = ""
 }

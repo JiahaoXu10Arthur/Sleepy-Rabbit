@@ -103,28 +103,28 @@ class UserSettings: ObservableObject {
            let tasks5 = try? JSONDecoder().decode([Task].self, from: data5) {
             wakeUpTasks = tasks5
         } else {
-            wakeUpTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+            wakeUpTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Wake Up"), Task(title: "Stretch", hour: 0, minute: 15, type: "Wake Up"), Task(title: "Breathe", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Wake Up"), Task(title: "Read a Book", hour: 2, minute: 0, type: "Wake Up"), Task(title: "Write Down a To-Do List", hour: 0, minute: 20, type: "Wake Up")]
         }
         
         if let data6 = UserDefaults.standard.data(forKey: "bedTimeTasks"),
            let tasks6 = try? JSONDecoder().decode([Task].self, from: data6) {
             bedTimeTasks = tasks6
         } else {
-            bedTimeTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+            bedTimeTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Bedtime"), Task(title: "Stretch", hour: 0, minute: 15, type: "Bedtime"), Task(title: "Breathe", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Bedtime"), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20, type: "Bedtime")]
         }
         
         if let data7 = UserDefaults.standard.data(forKey: "wakeUpRoutine"),
            let tasks7 = try? JSONDecoder().decode([Task].self, from: data7) {
             wakeUpRoutine = tasks7
         } else {
-            wakeUpRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+            wakeUpRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Wake Up"), Task(title: "Stretch", hour: 0, minute: 15, type: "Wake Up"), Task(title: "Breathe", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Wake Up"), Task(title: "Read a Book", hour: 2, minute: 0, type: "Wake Up"), Task(title: "Write Down a To-Do List", hour: 0, minute: 20, type: "Wake Up")]
         }
         
         if let data8 = UserDefaults.standard.data(forKey: "bedTimeRoutine"),
            let tasks8 = try? JSONDecoder().decode([Task].self, from: data8) {
             bedTimeRoutine = tasks8
         } else {
-            bedTimeRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+            bedTimeRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Bedtime"), Task(title: "Stretch", hour: 0, minute: 15, type: "Bedtime"), Task(title: "Breathe", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Bedtime"), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20, type: "Bedtime")]
         }
     
         

@@ -22,7 +22,7 @@ struct WakeUpRoutineView: View {
                     Text("Wake Up Time: \(formatTime(_:settings.wakeHour)) : \(formatTime(_:settings.wakeMinute))")
                     List {
                         ForEach(tasks) { task in
-                            WakeUpTaskCell(task: task)
+                            TaskCellView(task: task)
                         }
                         .onMove(perform: moveRow)
                         .onDelete(perform: deleteRow)

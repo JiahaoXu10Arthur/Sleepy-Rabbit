@@ -14,29 +14,29 @@ struct CellDetailView: View {
     var body: some View {
         
         ScrollView {
-
-
-                    VStack(alignment: .leading) {
-                        Text(task.title)
-                            .font(.title)
-
-
-                        HStack {
-                            Text("Begin: \(formatTime(_:task.startHour))")
-                            Spacer()
-                            
-                        }
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-
-
-                        Divider()
-
-
-                        
-                    }
-                    .padding()
+            VStack(alignment: .leading) {                Text(task.title)
+                    .font(.title)
+                
+                Text("\(task.type) Routine")
+                    .font(.subheadline)
+                
+                
+                HStack {
+                    Text("Duration: \(formatTime(_:task.hour)) : \(formatTime(_:task.minute))")
+                    Spacer()
+                    
                 }
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                
+                
+                Divider()
+                
+                
+                
+            }
+            .padding()
+        }
         .navigationTitle("Routine Detail")
         
     }
@@ -48,7 +48,7 @@ struct CellDetailView: View {
 
 struct CellDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let task = Task(title: "Take a Warm Bath", hour: 0, minute: 30)
+        let task = Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Bedtime")
         CellDetailView(task: .constant(task))
             .environmentObject(UserSettings.shared)
     }

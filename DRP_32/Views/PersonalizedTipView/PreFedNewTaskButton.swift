@@ -170,7 +170,7 @@ struct PreFedNewTaskButton: View {
     func updateTask(task: Task) -> Task {
         updateStart(hour: task.hour, minute: task.minute)
         
-        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail, referenceLinks: task.referenceLinks, before: task.before)
+        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail, referenceLinks: task.referenceLinks, before: task.before, type: "Bedtime")
         
         return task
     }
@@ -188,7 +188,7 @@ struct PreFedNewTaskButton: View {
     }
     
     func updateTask2(task: Task) -> Task {
-        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail, referenceLinks: task.referenceLinks)
+        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail, referenceLinks: task.referenceLinks, type: "Wake Up")
         updateStart2(hour: task.hour, minute: task.minute)
         
         return task
