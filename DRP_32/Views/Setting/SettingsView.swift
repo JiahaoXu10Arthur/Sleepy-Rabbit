@@ -62,7 +62,7 @@ struct SettingsView: View {
                             .font(.title2)
                         Spacer()
                         Button(action: {
-                            showBedtime.toggle()
+                            showWakeUp.toggle()
                         }) {
                             Image(systemName: "info.circle")
                                 .font(.title2)
@@ -116,6 +116,9 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showBedtime) {
                 BedTimeRoutineView()
+            }
+            .sheet(isPresented: $showWakeUp) {
+                WakeUpRoutineView()
             }
         
             

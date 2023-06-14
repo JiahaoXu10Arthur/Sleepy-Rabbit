@@ -29,6 +29,7 @@ struct BedTimeRoutineView: View {
                         .onMove(perform: moveRow)
                         .onDelete(perform: deleteRow)
                     }
+                    Text("Bedtime: \(formatTime(_:settings.bedHour)) : \(formatTime(_:settings.bedMinute))")
                 }
                 
             }
@@ -57,6 +58,11 @@ struct BedTimeRoutineView: View {
             NewTaskView(selectedType: "Bedtime", isPresented: $isPresented)
                 
         }
+    }
+    
+    func formatTime(_ time: Int) -> String {
+        let hourString = String(format: "%02d", time)
+        return hourString
     }
     private func deleteRow(at indexSet: IndexSet) {
         settings.bedTimeRoutine.remove(atOffsets: indexSet)

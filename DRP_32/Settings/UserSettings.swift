@@ -23,12 +23,27 @@ class UserSettings: ObservableObject {
     @Published var wakeHour: Int = 0
     @Published var wakeMinute: Int = 0
     
-    @Published var bedTimeRoutine: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+    @Published var bedTimeRoutine: [Task] {
+        didSet {
+            saveBedTimeRoutine()
+        }
+    }
     
-    @Published var wakeUpRoutine: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
-    
-    @Published var bedTimeTasks: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
-    @Published var wakeUpTasks: [Task] = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+    @Published var wakeUpRoutine: [Task] {
+        didSet {
+            saveWakeUpRoutine()
+        }
+    }
+    @Published var bedTimeTasks: [Task] {
+        didSet {
+            saveBedTimeTasks()
+        }
+    }
+    @Published var wakeUpTasks: [Task] {
+        didSet {
+            saveWakeUpTasks()
+        }
+    }
     
     @Published var bedTimeChosenTasks: [Task] {
         didSet {
@@ -83,9 +98,64 @@ class UserSettings: ObservableObject {
         } else {
             allowNotification = false
         }
+        
+        if let data5 = UserDefaults.standard.data(forKey: "wakeUpTasks"),
+           let tasks5 = try? JSONDecoder().decode([Task].self, from: data5) {
+            wakeUpTasks = tasks5
+        } else {
+            wakeUpTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+        }
+        
+        if let data6 = UserDefaults.standard.data(forKey: "bedTimeTasks"),
+           let tasks6 = try? JSONDecoder().decode([Task].self, from: data6) {
+            bedTimeTasks = tasks6
+        } else {
+            bedTimeTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+        }
+        
+        if let data7 = UserDefaults.standard.data(forKey: "wakeUpRoutine"),
+           let tasks7 = try? JSONDecoder().decode([Task].self, from: data7) {
+            wakeUpRoutine = tasks7
+        } else {
+            wakeUpRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+        }
+        
+        if let data8 = UserDefaults.standard.data(forKey: "bedTimeRoutine"),
+           let tasks8 = try? JSONDecoder().decode([Task].self, from: data8) {
+            bedTimeRoutine = tasks8
+        } else {
+            bedTimeRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30), Task(title: "Listen to Music", hour: 1, minute: 0), Task(title: "Stretch", hour: 0, minute: 15), Task(title: "Breathe", hour: 0, minute: 30), Task(title: "Practice Meditation", hour: 1, minute: 30), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20)]
+        }
     
         
     }
+    
+    private func saveBedTimeRoutine() {
+        if let data = try? JSONEncoder().encode(bedTimeRoutine) {
+            UserDefaults.standard.set(data, forKey: "bedTimeRoutine")
+        }
+    }
+    
+    private func saveWakeUpRoutine() {
+        if let data = try? JSONEncoder().encode(wakeUpRoutine) {
+            UserDefaults.standard.set(data, forKey: "wakeUpRoutine")
+        }
+    }
+    
+    private func saveBedTimeTasks() {
+        if let data = try? JSONEncoder().encode(bedTimeTasks) {
+            UserDefaults.standard.set(data, forKey: "bedTimeTasks")
+        }
+    }
+    
+    
+    private func saveWakeUpTasks() {
+        if let data = try? JSONEncoder().encode(wakeUpTasks) {
+            UserDefaults.standard.set(data, forKey: "wakeUpTasks")
+        }
+    }
+    
+    
     private func saveTasks() {
             if let data = try? JSONEncoder().encode(bedTimeChosenTasks) {
                 UserDefaults.standard.set(data, forKey: "chosenTasks")

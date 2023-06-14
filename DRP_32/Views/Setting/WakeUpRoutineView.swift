@@ -19,6 +19,7 @@ struct WakeUpRoutineView: View {
             Form{
                 
                 Section(header: Text(" a set of habits or motions that you go through when you wake up")) {
+                    Text("Wake Up Time: \(formatTime(_:settings.wakeHour)) : \(formatTime(_:settings.wakeMinute))")
                     List {
                         ForEach(tasks) { task in
                             WakeUpTaskCell(task: task)
@@ -51,6 +52,11 @@ struct WakeUpRoutineView: View {
         }
         
         
+    }
+    
+    func formatTime(_ time: Int) -> String {
+        let hourString = String(format: "%02d", time)
+        return hourString
     }
     private func deleteRow(at indexSet: IndexSet) {
         settings.wakeUpRoutine.remove(atOffsets: indexSet)
