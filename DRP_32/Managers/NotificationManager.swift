@@ -62,13 +62,21 @@ class NotificationManager: ObservableObject {
       }
     }
   }
+    func formatTime(_ time: Int) -> String {
+        let hourString = String(format: "%02d", time)
+        return hourString
+    }
   
   // 1
   func scheduleNotification(task: Tasked) {
     // 2
     let content = UNMutableNotificationContent()
     content.title = task.name
-    content.body = "Gentle reminder for your task!"
+      
+    let a = "Duration: \(task.hour) hours \(task.minute) minutes\n"
+    let b = "@ \(_:formatTime(task.startHour)):\(_:formatTime(task.startMinute)) (\(task.before) minutes left)"
+    
+    content.body = a+b
 
     // 3
     var trigger: UNNotificationTrigger?

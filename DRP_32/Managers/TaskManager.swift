@@ -35,17 +35,22 @@ import Foundation
 class TaskAdaptor {
   static let shared = TaskAdaptor()
   
-  func addNewTask(task: Task) {
-    // 秒数加3为演示用
-    let date = Calendar.current.date(bySettingHour: task.startHour, minute: task.startMinute, second: Calendar.current.component(.second, from: Date()) + 3, of: Date())
-    let reminder = Reminder(date: date, reminderType: .calendar, repeats: true)
-    let t = Tasked(id: task.id.uuidString, name: task.title, reminderEnabled: true, reminder: reminder)
-    TaskManager.shared.save(task: t)
-
-  }
+    func addNewTask(task: Task) {
+        // 秒数加3为演示用
+        
+        let date = Calendar.current.date(bySettingHour: task.startHour, minute: task.startMinute, second: 0, of: Date())
+        
+        if let date = date {
+            let d = Calendar.current.date(byAdding: .minute, value: -5, to: date)
+            
+            let reminder = Reminder(date: d, reminderType: .calendar, repeats: true)
+            let t = Tasked(id: task.id.uuidString, name: task.title, reminderEnabled: true, reminder: reminder, hour: task.startHour, minute: task.startMinute, startHour: task.startHour, startMinute: task.startMinute, before: task.before)
+            TaskManager.shared.save(task: t)
+        }
+    }
   
   func remove(task: Task) {
-    let t = Tasked(id: task.id.uuidString, name: task.title, reminderEnabled: true, reminder: Reminder())
+      let t = Tasked(id: task.id.uuidString, name: task.title, reminderEnabled: true, reminder: Reminder(), hour: task.startHour, minute: task.startMinute, startHour: task.startHour, startMinute: task.startMinute, before: task.before)
     TaskManager.shared.remove(task: t)
   }
 }
@@ -75,15 +80,7 @@ class TaskManager: ObservableObject {
   func loadTasks() {
     self.tasks = taskPersistenceManager.loadTasks()
   }
-
-  func addNewTask(_ taskName: String, _ reminder: Reminder?) {
-    if let reminder = reminder {
-      save(task: Tasked(name: taskName, reminderEnabled: true, reminder: reminder))
-    } else {
-      save(task: Tasked(name: taskName, reminderEnabled: false, reminder: Reminder()))
-    }
-  }
-
+    
   func remove(task: Tasked) {
     tasks.removeAll {
       $0.id == task.id
