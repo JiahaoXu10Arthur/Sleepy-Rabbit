@@ -14,13 +14,7 @@ struct CellDetailView: View {
     var body: some View {
         
         VStack {
-            Button {
-                task.title = "New Title"
             
-            } label: {
-                Text("\(task.title)")
-            }
-
             
         }
         .navigationTitle("Routine Detail")
