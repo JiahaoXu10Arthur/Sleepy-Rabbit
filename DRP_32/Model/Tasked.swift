@@ -38,6 +38,11 @@ struct Tasked: Identifiable, Codable {
   var completed = false
   var reminderEnabled = false
   var reminder: Reminder
+  var hour: Int
+  var minute: Int
+  var startHour: Int
+  var startMinute: Int
+  var before = 5
 }
 
 enum ReminderType: Int, CaseIterable, Identifiable, Codable {
