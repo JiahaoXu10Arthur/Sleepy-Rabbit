@@ -70,6 +70,12 @@ struct StartButtonView: View {
         }
         
         settings.wakeUpChosenTasks = tasks
+        let notifications = tasks + settings.bedTimeChosenTasks
+        for task in notifications {
+            TaskAdaptor.shared.addNewTask(task: task)
+            print(task.title)
+        
+        }
     }
     
     func updateStart(hour: Int, minute: Int) {

@@ -10,17 +10,18 @@ import SwiftUI
 struct TaskCellView: View {
     @EnvironmentObject var settings: UserSettings
     
-    var task: Task
+    @State var task: Task
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(task.title)
-                Text("\(task.hour)h \(task.minute)m")
-                    .multilineTextAlignment(.leading)
+        NavigationLink(destination: CellDetailView(task: $task)) {
+            HStack {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(task.title)
+                    Text("\(task.hour)h \(task.minute)m")
+                        .multilineTextAlignment(.leading)
+                }
             }
         }
-        
         
 
     }

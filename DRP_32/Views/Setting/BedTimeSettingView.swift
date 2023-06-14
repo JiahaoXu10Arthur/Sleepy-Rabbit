@@ -14,7 +14,7 @@ struct BedTimeSettingView: View {
     // Default time
     
     @AppStorage("sleepHour") var sleepHour = 0
-    @AppStorage("sleepMinute") var sleepMinute = 0
+    @AppStorage("sleepMinute") var sleepMinute = 15
     @AppStorage("wakeHour") var wakeHour = 0
     @AppStorage("wakeMinute") var wakeMinute = 0
     @AppStorage("bedHour") var bedHour = 0
@@ -40,7 +40,7 @@ struct BedTimeSettingView: View {
         }
         bedHour = hour
         bedMinute = minute
-        return "\(formatTime(_:bedHour)): \(formatTime(_:bedMinute))"
+        return "\(formatTime(_:bedHour)) : \(formatTime(_:bedMinute))"
     }
     
     /*
@@ -48,52 +48,83 @@ struct BedTimeSettingView: View {
      */
     var body: some View {
         NavigationView{
-            VStack {
-                Form {
-                    Section{
-                        Text("Bed Time \(sleepingTime)")
-                            .font(.title3)
+            
+            Form {
+                Section(footer: Text("Automatic Calculation")){
+                    HStack {
+                        ColoredIconView(imageName: "bed.double", foregroundColor: .white, backgroundColor: .blue)
+                            .font(.title)
                         
-                        HStack {
-                            VStack {
-                                Text("Wake up \nTime")
-                                    .font(.title3)
-                            }
-                            WakeUpTimePickerView(wakeHour: $wakeHour, wakeMinute: $wakeMinute)
-                                .frame(height: 100.0)
-                            
+                        
+                        VStack {
+                            Text("\(sleepingTime)")
+                                .font(.title)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                            Text("Bed Time")
+                                .font(.callout)
+                                .multilineTextAlignment(.center)
                         }
-                        HStack {
-                            VStack {
-                                Text("Sleeping\nDuration")
-                                    .font(.title3)
-                            }
-                            CustomDatePicker(sleepHour: $sleepHour, sleepMinute: $sleepMinute)
-                                .frame(height: 100.0)
+                        .padding(.leading)
+                        
+                    }
+                    
+                }
+                Section{
+                    HStack {
+                        ColoredIconView(imageName: "sun.and.horizon", foregroundColor: .white, backgroundColor: .orange)
+                            .font(.title)
+                        Text("Wake Up Time")
+                            .font(.title)
+                            .padding(.leading)
+                    }
+                    WakeUpTimePickerView(wakeHour: $wakeHour, wakeMinute: $wakeMinute)
+                        .frame(height: 120.0)
+                }
+                Section(footer: Text("Suggested sleep duration: 7-9 hours per night")){
+                    
+                    HStack {
+                        ColoredIconView(imageName: "moon.zzz", foregroundColor: .white, backgroundColor: .purple)
+                            .font(.largeTitle)
+                        Text("Sleeping Duration")
+                            .font(.title)
+                            .padding(.leading)
+                    }
+                   
+                    VStack {
+                        CustomDatePicker(sleepHour: $sleepHour, sleepMinute: $sleepMinute)
+                            .frame(height: 120.0)
+                        if sleepHour * 60 + sleepMinute < 15 {
+                            Text("Sleep duration should be at least 15 minutes")
+                                .font(.caption)
+                                .foregroundColor(.red)
+                                .padding(.top, 10)
                         }
                     }
-                }
-                .navigationTitle(Text("Sleep Time Setting")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.black))
-                
-                .navigationBarTitleDisplayMode(.large)
-                .navigationViewStyle(StackNavigationViewStyle())
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .onDisappear {
-                    settings.bedHour = bedHour
-                    settings.bedMinute = bedMinute
-                    settings.sleepHour = sleepHour
-                    settings.sleepMinute = sleepMinute
-                    settings.wakeHour = wakeHour
-                    settings.wakeMinute = wakeMinute
                 }
                 
                 
             }
+            .navigationTitle(Text("Sleep Time Setting")
+                .font(.title3)
+                .fontWeight(.bold)
+                .foregroundColor(Color.black))
+            
+            .navigationBarTitleDisplayMode(.large)
+            .navigationViewStyle(StackNavigationViewStyle())
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onDisappear {
+                settings.bedHour = bedHour
+                settings.bedMinute = bedMinute
+                settings.sleepHour = sleepHour
+                settings.sleepMinute = sleepMinute
+                settings.wakeHour = wakeHour
+                settings.wakeMinute = wakeMinute
+            }
+            
         }
     }
+    
 }
 
 struct BedTimeSettingView_Previews: PreviewProvider {

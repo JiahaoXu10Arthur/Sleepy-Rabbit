@@ -14,30 +14,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Notifications settings")) {
-                    Toggle(isOn: $showNotificationSettingsUI) {
-                        HStack {
-                            Image(systemName: "bell.badge.circle.fill")
-                                .foregroundColor(Color.blue)
-                                .font(.title)
-                                .accentColor(.pink)
-                            
-                            Text("Notification:")
-                                .font(.title2)
-                        }
-                        
-                    }
-                    .onChange(of: showNotificationSettingsUI) { value in
-                        if value {
-                            NotificationManager.shared.requestAuthorization{ granted in
-                                // 2
-                                if granted {
-                                    showNotificationSettingsUI = true
-                                }
-                            }
-                        }
-                    }
-                }
+                
                 Section(header: Text("Sleep Time Setting")) {
                     NavigationLink(destination: BedTimeSettingView()) {
                         HStack {
@@ -55,7 +32,7 @@ struct SettingsView: View {
                     NavigationLink(destination: BedTimeRoutineView()) {
                         HStack {
                             Image(systemName: "sunset.circle.fill")
-                                
+                            
                                 .foregroundColor(Color(red: 25/255, green: 25/255, blue: 112/255, opacity: 1.0))
                                 .font(.title)
                                 .accentColor(.pink)
@@ -76,6 +53,30 @@ struct SettingsView: View {
                         }
                     }
                 }
+                Section(header: Text("Notifications settings")) {
+                    Button(action: {
+                        NotificationManager.shared.requestAuthorization{ granted in
+                            
+                            // 2
+                            if granted {
+                                
+                                showNotificationSettingsUI = true
+                            }
+                        }
+                        
+                    }) {
+                        HStack {
+                            Image(systemName: "bell.badge.circle.fill")
+                                .foregroundColor(Color.blue)
+                                .font(.title)
+                                .accentColor(.pink)
+                            
+                            Text("Enable Notification")
+                                .font(.title2)
+                        }
+                        
+                    }
+                }
                 
             }
             .navigationBarTitle("Settings")
@@ -83,12 +84,12 @@ struct SettingsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     DoneButton(isSetting: $isSetting)
-                
+                    
                 }
-            
+                
             }
-        
-        
+            
+            
         }
     }
 }

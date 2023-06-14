@@ -48,6 +48,12 @@ class UserSettings: ObservableObject {
         }
     }
     
+    @Published var allowNotification: Bool {
+        didSet {
+            saveNotification()
+        }
+    }
+    
     init() {
         self.username = UserDefaults.standard.object(forKey: "username") as? String ?? ""
         if let data = UserDefaults.standard.data(forKey: "chosenTasks"),
@@ -71,6 +77,14 @@ class UserSettings: ObservableObject {
             showOnboarding = true
         }
         
+        if let data4 = UserDefaults.standard.data(forKey: "allowNotification"),
+           let notification = try? JSONDecoder().decode(Bool.self, from: data4) {
+            allowNotification = notification
+        } else {
+            allowNotification = false
+        }
+    
+        
     }
     private func saveTasks() {
             if let data = try? JSONEncoder().encode(bedTimeChosenTasks) {
@@ -86,6 +100,12 @@ class UserSettings: ObservableObject {
     private func saveShow() {
         if let data = try? JSONEncoder().encode(showOnboarding) {
             UserDefaults.standard.set(data, forKey: "showOnboarding")
+        }
+    }
+    
+    private func saveNotification() {
+        if let data = try? JSONEncoder().encode(allowNotification) {
+            UserDefaults.standard.set(data, forKey: "allowNotification")
         }
     }
 

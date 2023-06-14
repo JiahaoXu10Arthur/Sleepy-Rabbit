@@ -24,6 +24,8 @@
 		539663C12A2F5EF6007187BF /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 539663C02A2F5EF6007187BF /* tasks.json */; };
 		53C34D5E2A3886BE00405939 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C34D5D2A3886BE00405939 /* SettingsView.swift */; };
 		53C34D632A38A02200405939 /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C34D622A38A02200405939 /* DoneButton.swift */; };
+		53C34D652A39089D00405939 /* ColoredIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C34D642A39089D00405939 /* ColoredIconView.swift */; };
+		53D9F2402A39250600849E93 /* CellDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F23F2A39250600849E93 /* CellDetailView.swift */; };
 		53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3A2A28D6FC005A0829 /* TipList.swift */; };
 		53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DEDE3C2A28D712005A0829 /* TipDetail.swift */; };
 		53E054EE2A2FC016001E8340 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E054ED2A2FC016001E8340 /* OnboardingView.swift */; };
@@ -101,6 +103,8 @@
 		539663C02A2F5EF6007187BF /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
 		53C34D5D2A3886BE00405939 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		53C34D622A38A02200405939 /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
+		53C34D642A39089D00405939 /* ColoredIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredIconView.swift; sourceTree = "<group>"; };
+		53D9F23F2A39250600849E93 /* CellDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDetailView.swift; sourceTree = "<group>"; };
 		53DEDE3A2A28D6FC005A0829 /* TipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipList.swift; sourceTree = "<group>"; };
 		53DEDE3C2A28D712005A0829 /* TipDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDetail.swift; sourceTree = "<group>"; };
 		53E054ED2A2FC016001E8340 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -324,6 +328,8 @@
 				538D90872A292D5200A80AAB /* Community */,
 				EECEE48E2A24F9F400249177 /* ContentView.swift */,
 				EE28A9A62A27982C00736689 /* BottomNavigator */,
+				53C34D642A39089D00405939 /* ColoredIconView.swift */,
+				53D9F23F2A39250600849E93 /* CellDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 				53E054EE2A2FC016001E8340 /* OnboardingView.swift in Sources */,
 				53E0550F2A32003E001E8340 /* BedTimeRoutineView.swift in Sources */,
 				53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */,
+				53D9F2402A39250600849E93 /* CellDetailView.swift in Sources */,
 				53E054F72A2FDC9F001E8340 /* WakeUpTimePickerView.swift in Sources */,
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
 				53E055162A326816001E8340 /* WakeUpTaskCell.swift in Sources */,
@@ -582,6 +589,7 @@
 				53DEDE3D2A28D712005A0829 /* TipDetail.swift in Sources */,
 				EE9B1DE32A2F5346003AAC1C /* QueryView.swift in Sources */,
 				538B38F52A2F54B300A8DBED /* Task.swift in Sources */,
+				53C34D652A39089D00405939 /* ColoredIconView.swift in Sources */,
 				53E054F52A2FD883001E8340 /* CustomDatePicker.swift in Sources */,
 				538995792A37574E00071A3E /* LocationManager.swift in Sources */,
 				EE28A9AE2A28B4F300736689 /* Todo.swift in Sources */,
