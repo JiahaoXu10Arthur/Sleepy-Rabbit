@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct FirstView: View {
-    @State var showNotificationSettingsUI = false
-    var task = Task(title: "Write Down a To-Do List", hour: 0, minute: 20, startHour: 15, startMinute: 03)
     @Binding var currentTab: Int
+    
+    @State var showNotificationSettingsUI = false
     
     var body: some View {
         
@@ -23,6 +23,29 @@ struct FirstView: View {
                     .padding(.bottom)
                 Text("Try to set up your first routine!")
                     .padding()
+                Button(action: {
+                    NotificationManager.shared.requestAuthorization{ granted in
+                        
+                        // 2
+                        if granted {
+                            
+                            showNotificationSettingsUI = true
+                        }
+                    }
+                    
+                }) {
+                    HStack {
+                        Image(systemName: "bell.badge.circle.fill")
+                            .foregroundColor(Color.blue)
+                            .font(.title)
+                            .accentColor(.pink)
+                        
+                        Text("Enable Notification")
+                            .font(.title2)
+                    }
+                    
+                }
+                
                 Button(action: {
                     currentTab += 1
                 }) {

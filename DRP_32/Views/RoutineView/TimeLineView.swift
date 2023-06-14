@@ -69,14 +69,16 @@ struct TimeLineView: View {
                         isAdding.toggle()
                     
                     }) {
-                        Image(systemName: "plus")
+                        Image(systemName: "plus.circle")
+                            .font(.title)
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         isSetting.toggle()
                     }) {
-                        Image(systemName: "gearshape")
+                        Image(systemName: "gear")
+                            .font(.title)
                     }
                 }
             }
@@ -84,7 +86,7 @@ struct TimeLineView: View {
                 SettingsView(isSetting: $isSetting)
             }
             .fullScreenCover(isPresented: $isAdding) {
-                NewTaskView(isPresented: $isAdding)
+                NewTaskView(selectedType: "Bedtime",isPresented: $isAdding)
             }
             
             

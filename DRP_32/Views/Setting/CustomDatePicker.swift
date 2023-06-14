@@ -89,6 +89,10 @@ struct CustomDatePicker: View {
         }
         
         settings.wakeUpChosenTasks = tasks
+        let notifications = tasks + settings.bedTimeChosenTasks
+        for task in notifications {
+            TaskAdaptor.shared.addNewTask(task: task)
+        }
     }
     
     func updateStart(hour: Int, minute: Int) {

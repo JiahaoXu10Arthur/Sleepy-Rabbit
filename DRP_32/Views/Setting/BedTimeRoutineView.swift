@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BedTimeRoutineView: View {
     @EnvironmentObject var settings: UserSettings
+    @State private var editMode = EditMode.inactive
     var tasks: [Task] {
         settings.bedTimeRoutine
     }
@@ -16,32 +17,45 @@ struct BedTimeRoutineView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(tasks) { task in
-                    TaskCellView(task: task)
+            Form{
+                
+                Section(footer: Text("A bedtime routine is a set of activities you perform in the same order before going to bed.")) {
+                    List {
+                        ForEach(tasks) { task in
+                            TaskCellView(task: task)
+                            
+                        }
+                        
+                        .onMove(perform: moveRow)
+                        .onDelete(perform: deleteRow)
+                    }
                 }
-                .onMove(perform: moveRow)
-                .onDelete(perform: deleteRow)
+                
             }
             
-            .navigationTitle(Text("BedTime Routine"))
+            .navigationTitle(Text("Bedtime Routine"))
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
+                        .font(.title3)
+                
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         isPresented.toggle()
                     }) {
-                        Image(systemName: "plus")
+                        Image(systemName: "plus.circle")
+                            .font(.title3)
+                    
                     }
                 }
-            
             }
+            .environment(\.editMode, $editMode)
         }
         .sheet(isPresented: $isPresented) {
-            NewTaskView(isPresented: $isPresented)
+            NewTaskView(selectedType: "Bedtime", isPresented: $isPresented)
+                
         }
     }
     private func deleteRow(at indexSet: IndexSet) {

@@ -34,19 +34,31 @@ struct NewTaskButton: View {
     @State private var startHour = 0
     @State private var startMinute = 0
     
+    @Binding var errorMessage: String
+    @Binding var shouldShowValidationAlert: Bool
+    
+    
+    
     var body: some View {
         Button (action: {
-            let task = Task(title: title, hour: hour, minute: minute, startHour: taskHour, startMinute: taskMinute, detail: detail)
-            if selectedType == "BedTime" {
-                settings.bedTimeRoutine.append(task)
-                settings.bedTimeChosenTasks.append(task)
+            if title.isEmpty {
+                errorMessage = "Task Title Required"
+                shouldShowValidationAlert.toggle()
+            } else if hour * 60 + minute < 15 {
+                errorMessage = "Task Duration Should Be Longer Than 15 Minutes"
+                shouldShowValidationAlert.toggle()
             } else {
-                settings.wakeUpRoutine.append(task)
-                settings.wakeUpChosenTasks.append(task)
+                let task = Task(title: title, hour: hour, minute: minute, startHour: taskHour, startMinute: taskMinute, detail: detail)
+                if selectedType == "Bedtime" {
+                    settings.bedTimeRoutine.append(task)
+                    settings.bedTimeChosenTasks.append(task)
+                } else {
+                    settings.wakeUpRoutine.append(task)
+                    settings.wakeUpChosenTasks.append(task)
+                }
+                isPresented.toggle()
+                update()
             }
-            isPresented.toggle()
-            update()
-        
         }) {
             HStack(spacing: 8) {
                 Text("Save")
@@ -56,6 +68,7 @@ struct NewTaskButton: View {
 
         
     }
+    
     func update() {
         settings.bedTimeChosenTasks = settings.bedTimeChosenTasks.filter { $0.title != "Sleep"}
         
@@ -127,7 +140,7 @@ struct NewTaskButton: View {
 
 struct NewTaskButton_Previews: PreviewProvider {
     static var previews: some View {
-        NewTaskButton(title: .constant("Test"), hour: .constant(0), minute: .constant(0), taskHour: .constant(-1), taskMinute: .constant(-1), isAutomatic: .constant(true), selectedType: .constant("BedTime"), detail: .constant("Test"), isPresented: .constant(true))
+        NewTaskButton(title: .constant("Test"), hour: .constant(0), minute: .constant(0), taskHour: .constant(-1), taskMinute: .constant(-1), isAutomatic: .constant(true), selectedType: .constant("BedTime"), detail: .constant("Test"), isPresented: .constant(true), errorMessage: .constant("Test"), shouldShowValidationAlert: .constant(true))
             .environmentObject(UserSettings.shared)
     
     }

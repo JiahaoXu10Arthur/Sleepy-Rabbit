@@ -28,17 +28,20 @@ struct WakeUpRoutineView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
+                        .font(.title3)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         isPresented.toggle()
                     }) {
-                        Image(systemName: "plus")
+                        Image(systemName: "plus.circle")
+                            .font(.title3)
                     }
                 }
             }
             .sheet(isPresented: $isPresented) {
-                NewTaskView(isPresented: $isPresented)
+                NewTaskView(selectedType: "Wake Up", isPresented: $isPresented)
+                    
             }
         }
         
