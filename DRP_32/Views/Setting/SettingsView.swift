@@ -10,6 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     @Binding var isSetting: Bool
     @State var showNotificationSettingsUI = false
+    @State var showBedtime = false
+    @State var showWakeUp = false
     @EnvironmentObject var settings: UserSettings
     var body: some View {
         NavigationView {
@@ -29,29 +31,44 @@ struct SettingsView: View {
                     }
                 }
                 Section(header: Text("Rearrange Routine")) {
-                    NavigationLink(destination: BedTimeRoutineView()) {
-                        HStack {
-                            Image(systemName: "sunset.circle.fill")
-                            
-                                .foregroundColor(Color(red: 25/255, green: 25/255, blue: 112/255, opacity: 1.0))
-                                .font(.title)
-                                .accentColor(.pink)
-                            
-                            Text("BedTime Tasks")
+                    
+                    HStack {
+                        Image(systemName: "sunset.circle.fill")
+                        
+                            .foregroundColor(Color(red: 25/255, green: 25/255, blue: 112/255, opacity: 1.0))
+                            .font(.title)
+                            .accentColor(.pink)
+                        
+                        Text("Bedtime Tasks")
+                            .font(.title2)
+                        Spacer()
+                        Button(action: {
+                            showBedtime.toggle()
+                        }) {
+                            Image(systemName: "info.circle")
+                                .font(.title2)
+                        }
+                        
+                    }
+                    
+                    
+                    HStack {
+                        Image(systemName: "sunrise.circle.fill")
+                            .foregroundColor(Color.orange)
+                            .font(.title)
+                            .accentColor(.pink)
+                        
+                        Text("Wake Up Tasks")
+                            .font(.title2)
+                        Spacer()
+                        Button(action: {
+                            showBedtime.toggle()
+                        }) {
+                            Image(systemName: "info.circle")
                                 .font(.title2)
                         }
                     }
-                    NavigationLink(destination: WakeUpRoutineView()) {
-                        HStack {
-                            Image(systemName: "sunrise.circle.fill")
-                                .foregroundColor(Color.orange)
-                                .font(.title)
-                                .accentColor(.pink)
-                            
-                            Text("WakeUp Tasks")
-                                .font(.title2)
-                        }
-                    }
+                    
                 }
                 Section(header: Text("Notifications settings")) {
                     Button(action: {
@@ -97,6 +114,10 @@ struct SettingsView: View {
                 }
                 
             }
+            .sheet(isPresented: $showBedtime) {
+                BedTimeRoutineView()
+            }
+        
             
             
         }
