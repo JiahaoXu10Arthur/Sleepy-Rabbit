@@ -14,7 +14,7 @@ struct RandomTipView: View {
     @Binding var isLoading: Bool
     
     var tip: Tip {
-        modelData.showingTip ?? Tip(title: "Failed", tag: ":(", detail: "Please check your internet connection.")
+        modelData.showingTip ?? Tip(title: "White Noise for Better Sleep", tag: "#sleep#chatGPT", detail: "Playing white noise in the background during sleep can help drown out external noise and create a calming environment. This can lead to better sleep quality and more restful nights.")
     }
 
     var body: some View {

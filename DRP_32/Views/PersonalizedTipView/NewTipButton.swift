@@ -16,12 +16,12 @@ struct NewTipButton: View {
     var body: some View {
         HStack {
             Button(action: {
-                isDisabled = true
+//                isDisabled = true
                 isLoading = true
-                modelData.getAndCacheAiTip() { _ in
-                    DispatchQueue.main.async {
-                        isDisabled = false
-                    }
+                modelData.getAndCacheAiTipSync() { _ in
+//                    DispatchQueue.main.async {
+//                        isDisabled = false
+//                    }
                 }
                 isLoading = false
             }) {
@@ -29,7 +29,7 @@ struct NewTipButton: View {
                     .font(.title2)
                     .frame(maxWidth: .infinity)
             }
-            .disabled(isDisabled)
+            .disabled(isDisabled || modelData.isDisabled)
             .padding()
             .background(Color.blue)
             .foregroundColor(.white)
@@ -43,7 +43,7 @@ struct NewTipButton: View {
                     .font(.title2)
                     .frame(maxWidth: .infinity)
             }
-            .disabled(isDisabled)
+            .disabled(isDisabled || modelData.isDisabled)
             .padding()
             .background(Color.blue)
             .foregroundColor(.white)
@@ -65,5 +65,6 @@ struct NewTipButton: View {
 struct NewTipButton_Previews: PreviewProvider {
     static var previews: some View {
         NewTipButton(isLoading: .constant(false))
+            .environmentObject(ModelData.shared)
     }
 }

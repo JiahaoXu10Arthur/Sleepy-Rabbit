@@ -22,6 +22,10 @@ class ModelData: ObservableObject {
     @Published var tipOfTheDay: Tip?
     
     @Published var isLoading: Bool = true
+    
+    @Published var isDisabled: Bool = true
+    
+    private var lock = NSLock()
 
     private init() {
         fetchTipofTheDay() { _ in}
@@ -31,12 +35,13 @@ class ModelData: ObservableObject {
 //                self.isLoading = false
 //            }
 //        }
-        getAndCacheAiTip() { _ in
+        getAndCacheAiTipSync() { _ in
 //            DispatchQueue.main.async {
 //                self.isLoading = false
 //            }
         }
         self.isLoading = false
+        self.isDisabled = false
     } // Prevents others from creating their own instances
 
     func formatTime(_ time: Int) -> String {
@@ -119,6 +124,86 @@ class ModelData: ObservableObject {
             completion(nil)
         }
     }
+    
+//    func getAndCacheAiTipSync(completion: @escaping (Tip?) -> Void) {
+//        lock.lock()
+//        var cachedTips: [Tip] = load("CachedTips.json")
+//        if cachedTips.count > 0 {
+//            self.showingTip = cachedTips[0]
+//            cachedTips.remove(at: 0)
+//            if cachedTips.count == 0 {
+//                self.isDisabled = true
+//            }
+//            self.write(data: cachedTips, "CachedTips.json")
+//            lock.unlock()
+//            getAnAiTip1() { tip in
+//                self.lock.lock()
+//                cachedTips = self.load("CachedTips.json")
+//                if let tip = tip {
+//                    //                    cachedTips.remove(at: 0)
+//                    cachedTips.append(tip)
+//                } else {
+//                    cachedTips.append(Tip(title: "White Noise for Better Sleep", tag: "#sleep#chatGPT", detail: "Playing white noise in the background during sleep can help drown out external noise and create a calming environment. This can lead to better sleep quality and more restful nights."))
+//                }
+//                self.write(data: cachedTips, "CachedTips.json")
+//                self.isDisabled = false
+//                completion(tip)
+//                self.lock.unlock()
+//            }
+//        } else {
+//            print("CachedTips JSON file empty")
+//            self.lock.unlock()
+//            completion(nil)
+//        }
+//    }
+    
+    func getAndCacheAiTipSync(completion: @escaping (Tip?) -> Void) {
+        lock.lock()
+        var cachedTips: [Tip] = load("CachedTips.json")
+        
+        // If there are no tips left, or if we're already fetching a tip, return immediately
+        if cachedTips.isEmpty || self.isDisabled {
+            lock.unlock()
+            completion(nil)
+            return
+        }
+        
+        // Remove the first tip and show it
+        self.showingTip = cachedTips.removeFirst()
+        self.write(data: cachedTips, "CachedTips.json")
+        
+        // Set isDisabled to true to prevent fetching more tips until this fetch is finished
+        if cachedTips.count == 0 {
+            self.isDisabled = true
+        }
+        
+        lock.unlock()
+        
+        // Fetch a new tip to replenish the cache
+        getAnAiTip1() { tip in
+            self.lock.lock()
+            
+            // Load the latest cache
+            cachedTips = self.load("CachedTips.json")
+            
+            // Append a new tip to the cache
+            if let tip = tip {
+                cachedTips.append(tip)
+            } else {
+                cachedTips.append(Tip(title: "White Noise for Better Sleep", tag: "#sleep#chatGPT", detail: "Playing white noise in the background during sleep can help drown out external noise and create a calming environment. This can lead to better sleep quality and more restful nights."))
+            }
+            
+            self.write(data: cachedTips, "CachedTips.json")
+            
+            // Fetching is done, allow more tips to be fetched
+            self.isDisabled = false
+            self.lock.unlock()
+            
+            // Return the tip
+            completion(self.showingTip)
+        }
+    }
+
     
     func getQueryTip(retries: Int = 3, query: Query, completion: @escaping (Tip?) -> Void) {
         guard retries > 0 else {
