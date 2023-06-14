@@ -36,8 +36,14 @@ struct NewTaskButton: View {
     
     @Binding var errorMessage: String
     @Binding var shouldShowValidationAlert: Bool
+    @Binding var referenceLinks: [(String, Bool)]
     
+    @State private var urls: [String] = []
+    @Binding var notify: String
+    @State private var before = 5
     
+    let befores = ["At time of event", "5 minutes before", "10 minutes before", "15 minutes before", "20 minutes before", "30 minutes before", "1 hour before"]
+
     
     var body: some View {
         Button (action: {
@@ -48,7 +54,9 @@ struct NewTaskButton: View {
                 errorMessage = "Task Duration Should Be Longer Than 15 Minutes"
                 shouldShowValidationAlert.toggle()
             } else {
-                let task = Task(title: title, hour: hour, minute: minute, startHour: taskHour, startMinute: taskMinute, detail: detail)
+                createNewReference()
+                generateBefore()
+                let task = Task(title: title, hour: hour, minute: minute, startHour: taskHour, startMinute: taskMinute, detail: detail, referenceLinks: urls, before: before)
                 if selectedType == "Bedtime" {
                     settings.bedTimeRoutine.append(task)
                     settings.bedTimeChosenTasks.append(task)
@@ -68,6 +76,41 @@ struct NewTaskButton: View {
 
         
     }
+    
+    func canOpenURL(_ string: String?) -> Bool {
+        var formatterString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
+        formatterString = formatterString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        guard let urlString = formatterString, let url = URL(string: urlString) else { return false }
+        return UIApplication.shared.canOpenURL(url)
+    }
+    
+    func createNewReference() {
+        for link in referenceLinks where canOpenURL(link.0) {
+            urls.append(link.0)
+        }
+    }
+    
+    func generateBefore() {
+        switch notify {
+        case "At time of event":
+            before = 0
+        case "5 minutes before":
+            before = 5
+        case "10 minutes before":
+            before = 10
+        case "15 minutes before":
+            before = 15
+        case "20 minutes before":
+            before = 20
+        case "30 minutes before":
+            before = 30
+        case "1 hour before":
+            before = 60
+        default:
+            before = 5
+        }
+    }
+    
     
     func update() {
         settings.bedTimeChosenTasks = settings.bedTimeChosenTasks.filter { $0.title != "Sleep"}
@@ -113,7 +156,7 @@ struct NewTaskButton: View {
     func updateTask(task: Task) -> Task {
         updateStart(hour: task.hour, minute: task.minute)
         
-        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail)
+        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail, referenceLinks: task.referenceLinks, before: task.before)
         
         return task
     }
@@ -131,7 +174,7 @@ struct NewTaskButton: View {
     }
     
     func updateTask2(task: Task) -> Task {
-        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail)
+        let task = Task(title: task.title, hour: task.hour, minute: task.minute, startHour: startHour, startMinute: startMinute, detail: task.detail, referenceLinks: task.referenceLinks)
         updateStart2(hour: task.hour, minute: task.minute)
         
         return task
@@ -140,7 +183,7 @@ struct NewTaskButton: View {
 
 struct NewTaskButton_Previews: PreviewProvider {
     static var previews: some View {
-        NewTaskButton(title: .constant("Test"), hour: .constant(0), minute: .constant(0), taskHour: .constant(-1), taskMinute: .constant(-1), isAutomatic: .constant(true), selectedType: .constant("BedTime"), detail: .constant("Test"), isPresented: .constant(true), errorMessage: .constant("Test"), shouldShowValidationAlert: .constant(true))
+        NewTaskButton(title: .constant("Test"), hour: .constant(0), minute: .constant(0), taskHour: .constant(-1), taskMinute: .constant(-1), isAutomatic: .constant(true), selectedType: .constant("BedTime"), detail: .constant("Test"), isPresented: .constant(true), errorMessage: .constant("Test"), shouldShowValidationAlert: .constant(true), referenceLinks: .constant([]), notify: .constant(""))
             .environmentObject(UserSettings.shared)
     
     }

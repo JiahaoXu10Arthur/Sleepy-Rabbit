@@ -35,6 +35,12 @@ struct NewTaskView: View {
     
     @State private var errorMessage = ""
     @State private var shouldShowValidationAlert = false
+    @State var referenceLinks: [(String, Bool)] = []
+    @State private var deleteIndex = 9999
+    
+    @State private var notify = "5 minutes before"
+    
+    let befores = ["At time of event", "5 minutes before", "10 minutes before", "15 minutes before", "20 minutes before", "30 minutes before", "1 hour before"]
     
     var body: some View {
         NavigationView {
@@ -44,16 +50,17 @@ struct NewTaskView: View {
                         TextField("Enter your task title", text: $title)
                     }.onTapGesture {
                         self.hideKeyboard()
-                      }
+                    }
                 Section(header: Text("Routine Category")
                     .font(.headline)) {
                         Picker(selection: $selectedType, label: EmptyView()) {
                             ForEach(types, id: \.self) {
                                 Text($0)
-                                    .font(.title3)
+                                    .font(.title)
                                 
                             }
                         }
+                        .font(.title)
                         .pickerStyle(.segmented)
                     }
                 Section(header: Text("Task Duration")
@@ -71,29 +78,77 @@ struct NewTaskView: View {
                                     .padding(.top, 10)
                             }
                         }
+                        HStack {
+                            HStack {
+                                Image(systemName: "bell.badge")
+                                
+                                Text("Remind me")
+                            }
+                            Spacer()
+                            
+                            Picker("Remind me", selection: $notify) {
+                                                   ForEach(befores, id: \.self) {
+                                                       Text($0)
+                                                   }
+                                               }
+                            .labelsHidden()
+                        }
+                        
                     }
-//                Section(header: Text("Start Time")
-//                    .font(.headline), footer: Text("If you don't want to set a start time, leave it as automatic.")) {
-//                        VStack {
-//                            Toggle("Automatic Arrangement", isOn: $isAutomatic)
-//                                .padding()
-//                                .font(.title3)
-//                            if (!isAutomatic) {
-//                                HStack {
-//                                    CustomDatePicker(sleepHour: $startHour, sleepMinute: $startMinute)
-//                                        .frame(height: 100.0)
-//                                }
-//                                .transition(.slide)
-//                            }
-//                        }
-//                    }
+                                //                Section(header: Text("Start Time")
+                //                    .font(.headline), footer: Text("If you don't want to set a start time, leave it as automatic.")) {
+                //                        VStack {
+                //                            Toggle("Automatic Arrangement", isOn: $isAutomatic)
+                //                                .padding()
+                //                                .font(.title3)
+                //                            if (!isAutomatic) {
+                //                                HStack {
+                //                                    CustomDatePicker(sleepHour: $startHour, sleepMinute: $startMinute)
+                //                                        .frame(height: 100.0)
+                //                                }
+                //                                .transition(.slide)
+                //                            }
+                //                        }
+                //                    }
                 
                 Section(header: Text("Detail")
                     .font(.headline)) {
                         TextField("Enter your task detail", text: $detail)
                     }.onTapGesture {
                         self.hideKeyboard()
-                      }
+                    }
+                Section(header: Text("Reference Links")
+                    .font(.headline)) {
+                    
+                    ForEach(0..<referenceLinks.count + 1, id: \.self) { linkIndex in
+                        Group {
+                            if linkIndex == self.referenceLinks.count {
+                                Button(action: {
+                                    self.referenceLinks.insert(("", false), at: 0)
+                                }) {
+                                    Text("Add Reference")
+                                }
+                                .deleteDisabled(true)
+                            } else {
+                                TextField("Enter reference link...", text: Binding<String>(get: {
+                                    self.referenceLinks[linkIndex].0
+                                }, set: {
+                                    self.referenceLinks[linkIndex].0 = $0
+                                }))
+                                
+                                .foregroundColor(self.canOpenURL(self.referenceLinks[linkIndex].0) ? nil : .red)
+                                .disabled(self.referenceLinks[linkIndex].1)
+                                
+                            }
+                        }
+                    }
+                    .onDelete { indices in
+                        // Perform deletion logic here
+                        self.referenceLinks.remove(atOffsets: indices)
+                    }
+                    
+                }
+                
             }
             .navigationTitle(Text("New Task"))
             .navigationBarTitleDisplayMode(.large)
@@ -104,26 +159,29 @@ struct NewTaskView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         isPresented.toggle()
-                    
+                        
                     }) {
                         Text("Cancel")
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NewTaskButton(title: $title, hour: $hour, minute: $minute, taskHour: $startHour, taskMinute: $startMinute, isAutomatic: $isAutomatic, selectedType: $selectedType, detail: $detail, isPresented: $isPresented, errorMessage: $errorMessage, shouldShowValidationAlert: $shouldShowValidationAlert)
-                
+                    NewTaskButton(title: $title, hour: $hour, minute: $minute, taskHour: $startHour, taskMinute: $startMinute, isAutomatic: $isAutomatic, selectedType: $selectedType, detail: $detail, isPresented: $isPresented, errorMessage: $errorMessage, shouldShowValidationAlert: $shouldShowValidationAlert, referenceLinks: $referenceLinks, notify: $notify)
+                    
                 }
             }
-        
         }
-        
-        
     }
-}
-
-struct NewTaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewTaskView(selectedType: "Bedtime",isPresented: .constant(true))
-            .environmentObject(UserSettings.shared)
+        func canOpenURL(_ string: String?) -> Bool {
+            var formatterString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
+            formatterString = formatterString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            guard let urlString = formatterString, let url = URL(string: urlString) else { return false }
+            return UIApplication.shared.canOpenURL(url)
+        }
     }
-}
+    
+    struct NewTaskView_Previews: PreviewProvider {
+        static var previews: some View {
+            NewTaskView(selectedType: "Bedtime",isPresented: .constant(true))
+                .environmentObject(UserSettings.shared)
+        }
+    }

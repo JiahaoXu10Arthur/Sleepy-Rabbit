@@ -15,5 +15,6 @@ struct Task: Identifiable, Equatable, Codable{
     var startHour = -1
     var startMinute = -1
     var detail = ""
-
+    var referenceLinks: [String] = []
+    var before = 5
 }
