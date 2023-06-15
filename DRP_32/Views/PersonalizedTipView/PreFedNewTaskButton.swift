@@ -61,7 +61,7 @@ struct PreFedNewTaskButton: View {
                 let task = Task(title: title, hour: hour, minute: minute, startHour: taskHour, startMinute: taskMinute, detail: detail, referenceLinks: urls, before: before)
                 if selectedType == "Bedtime" {
                     settings.bedTimeRoutine.append(task)
-                    settings.bedTimeRoutine.append(task)
+                    settings.bedTimeChosenTasks.append(task)
                 } else {
                     settings.wakeUpRoutine.append(task)
                     settings.wakeUpChosenTasks.append(task)
@@ -134,7 +134,7 @@ struct PreFedNewTaskButton: View {
         startMinute = bedMinute
         var tasks: [Task] = [sleep]
         
-        for task in settings.bedTimeRoutine.reversed() {
+        for task in settings.bedTimeRoutine {
             tasks.append(updateTask(task: task))
         }
         
@@ -149,15 +149,7 @@ struct PreFedNewTaskButton: View {
             tasks.append(updateTask2(task: task))
         }
         
-        settings.wakeUpRoutine = tasks
-
-        
-        TaskAdaptor.shared.removeAll()
-
-        let notifications = tasks + settings.bedTimeRoutine
-        for task in notifications {
-            TaskAdaptor.shared.addNewTask(task: task)
-        }
+        settings.wakeUpChosenTasks = tasks
     }
     
     func updateStart(hour: Int, minute: Int) {

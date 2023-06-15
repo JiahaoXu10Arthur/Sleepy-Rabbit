@@ -34,11 +34,12 @@ struct DoneButton: View {
     
     func update() {
         settings.bedTimeChosenTasks = settings.bedTimeChosenTasks.filter { $0.title != "Sleep"}
-        
+        settings.sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute, detail: settings.sleep.detail, referenceLinks: settings.sleep.referenceLinks, before: settings.sleep.before, type: settings.sleep.type)
+
         let sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute)
         startHour = bedHour
         startMinute = bedMinute
-        var tasks: [Task] = [sleep]
+        var tasks: [Task] = []
         
         for task in settings.bedTimeRoutine.reversed() {
             tasks.append(updateTask(task: task))
@@ -58,7 +59,8 @@ struct DoneButton: View {
         settings.wakeUpChosenTasks = tasks
         
         TaskAdaptor.shared.removeAll()
-
+        tasks.append(sleep)
+        
         let notifications = tasks + settings.bedTimeChosenTasks
         for task in notifications {
             TaskAdaptor.shared.addNewTask(task: task)

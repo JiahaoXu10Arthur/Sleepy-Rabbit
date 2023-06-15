@@ -57,6 +57,11 @@ struct TimeLineView: View {
                         }
                         taskCell(task)
                     }
+                    if nextDay(settings.sleep) {
+                        sleepCell(settings.sleep)
+                    }
+                    taskCell(settings.sleep)
+
                 }
             }
             .padding()
