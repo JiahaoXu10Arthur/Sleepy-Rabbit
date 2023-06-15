@@ -30,7 +30,7 @@ struct RandomTipView: View {
                     } else {
                         HStack {
                             Text(tip.title)
-                                .font(.largeTitle)
+                                .font(.title)
                                 .fontWeight(.bold)
                                 .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(.primary)
@@ -39,7 +39,7 @@ struct RandomTipView: View {
                         }
                         
                         Text(tip.tag)
-                            .font(.title)
+                            .font(.title2)
                             .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(.secondary)
                         
