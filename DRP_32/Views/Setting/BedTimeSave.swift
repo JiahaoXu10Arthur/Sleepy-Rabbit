@@ -43,7 +43,7 @@ struct BedTimeSave: View {
             tasks.append(updateTask(task: task))
         }
         
-        settings.bedTimeRoutine = tasks.reversed()
+        settings.bedTimeChosenTasks = tasks
         
         startHour = wakeHour
         startMinute = wakeMinute
@@ -54,17 +54,16 @@ struct BedTimeSave: View {
             tasks.append(updateTask2(task: task))
         }
         
-        settings.wakeUpRoutine = tasks
-        tasks.append(settings.sleep)
+        settings.wakeUpChosenTasks = tasks
         
         TaskAdaptor.shared.removeAll()
-
-        let notifications = tasks + settings.bedTimeRoutine
+        tasks.append(settings.sleep)
+        
+        let notifications = tasks + settings.bedTimeChosenTasks
         for task in notifications {
             TaskAdaptor.shared.addNewTask(task: task)
         }
     }
-    
     func updateStart(hour: Int, minute: Int) {
         startHour = startHour - hour
         startMinute = startMinute - minute

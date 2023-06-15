@@ -16,7 +16,6 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            StartButtonView()
             BottomNavigator()
         }
         .fullScreenCover(isPresented: $settings.showOnboarding, content: {

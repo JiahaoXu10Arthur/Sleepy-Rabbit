@@ -50,26 +50,7 @@ struct BedTimeSettingView: View {
         NavigationView{
             
             Form {
-                Section(footer: Text("Automatic Calculated")){
-                    HStack {
-                        ColoredIconView(imageName: "bed.double", foregroundColor: .white, backgroundColor: .blue)
-                            .font(.title)
-                        
-                        
-                        VStack {
-                            Text("\(sleepingTime)")
-                                .font(.title)
-                                .bold()
-                                .multilineTextAlignment(.center)
-                            Text("Bed Time")
-                                .font(.callout)
-                                .multilineTextAlignment(.center)
-                        }
-                        .padding(.leading)
-                        
-                    }
-                    
-                }
+                
                 Section{
                     HStack {
                         ColoredIconView(imageName: "sun.and.horizon", foregroundColor: .white, backgroundColor: .orange)
@@ -101,6 +82,26 @@ struct BedTimeSettingView: View {
                                 .padding(.top, 10)
                         }
                     }
+                }
+                Section(header: Text("Automatic Calculated")){
+                    HStack {
+                        ColoredIconView(imageName: "bed.double", foregroundColor: .white, backgroundColor: .blue)
+                            .font(.title)
+                        
+                        
+                        VStack {
+                            Text("\(sleepingTime)")
+                                .font(.title)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                            Text("Go to bed at")
+                                .font(.callout)
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding(.leading)
+                        
+                    }
+                    
                 }
                 
                 

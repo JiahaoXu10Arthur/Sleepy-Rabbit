@@ -94,10 +94,8 @@ struct BedTimeRoutineView: View {
     }
     
     func update() {
-        settings.bedTimeChosenTasks = settings.bedTimeChosenTasks.filter { $0.title != "Sleep"}
         settings.sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute, detail: settings.sleep.detail, referenceLinks: settings.sleep.referenceLinks, before: settings.sleep.before, type: settings.sleep.type)
 
-        let sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute)
         startHour = bedHour
         startMinute = bedMinute
         var tasks: [Task] = []
@@ -120,7 +118,7 @@ struct BedTimeRoutineView: View {
         settings.wakeUpChosenTasks = tasks
         
         TaskAdaptor.shared.removeAll()
-        tasks.append(sleep)
+        tasks.append(settings.sleep)
         
         let notifications = tasks + settings.bedTimeChosenTasks
         for task in notifications {
