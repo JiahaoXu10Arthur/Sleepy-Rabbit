@@ -73,10 +73,15 @@ struct TipRow: View {
                 
                 TipDetail(tip: tip)
                     .transition(.moveAndFade)
+                Divider()
             }
             
-            Divider()
-            AddToRoutineButton(tip: tip)
+
+            HStack {
+                AddToRoutineButton(tip: tip)
+                    .padding(10)
+                Spacer()
+            }
                 
         
         

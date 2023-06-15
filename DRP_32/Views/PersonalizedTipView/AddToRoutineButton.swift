@@ -24,6 +24,7 @@ struct AddToRoutineButton: View {
             .padding()
             .background(
                 Capsule().strokeBorder(Color.black, lineWidth: 1.25)
+                    .frame(height: 30)
             )
         }
         .fullScreenCover(isPresented: $isAdding) {
