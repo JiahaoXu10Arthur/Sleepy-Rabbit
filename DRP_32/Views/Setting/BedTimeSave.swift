@@ -1,13 +1,13 @@
 //
-//  StartButtonView.swift
+//  BedTimeSave.swift
 //  DRP_32
 //
-//  Created by paulodybala on 06/06/2023.
+//  Created by paulodybala on 15/06/2023.
 //
 
 import SwiftUI
 
-struct StartButtonView: View {
+struct BedTimeSave: View {
     @EnvironmentObject var settings: UserSettings
     
     var bedHour: Int { settings.bedHour }
@@ -17,60 +17,49 @@ struct StartButtonView: View {
     var wakeHour: Int { settings.wakeHour }
     var wakeMinute: Int { settings.wakeMinute }
     
-    
-    
+    @Binding var isSetting: Bool
+ 
     @State private var startHour = 0
     @State private var startMinute = 0
     
     var body: some View {
         Button(action: {
-            settings.showOnboarding = false
             update()
+            isSetting.toggle()
         }) {
-            HStack(spacing: 8) {
-                Text("Get Started")
-                
-                Image(systemName: "arrow.right.circle")
-                    .imageScale(.large)
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
-            .background(
-                Capsule().strokeBorder(Color.black, lineWidth: 1.25)
-            )
-            
-            
+            Text("Save")
         } //: BUTTON
         
     }
     
     func update() {
-        settings.bedTimeChosenTasks = settings.bedTimeChosenTasks.filter { $0.title != "Sleep"}
-        
-        let sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute)
+        settings.sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute, detail: settings.sleep.detail, referenceLinks: settings.sleep.referenceLinks, before: settings.sleep.before, type: settings.sleep.type)
+
         startHour = bedHour
         startMinute = bedMinute
-        var tasks: [Task] = [sleep]
+        var tasks: [Task] = []
         
         for task in settings.bedTimeRoutine.reversed() {
             tasks.append(updateTask(task: task))
         }
         
-        settings.bedTimeChosenTasks = tasks
+        settings.bedTimeRoutine = tasks.reversed()
         
         startHour = wakeHour
         startMinute = wakeMinute
-        
-       
-        
+
         tasks = []
         
         for task in settings.wakeUpRoutine {
             tasks.append(updateTask2(task: task))
         }
+        
+        settings.wakeUpRoutine = tasks
+        tasks.append(settings.sleep)
+        
         TaskAdaptor.shared.removeAll()
-        settings.wakeUpChosenTasks = tasks
-        let notifications = tasks + settings.bedTimeChosenTasks
+
+        let notifications = tasks + settings.bedTimeRoutine
         for task in notifications {
             TaskAdaptor.shared.addNewTask(task: task)
         }
@@ -116,11 +105,8 @@ struct StartButtonView: View {
     }
 }
 
-struct StartButtonView_Previews: PreviewProvider {
+struct BedTimeSave_Previews: PreviewProvider {
     static var previews: some View {
-        StartButtonView()
-            .previewLayout(.sizeThatFits)
-            .environmentObject(UserSettings.shared)
-        
+        BedTimeSave(isSetting: .constant(true))
     }
 }

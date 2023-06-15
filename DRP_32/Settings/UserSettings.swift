@@ -51,8 +51,6 @@ class UserSettings: ObservableObject {
         }
     }
     
-    
-    
     @Published var bedTimeRoutine: [Task] {
         didSet {
             saveBedTimeRoutine()
@@ -99,6 +97,12 @@ class UserSettings: ObservableObject {
         }
     }
     
+    @Published var sleep: Task {
+        didSet {
+           saveSleep()
+        }
+    }
+    
     init() {
         self.username = UserDefaults.standard.object(forKey: "username") as? String ?? ""
         self.bedHour = UserDefaults.standard.integer(forKey: "bedHour")
@@ -107,6 +111,12 @@ class UserSettings: ObservableObject {
         self.sleepMinute = UserDefaults.standard.integer(forKey: "sleepMinute")
         self.wakeHour = UserDefaults.standard.integer(forKey: "wakeHour")
         self.wakeMinute = UserDefaults.standard.integer(forKey: "wakeMinute")
+        if let data = UserDefaults.standard.data(forKey: "sleep"),
+           let tasks = try? JSONDecoder().decode(Task.self, from: data) {
+            sleep = tasks
+        } else {
+            sleep = Task(title: "Sleep", hour: 0, minute: 15, startHour: 0, startMinute: 0, detail: "", referenceLinks: [], before: 5, type: "Sleep")
+        }
         if let data = UserDefaults.standard.data(forKey: "chosenTasks"),
            let tasks = try? JSONDecoder().decode([Task].self, from: data) {
             bedTimeChosenTasks = tasks
@@ -139,31 +149,37 @@ class UserSettings: ObservableObject {
            let tasks5 = try? JSONDecoder().decode([Task].self, from: data5) {
             wakeUpTasks = tasks5
         } else {
-            wakeUpTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Wake Up"), Task(title: "Stretch", hour: 0, minute: 15, type: "Wake Up"), Task(title: "Breathe", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Wake Up"), Task(title: "Read a Book", hour: 2, minute: 0, type: "Wake Up"), Task(title: "Write Down a To-Do List", hour: 0, minute: 20, type: "Wake Up")]
+            wakeUpTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Wake Up"), Task(title: "Stretch", hour: 0, minute: 15, type: "Wake Up"), Task(title: "Breathe", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Wake Up"), Task(title: "Read a Book", hour: 2, minute: 0, type: "Wake Up"), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, type: "Wake Up")]
         }
         
         if let data6 = UserDefaults.standard.data(forKey: "bedTimeTasks"),
            let tasks6 = try? JSONDecoder().decode([Task].self, from: data6) {
             bedTimeTasks = tasks6
         } else {
-            bedTimeTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Bedtime"), Task(title: "Stretch", hour: 0, minute: 15, type: "Bedtime"), Task(title: "Breathe", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Bedtime"), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20, type: "Bedtime")]
+            bedTimeTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Bedtime"), Task(title: "Stretch", hour: 0, minute: 15, type: "Bedtime"), Task(title: "Breathe", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Bedtime"), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, type: "Bedtime")]
         }
         
         if let data7 = UserDefaults.standard.data(forKey: "wakeUpRoutine"),
            let tasks7 = try? JSONDecoder().decode([Task].self, from: data7) {
             wakeUpRoutine = tasks7
         } else {
-            wakeUpRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Wake Up"), Task(title: "Stretch", hour: 0, minute: 15, type: "Wake Up"), Task(title: "Breathe", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Wake Up"), Task(title: "Read a Book", hour: 2, minute: 0, type: "Wake Up"), Task(title: "Write Down a To-Do List", hour: 0, minute: 20, type: "Wake Up")]
+            wakeUpRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Wake Up"), Task(title: "Stretch", hour: 0, minute: 15, type: "Wake Up"), Task(title: "Breathe", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Wake Up"), Task(title: "Read a Book", hour: 2, minute: 0, type: "Wake Up"), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, type: "Wake Up")]
         }
         
         if let data8 = UserDefaults.standard.data(forKey: "bedTimeRoutine"),
            let tasks8 = try? JSONDecoder().decode([Task].self, from: data8) {
             bedTimeRoutine = tasks8
         } else {
-            bedTimeRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Bedtime"), Task(title: "Stretch", hour: 0, minute: 15, type: "Bedtime"), Task(title: "Breathe", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Bedtime"), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 20, type: "Bedtime")]
+            bedTimeRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Bedtime"), Task(title: "Stretch", hour: 0, minute: 15, type: "Bedtime"), Task(title: "Breathe", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Bedtime"), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, type: "Bedtime")]
         }
         
         
+    }
+    
+    private func saveSleep() {
+        if let data = try? JSONEncoder().encode(sleep) {
+            UserDefaults.standard.set(data, forKey: "sleep")
+        }
     }
     
     private func saveBedTimeRoutine() {

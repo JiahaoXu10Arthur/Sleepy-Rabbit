@@ -9,26 +9,28 @@ import SwiftUI
 
 struct CellDetailView: View {
     @EnvironmentObject var settings: UserSettings
-    @Binding var task: Task
-    
+    @State var task: Task
+    @State var isPresented = false
     var body: some View {
         
         ScrollView {
-            VStack(alignment: .leading) {                Text(task.title)
+            VStack(alignment: .leading) {
+                Text(task.title)
                     .font(.largeTitle)
                 
                 HStack {
                     if task.type == "Bedtime" {
+                        Image(systemName: "moon.haze.fill")
+                            .foregroundColor(.blue)
+                        Text("\(task.type) Routine")
+                    } else if task.type == "Sleep" {
                         Image(systemName: "moon.zzz.fill")
                             .foregroundColor(.blue)
                     } else {
                         Image(systemName: "sun.max.fill")
                             .foregroundColor(.orange)
+                        Text("\(task.type) Routine")
                     }
-                    
-                    
-                    Text("\(task.type) Routine")
-                        
                 }
                 .font(.subheadline)
                 
@@ -36,14 +38,38 @@ struct CellDetailView: View {
                 
                 Divider()
                 
-                HStack {
-                    Text("Duration: \(formatTime(_:task.hour)) : \(formatTime(_:task.minute))")
-                    Spacer()
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Duration:\n\(formatTime(_:task.hour))hr \(formatTime(_:task.minute))min")
+                        
+                    }
+                    .font(.headline)
+                    .foregroundColor(.secondary)
                     
+                    if task.startHour > -1 {
+                        HStack {
+                            Text("\(formatTime(_:task.startHour)):\(formatTime(_:task.startMinute))")
+                            Text(" - ")
+                            createTime()
+                        }
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                    
+                    }
                 }
-                .font(.headline)
-                .foregroundColor(.secondary)
                 
+                
+                Divider()
+                
+                HStack {
+                    Text("Remind me:")
+                        .font(.title2)
+                    Spacer()
+                    Text("")
+                    Text(generateBefore())
+                        .font(.title3)
+                        .foregroundColor(.secondary)
+                }
                 
                 Divider()
                 
@@ -77,18 +103,67 @@ struct CellDetailView: View {
             .padding()
         }
         .navigationTitle("Routine Detail")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    isPresented.toggle()
+                    
+                }) {
+                    Text("Edit")
+                }
+            }
+        }
+        .sheet(isPresented: $isPresented) {
+            EditCellDetail(task: $task, isPresented: $isPresented)
+        }
         
     }
     func formatTime(_ time: Int) -> String {
         let hourString = String(format: "%02d", time)
         return hourString
     }
+    
+    func generateBefore() -> String{
+        switch task.before {
+        case 0:
+            return "At time of event"
+        case 5:
+            return "5 minutes before"
+        case 10:
+            return "10 minutes before"
+        case 15:
+            return "15 minutes before"
+        case 20:
+            return "20 minutes before"
+        case 30:
+            return "30 minutes before"
+        case 60:
+            return "1 hour before"
+        default:
+            return "5 minutes before"
+        }
+    }
+    
+    func createTime() -> some View {
+        var hour = task.startHour + task.hour
+        var minute = task.startMinute + task.minute
+        if minute > 59 {
+            minute = minute - 60
+            hour += 1
+        }
+        if hour > 23 {
+            hour = hour - 24
+        }
+        return Text("\(formatTime(_:hour)):\(formatTime(_:minute))")
+    }
+    
+   
 }
 
 struct CellDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let task = Task(title: "Take a Warm Bath", hour: 0, minute: 30, detail: "This is detail", referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime")
-        CellDetailView(task: .constant(task))
+        let task = Task(title: "Take a Warm Bath", hour: 0, minute: 30, startHour: 21, startMinute: 30, detail: "This is detail", referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime")
+        CellDetailView(task: task)
             .environmentObject(UserSettings.shared)
     }
 }

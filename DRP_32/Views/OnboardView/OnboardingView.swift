@@ -11,7 +11,7 @@ struct OnboardingView: View {
     @State var showNotificationSettingsUI = false
     @EnvironmentObject var settings: UserSettings
     
-    var task = Task(title: "Write Down a To-Do List", hour: 0, minute: 20, startHour: 14, startMinute: 56)
+    var task = Task(title: "Write Down a To-Do List", hour: 0, minute: 45, startHour: 14, startMinute: 45)
     @State private var currentTab = 0
     
     var viewList: [Any] = [FirstView.self, BedTimeSettingView.self, BedTimeRoutineView.self, WakeUpRoutineView.self, GetStartView.self]

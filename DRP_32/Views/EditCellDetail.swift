@@ -1,31 +1,20 @@
 //
-//  NewTaskView.swift
+//  EditCellDetail.swift
 //  DRP_32
 //
-//  Created by paulodybala on 09/06/2023.
+//  Created by paulodybala on 14/06/2023.
 //
 
 import SwiftUI
 
-#if canImport(UIKit)
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-#endif
-
-struct NewTaskView: View {
+struct EditCellDetail: View {
     @EnvironmentObject var settings: UserSettings
-    
+
     @State var title: String = ""
     @State var hour: Int = 0
     @State var minute: Int = 15
     @State var startHour: Int = -1
     @State var startMinute: Int = -1
-    
-    
-    @State var isAutomatic: Bool = true
     
     @State var selectedType: String
     let types = ["Bedtime", "Wake Up"]
@@ -40,7 +29,43 @@ struct NewTaskView: View {
     
     @State private var notify = "5 minutes before"
     
+    @Binding var task: Task
+    @State var orginal: Task
+    
+    
     let befores = ["At time of event", "5 minutes before", "10 minutes before", "15 minutes before", "20 minutes before", "30 minutes before", "1 hour before"]
+    
+    init(task: Binding<Task>, isPresented: Binding<Bool>) {
+        _title = State(initialValue: task.wrappedValue.title)
+        _detail = State(initialValue: task.wrappedValue.detail)
+        _selectedType = State(initialValue: task.wrappedValue.type)
+        _hour = State(initialValue: task.wrappedValue.hour)
+        _minute = State(initialValue: task.wrappedValue.minute)
+        _startHour = State(initialValue: task.wrappedValue.startHour)
+        _startMinute = State(initialValue: task.wrappedValue.startMinute)
+        _notify = State(initialValue: {switch task.wrappedValue.before {
+        case 0:
+            return "At time of event"
+        case 5:
+            return "5 minutes before"
+        case 10:
+            return "10 minutes before"
+        case 15:
+            return "15 minutes before"
+        case 20:
+            return "20 minutes before"
+        case 30:
+            return "30 minutes before"
+        case 60:
+            return "1 hour before"
+        default:
+            return "5 minutes before"
+        }}())
+        _referenceLinks = State(initialValue: {task.wrappedValue.referenceLinks.map {($0, true)}}())
+        _isPresented = isPresented
+        _task = task
+        _orginal = State(initialValue: task.wrappedValue)
+    }
     
     var body: some View {
         NavigationView {
@@ -82,7 +107,7 @@ struct NewTaskView: View {
                                     .font(.caption)
                                     .foregroundColor(.blue)
                                     .padding(.top, 10)
-                                
+                            
                             }
                         }
                         HStack {
@@ -94,30 +119,14 @@ struct NewTaskView: View {
                             Spacer()
                             
                             Picker("Remind me", selection: $notify) {
-                                ForEach(befores, id: \.self) {
-                                    Text($0)
-                                }
-                            }
+                                                   ForEach(befores, id: \.self) {
+                                                       Text($0)
+                                                   }
+                                               }
                             .labelsHidden()
                         }
                         
                     }
-                //                Section(header: Text("Start Time")
-                //                    .font(.headline), footer: Text("If you don't want to set a start time, leave it as automatic.")) {
-                //                        VStack {
-                //                            Toggle("Automatic Arrangement", isOn: $isAutomatic)
-                //                                .padding()
-                //                                .font(.title3)
-                //                            if (!isAutomatic) {
-                //                                HStack {
-                //                                    CustomDatePicker(sleepHour: $startHour, sleepMinute: $startMinute)
-                //                                        .frame(height: 100.0)
-                //                                }
-                //                                .transition(.slide)
-                //                            }
-                //                        }
-                //                    }
-                
                 Section(header: Text("Detail")
                     .font(.headline)) {
                         TextField("Enter your task detail", text: $detail)
@@ -126,39 +135,39 @@ struct NewTaskView: View {
                     }
                 Section(header: Text("Reference Links")
                     .font(.headline)) {
-                        
-                        ForEach(0..<referenceLinks.count + 1, id: \.self) { linkIndex in
-                            Group {
-                                if linkIndex == self.referenceLinks.count {
-                                    Button(action: {
-                                        self.referenceLinks.insert(("", false), at: 0)
-                                    }) {
-                                        Text("Add Reference")
-                                    }
-                                    .deleteDisabled(true)
-                                } else {
-                                    TextField("Enter reference link...", text: Binding<String>(get: {
-                                        self.referenceLinks[linkIndex].0
-                                    }, set: {
-                                        self.referenceLinks[linkIndex].0 = $0
-                                    }))
-                                    
-                                    .foregroundColor(self.canOpenURL(self.referenceLinks[linkIndex].0) ? nil : .red)
-                                    .disabled(self.referenceLinks[linkIndex].1)
-                                    
+                    
+                    ForEach(0..<referenceLinks.count + 1, id: \.self) { linkIndex in
+                        Group {
+                            if linkIndex == self.referenceLinks.count {
+                                Button(action: {
+                                    self.referenceLinks.insert(("", false), at: 0)
+                                }) {
+                                    Text("Add Reference")
                                 }
+                                .deleteDisabled(true)
+                            } else {
+                                TextField("Enter reference link...", text: Binding<String>(get: {
+                                    self.referenceLinks[linkIndex].0
+                                }, set: {
+                                    self.referenceLinks[linkIndex].0 = $0
+                                }))
+                                
+                                .foregroundColor(self.canOpenURL(self.referenceLinks[linkIndex].0) ? nil : .red)
+                                .disabled(self.referenceLinks[linkIndex].1)
+                                
                             }
                         }
-                        .onDelete { indices in
-                            // Perform deletion logic here
-                            self.referenceLinks.remove(atOffsets: indices)
-                        }
-                        
                     }
+                    .onDelete { indices in
+                        // Perform deletion logic here
+                        self.referenceLinks.remove(atOffsets: indices)
+                    }
+                    
+                }
                 
             }
             
-            .navigationTitle(Text("New Task"))
+            .navigationTitle(Text("Edit Task"))
             .navigationBarTitleDisplayMode(.large)
             .alert(isPresented: $shouldShowValidationAlert, content: { () -> Alert in
                 Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("Okay")))
@@ -173,24 +182,26 @@ struct NewTaskView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NewTaskButton(title: $title, hour: $hour, minute: $minute, taskHour: $startHour, taskMinute: $startMinute, isAutomatic: $isAutomatic, selectedType: $selectedType, detail: $detail, isPresented: $isPresented, errorMessage: $errorMessage, shouldShowValidationAlert: $shouldShowValidationAlert, referenceLinks: $referenceLinks, notify: $notify)
+                    EditDetailButtonView(title: $title, hour: $hour, minute: $minute, taskHour: $startHour, taskMinute: $startMinute, selectedType: $selectedType, detail: $detail, isPresented: $isPresented, errorMessage: $errorMessage, shouldShowValidationAlert: $shouldShowValidationAlert, referenceLinks: $referenceLinks, notify: $notify, task: $task, original: orginal)
                     
                 }
             }
         }
         
     }
-    func canOpenURL(_ string: String?) -> Bool {
-        var formatterString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
-        formatterString = formatterString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        guard let urlString = formatterString, let url = URL(string: urlString) else { return false }
-        return UIApplication.shared.canOpenURL(url)
-    }
+        func canOpenURL(_ string: String?) -> Bool {
+            var formatterString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
+            formatterString = formatterString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            guard let urlString = formatterString, let url = URL(string: urlString) else { return false }
+            return UIApplication.shared.canOpenURL(url)
+        }
+    
 }
 
-struct NewTaskView_Previews: PreviewProvider {
+struct EditCellDetail_Previews: PreviewProvider {
     static var previews: some View {
-        NewTaskView(selectedType: "Bedtime",isPresented: .constant(true))
+        let task = Task(title: "Take a Warm Bath", hour: 0, minute: 30, startHour: 21, startMinute: 30, detail: "This is detail", referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime")
+        EditCellDetail(task: .constant(task), isPresented: .constant(true))
             .environmentObject(UserSettings.shared)
     }
 }

@@ -69,7 +69,6 @@ class TaskManager: ObservableObject {
   }
 
   func save(task: Tasked) {
-      print("here")
     tasks.append(task)
     DispatchQueue.global().async {
       self.taskPersistenceManager.save(tasks: self.tasks)

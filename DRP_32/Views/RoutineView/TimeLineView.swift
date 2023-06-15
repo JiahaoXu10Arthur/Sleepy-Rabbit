@@ -120,23 +120,28 @@ struct TimeLineView: View {
         let offset = Double(hour) * (hourHeight)
         + Double(minute)/60 * hourHeight
         
-        return VStack(alignment: .leading) {
-            HStack {
-                Text("\(formatTime(_:hour)):\(formatTime(_:minute))   \(task.hour)h \(task.minute)m")
+        return
+        NavigationLink(destination: CellDetailView(task: task)) {
+            
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("\(formatTime(_:hour)):\(formatTime(_:minute))   \(task.hour)h \(task.minute)m")
+                        .foregroundColor(Color.black)
+                    
+                    Text(task.title).foregroundColor(Color.black).bold()
+                }
                 
-                Text(task.title).bold()
             }
             
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(4)
+            .frame(height: height, alignment: .top)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(.teal).opacity(0.5).border(.white, width: 1)
+            )
         }
         .font(.caption)
-        
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(4)
-        .frame(height: height, alignment: .top)
-        .background(
-            RoundedRectangle(cornerRadius: 8)
-                .fill(.teal).opacity(0.5).border(.white, width: 1)
-        )
         .offset(y: header)
         .padding(.trailing, 59)
         .offset(x: 57, y: offset)
@@ -149,23 +154,27 @@ struct TimeLineView: View {
         let duration = Double(task.hour) + Double(task.minute) / 60 - (24 - (Double(hour) + Double(minute) / 60))
         
         let height = Double(duration) * hourHeight
-        return VStack(alignment: .leading) {
-            HStack {
-                Text("\(formatTime(_:hour)):\(formatTime(_:minute))   \(task.hour)h \(task.minute)m")
-                    .font(.caption)
-                Text(task.title).bold()
+        return
+        NavigationLink(destination: CellDetailView(task: task)) {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("\(formatTime(_:hour)):\(formatTime(_:minute))   \(task.hour)h \(task.minute)m")
+                        .font(.caption)
+                        .foregroundColor(Color.black)
+                    Text(task.title).foregroundColor(Color.black).bold()
+                }
+                
             }
+            .font(.caption)
             
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(4)
+            .frame(height: height, alignment: .top)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(.teal).opacity(0.5)
+            )
         }
-        .font(.caption)
-        
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(4)
-        .frame(height: height, alignment: .top)
-        .background(
-            RoundedRectangle(cornerRadius: 8)
-                .fill(.teal).opacity(0.5)
-        )
         .offset(y: header)
         .padding(.trailing, 59)
         .offset(x: 57, y: 0)

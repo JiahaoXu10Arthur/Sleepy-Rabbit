@@ -10,10 +10,10 @@ import SwiftUI
 struct TaskCellView: View {
     @EnvironmentObject var settings: UserSettings
     
-    @State var task: Task
+    var task: Task
     
     var body: some View {
-        NavigationLink(destination: CellDetailView(task: $task)) {
+        NavigationLink(destination: CellDetailView(task: task)) {
             HStack {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(task.title)

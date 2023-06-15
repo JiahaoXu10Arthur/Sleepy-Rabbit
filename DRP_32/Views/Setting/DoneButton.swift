@@ -40,7 +40,7 @@ struct DoneButton: View {
         startMinute = bedMinute
         var tasks: [Task] = [sleep]
         
-        for task in settings.bedTimeRoutine {
+        for task in settings.bedTimeRoutine.reversed() {
             tasks.append(updateTask(task: task))
         }
         
@@ -48,9 +48,7 @@ struct DoneButton: View {
         
         startHour = wakeHour
         startMinute = wakeMinute
-        
-       
-        
+
         tasks = []
         
         for task in settings.wakeUpRoutine {

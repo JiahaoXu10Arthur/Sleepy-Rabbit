@@ -1,13 +1,13 @@
 //
-//  PreFedNewTaskButton.swift
+//  EditDetailButtonView.swift
 //  DRP_32
 //
-//  Created by 蒋伯源 on 2023/6/14.
+//  Created by paulodybala on 15/06/2023.
 //
 
 import SwiftUI
 
-struct PreFedNewTaskButton: View {
+struct EditDetailButtonView: View {
     @EnvironmentObject var settings: UserSettings
     
     @Binding var title: String
@@ -16,15 +16,11 @@ struct PreFedNewTaskButton: View {
     @Binding var taskHour: Int
     @Binding var taskMinute: Int
     
-    @Binding var isAutomatic: Bool
-    
     @Binding var selectedType: String
     
     @Binding var detail: String
     
     @Binding var isPresented: Bool
-    
-    @State var isShowingSheet: Bool = false
     
     var bedHour: Int { settings.bedHour }
     var bedMinute: Int { settings.bedMinute }
@@ -43,6 +39,8 @@ struct PreFedNewTaskButton: View {
     @State private var urls: [String] = []
     @Binding var notify: String
     @State private var before = 5
+    @Binding var task: Task
+    var original: Task
     
     let befores = ["At time of event", "5 minutes before", "10 minutes before", "15 minutes before", "20 minutes before", "30 minutes before", "1 hour before"]
 
@@ -58,34 +56,56 @@ struct PreFedNewTaskButton: View {
             } else {
                 createNewReference()
                 generateBefore()
-                let task = Task(title: title, hour: hour, minute: minute, startHour: taskHour, startMinute: taskMinute, detail: detail, referenceLinks: urls, before: before)
-                if selectedType == "Bedtime" {
-                    settings.bedTimeRoutine.append(task)
-                    settings.bedTimeRoutine.append(task)
+                if original.type == task.type {
+                    if original.type == "Bedtime" {
+                        if let index = settings.bedTimeRoutine.firstIndex(of: original) {
+                            settings.bedTimeRoutine[index] = task
+                            settings.bedTimeRoutine[index] = task
+                        }
+                    } else {
+                        if let index = settings.wakeUpRoutine.firstIndex(of: original) {
+                            settings.wakeUpRoutine[index] = task
+                            settings.wakeUpChosenTasks[index] = task
+                        }
+                    }
+                
                 } else {
-                    settings.wakeUpRoutine.append(task)
-                    settings.wakeUpChosenTasks.append(task)
+                    let task1 = Task(title: title, hour: hour, minute: minute, startHour: taskHour, startMinute: taskMinute, detail: detail, referenceLinks: urls, before: before,type: selectedType)
+                    task = task1
+                    if selectedType == "Bedtime" {
+                        print(original)
+                        print(task)
+                        print(selectedType)
+                        if let index = settings.wakeUpRoutine.firstIndex(of: original) {
+                            settings.wakeUpRoutine.remove(at: index)
+                            settings.wakeUpChosenTasks.remove(at: index)
+                        
+                        }
+                        settings.bedTimeRoutine.append(task1)
+                        settings.bedTimeRoutine.append(task1)
+                    } else {
+                        print(original)
+                        print(task)
+                        print(selectedType)
+                        if let index = settings.bedTimeRoutine.firstIndex(of: original) {
+                            settings.bedTimeRoutine.remove(at: index)
+                            settings.bedTimeRoutine.remove(at: index)
+                        }
+                        
+                        settings.wakeUpRoutine.append(task1)
+                        settings.wakeUpChosenTasks.append(task1)
+                    }
                 }
+                
+               
+                isPresented.toggle()
                 update()
-                isShowingSheet.toggle()
             }
         }) {
             HStack(spacing: 8) {
                 Text("Save")
             }
             .padding(.vertical, 10)
-        }
-        .sheet(isPresented: $isShowingSheet) {
-            if selectedType == "Bedtime" {
-                BedTimeRoutineView()
-            } else {
-                WakeUpRoutineView()
-            }
-        }
-        .onChange(of: isShowingSheet) { newValue in
-            if !newValue {
-                isPresented.toggle()
-            }
         }
 
         
@@ -127,9 +147,9 @@ struct PreFedNewTaskButton: View {
     
     
     func update() {
-        settings.bedTimeChosenTasks = settings.bedTimeChosenTasks.filter { $0.title != "Sleep"}
+        settings.bedTimeRoutine = settings.bedTimeRoutine.filter { $0.title != "Sleep"}
         
-        let sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute)
+        let sleep = Task(title: "Sleep", hour: sleepHour, minute: sleepMinute, startHour: bedHour, startMinute: bedMinute, type: "Bedtime")
         startHour = bedHour
         startMinute = bedMinute
         var tasks: [Task] = [sleep]
@@ -138,26 +158,21 @@ struct PreFedNewTaskButton: View {
             tasks.append(updateTask(task: task))
         }
         
-        settings.bedTimeChosenTasks = tasks
+        settings.bedTimeRoutine = tasks
         
         startHour = wakeHour
         startMinute = wakeMinute
-
+        
+       
+        
         tasks = []
         
         for task in settings.wakeUpRoutine {
             tasks.append(updateTask2(task: task))
         }
         
-        settings.wakeUpRoutine = tasks
-
+        settings.wakeUpChosenTasks = tasks
         
-        TaskAdaptor.shared.removeAll()
-
-        let notifications = tasks + settings.bedTimeRoutine
-        for task in notifications {
-            TaskAdaptor.shared.addNewTask(task: task)
-        }
     }
     
     func updateStart(hour: Int, minute: Int) {
@@ -200,10 +215,10 @@ struct PreFedNewTaskButton: View {
     }
 }
 
-struct PreFedNewTaskButton_Previews: PreviewProvider {
+struct EditDetailButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTaskButton(title: .constant("Test"), hour: .constant(0), minute: .constant(0), taskHour: .constant(-1), taskMinute: .constant(-1), isAutomatic: .constant(true), selectedType: .constant("BedTime"), detail: .constant("Test"), isPresented: .constant(true), errorMessage: .constant("Test"), shouldShowValidationAlert: .constant(true), referenceLinks: .constant([]), notify: .constant(""))
+        let task = Task(title: "Take a Warm Bath", hour: 0, minute: 30, startHour: 21, startMinute: 30, detail: "This is detail", referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime")
+        EditDetailButtonView(title: .constant("Test"), hour: .constant(0), minute: .constant(0), taskHour: .constant(-1), taskMinute: .constant(-1), selectedType: .constant("BedTime"), detail: .constant("Test"), isPresented: .constant(true), errorMessage: .constant("Test"), shouldShowValidationAlert: .constant(true), referenceLinks: .constant([]), notify: .constant(""), task: .constant(task), original: task)
             .environmentObject(UserSettings.shared)
-    
     }
 }

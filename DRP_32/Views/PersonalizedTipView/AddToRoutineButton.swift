@@ -15,8 +15,17 @@ struct AddToRoutineButton: View {
         Button(action: {
             isAdding.toggle()
         }) {
-            Image(systemName: "plus.circle")
-                .font(.title)
+            
+            HStack {
+                Text("Add to Routine")
+                    
+                Image(systemName: "plus.circle")
+            }
+            .font(.caption)
+            .padding()
+            .background(
+                Capsule().strokeBorder(Color.black, lineWidth: 1.25)
+            )
         }
         .fullScreenCover(isPresented: $isAdding) {
             PreFedAddTaskView(tip: tip, isPresented: $isAdding)

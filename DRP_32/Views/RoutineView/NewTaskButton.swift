@@ -120,7 +120,7 @@ struct NewTaskButton: View {
         startMinute = bedMinute
         var tasks: [Task] = [sleep]
         
-        for task in settings.bedTimeRoutine {
+        for task in settings.bedTimeRoutine.reversed() {
             tasks.append(updateTask(task: task))
         }
         
@@ -128,17 +128,21 @@ struct NewTaskButton: View {
         
         startHour = wakeHour
         startMinute = wakeMinute
-        
-       
-        
+
         tasks = []
         
         for task in settings.wakeUpRoutine {
             tasks.append(updateTask2(task: task))
         }
         
-        settings.wakeUpChosenTasks = tasks
-        print("here")
+        settings.wakeUpRoutine = tasks
+        
+        TaskAdaptor.shared.removeAll()
+
+        let notifications = tasks + settings.bedTimeRoutine
+        for task in notifications {
+            TaskAdaptor.shared.addNewTask(task: task)
+        }
     }
     
     func updateStart(hour: Int, minute: Int) {

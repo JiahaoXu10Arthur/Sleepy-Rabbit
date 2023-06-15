@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		531D12BD2A3A717900A5E36D /* EditCellDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531D12BC2A3A717900A5E36D /* EditCellDetail.swift */; };
+		531D12BF2A3A822F00A5E36D /* EditDetailButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531D12BE2A3A822F00A5E36D /* EditDetailButtonView.swift */; };
+		5355C60D2A3A9F79006499B2 /* BedTimeSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355C60C2A3A9F79006499B2 /* BedTimeSave.swift */; };
 		538995702A37574200071A3E /* Tasked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389956F2A37574200071A3E /* Tasked.swift */; };
 		538995762A37574E00071A3E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538995722A37574E00071A3E /* NotificationManager.swift */; };
 		538995772A37574E00071A3E /* TaskPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538995732A37574E00071A3E /* TaskPersistenceManager.swift */; };
@@ -89,6 +92,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		531D12BC2A3A717900A5E36D /* EditCellDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCellDetail.swift; sourceTree = "<group>"; };
+		531D12BE2A3A822F00A5E36D /* EditDetailButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailButtonView.swift; sourceTree = "<group>"; };
+		5355C60C2A3A9F79006499B2 /* BedTimeSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedTimeSave.swift; sourceTree = "<group>"; };
 		5389956F2A37574200071A3E /* Tasked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasked.swift; sourceTree = "<group>"; };
 		538995722A37574E00071A3E /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		538995732A37574E00071A3E /* TaskPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPersistenceManager.swift; sourceTree = "<group>"; };
@@ -260,6 +266,7 @@
 				53E055172A32689A001E8340 /* WakeUpRoutineView.swift */,
 				53C34D5D2A3886BE00405939 /* SettingsView.swift */,
 				53C34D622A38A02200405939 /* DoneButton.swift */,
+				5355C60C2A3A9F79006499B2 /* BedTimeSave.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -326,6 +333,7 @@
 		EE8015062A278CA500137787 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				53D9F23F2A39250600849E93 /* CellDetailView.swift */,
 				53E054FE2A30B6C1001E8340 /* Setting */,
 				5389957A2A375AD200071A3E /* NotificationSettingsView.swift */,
 				EE9B1DE12A2F52E7003AAC1C /* PersonalizedTipView */,
@@ -335,7 +343,8 @@
 				EECEE48E2A24F9F400249177 /* ContentView.swift */,
 				EE28A9A62A27982C00736689 /* BottomNavigator */,
 				53C34D642A39089D00405939 /* ColoredIconView.swift */,
-				53D9F23F2A39250600849E93 /* CellDetailView.swift */,
+				531D12BC2A3A717900A5E36D /* EditCellDetail.swift */,
+				531D12BE2A3A822F00A5E36D /* EditDetailButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -564,6 +573,7 @@
 				53E055082A312BEE001E8340 /* RandomTipView.swift in Sources */,
 				EE9B1DE92A2F6C71003AAC1C /* Query.swift in Sources */,
 				539663BB2A2F5B04007187BF /* BedTimeSettingView.swift in Sources */,
+				5355C60D2A3A9F79006499B2 /* BedTimeSave.swift in Sources */,
 				EE75C78E2A31FC6A00626199 /* TipofTheDayView.swift in Sources */,
 				539663BD2A2F5B3A007187BF /* TaskCellView.swift in Sources */,
 				EE28A9A92A28ADC700736689 /* HttpOperations.swift in Sources */,
@@ -574,6 +584,7 @@
 				538D909C2A2A093200A80AAB /* TipRow.swift in Sources */,
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
 				538995772A37574E00071A3E /* TaskPersistenceManager.swift in Sources */,
+				531D12BF2A3A822F00A5E36D /* EditDetailButtonView.swift in Sources */,
 				53E054EE2A2FC016001E8340 /* OnboardingView.swift in Sources */,
 				53E0550F2A32003E001E8340 /* BedTimeRoutineView.swift in Sources */,
 				53DEDE3B2A28D6FC005A0829 /* TipList.swift in Sources */,
@@ -608,6 +619,7 @@
 				EE9B1DE52A2F5A3F003AAC1C /* TipPageView.swift in Sources */,
 				538995702A37574200071A3E /* Tasked.swift in Sources */,
 				53E054F12A2FC822001E8340 /* StartButtonView.swift in Sources */,
+				531D12BD2A3A717900A5E36D /* EditCellDetail.swift in Sources */,
 				538995812A37E2AD00071A3E /* FirstView.swift in Sources */,
 				EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */,
 				53C34D632A38A02200405939 /* DoneButton.swift in Sources */,

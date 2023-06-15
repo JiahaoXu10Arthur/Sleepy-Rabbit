@@ -17,7 +17,7 @@ struct CustomDatePicker: View {
     static private let maxHours = 23
     static private let maxMinutes = 59
     private let hours = [Int](0...Self.maxHours)
-    private let minutes = [Int](0...11).map { $0 * 5 }
+    private let minutes = [Int](0...3).map { $0 * 15 }
     
     var bedHour: Int { settings.bedHour }
     var bedMinute: Int { settings.bedMinute }
@@ -73,7 +73,7 @@ struct CustomDatePicker: View {
         startMinute = bedMinute
         var tasks: [Task] = [sleep]
         
-        for task in settings.bedTimeRoutine {
+        for task in settings.bedTimeRoutine.reversed() {
             tasks.append(updateTask(task: task))
         }
         
