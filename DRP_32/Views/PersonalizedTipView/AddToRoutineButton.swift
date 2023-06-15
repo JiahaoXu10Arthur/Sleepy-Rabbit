@@ -17,9 +17,8 @@ struct AddToRoutineButton: View {
         }) {
             
             HStack {
-                Text("Add to Routine")
-                    
                 Image(systemName: "plus.circle")
+                Text("Routine")
             }
             .font(.caption)
             .padding()
