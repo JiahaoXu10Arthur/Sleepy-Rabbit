@@ -23,13 +23,17 @@ class ModelData: ObservableObject {
     
     @Published var isLoading: Bool = true
     
+    @Published var loadingTipofTheDay = true
+    
     @Published var isDisabled: Bool = true
     
     private var lock = NSLock()
 
     private init() {
         setupDataFile()
-        fetchTipofTheDay() { _ in}
+        fetchTipofTheDay() { _ in
+            self.loadingTipofTheDay = false
+        }
         fetchData()
 //        getAnAiTip() { _ in
 //            DispatchQueue.main.async {
