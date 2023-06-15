@@ -61,7 +61,10 @@ struct TipRow: View {
                 
             
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.top)
+            
+            
             
             
             
@@ -71,6 +74,12 @@ struct TipRow: View {
                 TipDetail(tip: tip)
                     .transition(.moveAndFade)
             }
+            
+            Divider()
+            AddToRoutineButton(tip: tip)
+                
+        
+        
             
         }
         .overlay(
