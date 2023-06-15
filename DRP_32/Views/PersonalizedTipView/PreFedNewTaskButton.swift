@@ -75,11 +75,11 @@ struct PreFedNewTaskButton: View {
             }
             .padding(.vertical, 10)
         }
-        .sheet(isPresented: $isShowingSheet) {
+        .fullScreenCover(isPresented: $isShowingSheet) {
             if selectedType == "Bedtime" {
-                BedTimeRoutineView()
+                SecondBedTimeRoutineView(isPresented: $isPresented)
             } else {
-                WakeUpRoutineView()
+                SecondWakeUpRoutineView(isPresented: $isPresented)
             }
         }
         .onChange(of: isShowingSheet) { newValue in
@@ -201,7 +201,7 @@ struct PreFedNewTaskButton: View {
 
 struct PreFedNewTaskButton_Previews: PreviewProvider {
     static var previews: some View {
-        NewTaskButton(title: .constant("Test"), hour: .constant(0), minute: .constant(0), taskHour: .constant(-1), taskMinute: .constant(-1), isAutomatic: .constant(true), selectedType: .constant("BedTime"), detail: .constant("Test"), isPresented: .constant(true), errorMessage: .constant("Test"), shouldShowValidationAlert: .constant(true), referenceLinks: .constant([]), notify: .constant(""))
+        NewTaskButton(title: .constant("Test"), hour: .constant(0), minute: .constant(0), taskHour: .constant(-1), taskMinute: .constant(-1), isAutomatic: .constant(true), selectedType: .constant("BedTime"), detail: .constant("Test"), isPresented: .constant(true), errorMessage: .constant("Test"), shouldShowValidationAlert: .constant(true), referenceLinks: .constant([]), notify: .constant(""), isShowingSheet: .constant(false))
             .environmentObject(UserSettings.shared)
     
     }

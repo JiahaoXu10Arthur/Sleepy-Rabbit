@@ -42,6 +42,16 @@ struct OnboardingView: View {
                     .frame(width: currentTab == index ? 16 : 8, height: 8)
             }
         }
+        .onAppear(perform: {
+            
+            NotificationManager.shared.requestAuthorization{ granted in
+                
+                // 2
+                if granted {
+                    
+                }
+            }
+        })
         
     }
     func buildView(types: [Any], index: Int) -> AnyView {

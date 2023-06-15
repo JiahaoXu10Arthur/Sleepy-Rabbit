@@ -42,6 +42,8 @@ struct NewTaskButton: View {
     @Binding var notify: String
     @State private var before = 5
     
+    @Binding var isShowingSheet: Bool
+    
     let befores = ["At time of event", "5 minutes before", "10 minutes before", "15 minutes before", "20 minutes before", "30 minutes before", "1 hour before"]
 
     
@@ -64,14 +66,26 @@ struct NewTaskButton: View {
                     settings.wakeUpRoutine.append(task)
                     settings.wakeUpChosenTasks.append(task)
                 }
-                isPresented.toggle()
                 update()
+                isShowingSheet.toggle()
             }
         }) {
             HStack(spacing: 8) {
                 Text("Save")
             }
             .padding(.vertical, 10)
+        }
+        .fullScreenCover(isPresented: $isShowingSheet) {
+            if selectedType == "Bedtime" {
+                SecondBedTimeRoutineView(isPresented: $isPresented)
+            } else {
+                SecondWakeUpRoutineView(isPresented: $isPresented)
+            }
+        }
+        .onChange(of: isShowingSheet) { newValue in
+            if !newValue {
+                isPresented.toggle()
+            }
         }
 
         
@@ -85,7 +99,7 @@ struct NewTaskButton: View {
     }
     
     func createNewReference() {
-        for link in referenceLinks where canOpenURL(link.0) {
+        for link in referenceLinks {
             urls.append(link.0)
         }
     }
@@ -187,7 +201,7 @@ struct NewTaskButton: View {
 
 struct NewTaskButton_Previews: PreviewProvider {
     static var previews: some View {
-        NewTaskButton(title: .constant("Test"), hour: .constant(0), minute: .constant(0), taskHour: .constant(-1), taskMinute: .constant(-1), isAutomatic: .constant(true), selectedType: .constant("BedTime"), detail: .constant("Test"), isPresented: .constant(true), errorMessage: .constant("Test"), shouldShowValidationAlert: .constant(true), referenceLinks: .constant([]), notify: .constant(""))
+        NewTaskButton(title: .constant("Test"), hour: .constant(0), minute: .constant(0), taskHour: .constant(-1), taskMinute: .constant(-1), isAutomatic: .constant(true), selectedType: .constant("BedTime"), detail: .constant("Test"), isPresented: .constant(true), errorMessage: .constant("Test"), shouldShowValidationAlert: .constant(true), referenceLinks: .constant([]), notify: .constant(""), isShowingSheet: .constant(false))
             .environmentObject(UserSettings.shared)
     
     }

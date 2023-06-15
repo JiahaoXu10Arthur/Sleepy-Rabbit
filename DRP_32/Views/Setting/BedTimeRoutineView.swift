@@ -30,7 +30,13 @@ struct BedTimeRoutineView: View {
         NavigationView {
             Form{
                 
-                Section(header: Text("a set of activities you perform in the same order before going to bed.")) {
+                Section(header: Text("a set of activities you perform in the same order before going to bed.")
+                    .foregroundColor(.primary)
+                    , footer:  HStack {
+                    Text("New Task will be added here")
+                    Image(systemName: "arrow.up")
+                
+                }.font(.title2)) {
                     List {
                         ForEach(tasks) { task in
                             TaskCellView(task: task)
@@ -40,7 +46,12 @@ struct BedTimeRoutineView: View {
                         .onDelete(perform: deleteRow)
                     }
                     
-                    Text("Bedtime: \(formatTime(_:settings.bedHour)) : \(formatTime(_:settings.bedMinute))")
+                    VStack(alignment: .leading) {
+                        Text("Go to bed at")
+                        Text("\(formatTime(_:settings.bedHour)) : \(formatTime(_:settings.bedMinute))")
+                            .font(.headline)
+                    }
+                    
                 }
                 
             }
@@ -53,7 +64,7 @@ struct BedTimeRoutineView: View {
                     Button(action: {
                         self.isEditing.toggle()
                     }) {
-                        Text(isEditing ? "Done" : "Rearrange")
+                        Text(isEditing ? "Done" : "Edit")
                             .font(.title3)
                     }
                     .font(.title3)
@@ -104,7 +115,10 @@ struct BedTimeRoutineView: View {
             tasks.append(updateTask(task: task))
         }
         
-        settings.bedTimeChosenTasks = tasks
+        settings.bedTimeChosenTasks = tasks.reversed()
+        settings.bedTimeRoutine = tasks.reversed()
+        
+        
         
         startHour = wakeHour
         startMinute = wakeMinute

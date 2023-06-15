@@ -39,6 +39,7 @@ struct NewTaskView: View {
     @State private var deleteIndex = 9999
     
     @State private var notify = "5 minutes before"
+    @State private var isShowingSheet = false
     
     let befores = ["At time of event", "5 minutes before", "10 minutes before", "15 minutes before", "20 minutes before", "30 minutes before", "1 hour before"]
     
@@ -120,7 +121,8 @@ struct NewTaskView: View {
                 
                 Section(header: Text("Detail")
                     .font(.headline)) {
-                        TextField("Enter your task detail", text: $detail)
+                        TextField("Enter your task detail", text: $detail, axis: .vertical)
+                            
                     }.onTapGesture {
                         self.hideKeyboard()
                     }
@@ -133,7 +135,7 @@ struct NewTaskView: View {
                                     Button(action: {
                                         self.referenceLinks.insert(("", false), at: 0)
                                     }) {
-                                        Text("Add Reference")
+                                        Text("Add URL")
                                     }
                                     .deleteDisabled(true)
                                 } else {
@@ -143,9 +145,8 @@ struct NewTaskView: View {
                                         self.referenceLinks[linkIndex].0 = $0
                                     }))
                                     
-                                    .foregroundColor(self.canOpenURL(self.referenceLinks[linkIndex].0) ? nil : .red)
+                                    .foregroundColor(.blue)
                                     .disabled(self.referenceLinks[linkIndex].1)
-                                    
                                 }
                             }
                         }
@@ -173,18 +174,23 @@ struct NewTaskView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NewTaskButton(title: $title, hour: $hour, minute: $minute, taskHour: $startHour, taskMinute: $startMinute, isAutomatic: $isAutomatic, selectedType: $selectedType, detail: $detail, isPresented: $isPresented, errorMessage: $errorMessage, shouldShowValidationAlert: $shouldShowValidationAlert, referenceLinks: $referenceLinks, notify: $notify)
+                    NewTaskButton(title: $title, hour: $hour, minute: $minute, taskHour: $startHour, taskMinute: $startMinute, isAutomatic: $isAutomatic, selectedType: $selectedType, detail: $detail, isPresented: $isPresented, errorMessage: $errorMessage, shouldShowValidationAlert: $shouldShowValidationAlert, referenceLinks: $referenceLinks, notify: $notify, isShowingSheet: $isShowingSheet)
                     
                 }
             }
         }
         
     }
-    func canOpenURL(_ string: String?) -> Bool {
-        var formatterString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
-        formatterString = formatterString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        guard let urlString = formatterString, let url = URL(string: urlString) else { return false }
-        return UIApplication.shared.canOpenURL(url)
+    func canOpenURL(_ urlString: String?) -> Bool {
+        if let urlString = urlString {
+            if let url = URL(string: urlString) {
+                print("url")
+                return UIApplication.shared.canOpenURL(url)
+            }
+        }
+        print("url false")
+        
+        return false
     }
 }
 

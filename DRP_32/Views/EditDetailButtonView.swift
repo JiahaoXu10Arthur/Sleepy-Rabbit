@@ -82,18 +82,18 @@ struct EditDetailButtonView: View {
                         
                         }
                         settings.bedTimeRoutine.append(task1)
-                        settings.bedTimeRoutine.append(task1)
+                        
                     } else {
                         print(original)
                         print(task)
                         print(selectedType)
                         if let index = settings.bedTimeRoutine.firstIndex(of: original) {
                             settings.bedTimeRoutine.remove(at: index)
-                            settings.bedTimeRoutine.remove(at: index)
+                            
                         }
                         
                         settings.wakeUpRoutine.append(task1)
-                        settings.wakeUpChosenTasks.append(task1)
+                        
                     }
                 }
                 

@@ -1,18 +1,18 @@
 //
-//  WakeUpRoutineView.swift
+//  SecondWakeUpRoutineView.swift
 //  DRP_32
 //
-//  Created by paulodybala on 08/06/2023.
+//  Created by paulodybala on 15/06/2023.
 //
 
 import SwiftUI
 
-struct WakeUpRoutineView: View {
+struct SecondWakeUpRoutineView: View {
     @EnvironmentObject var settings: UserSettings
     var tasks: [Task] {
         settings.wakeUpRoutine
     }
-    @State var isPresented = false
+    @Binding var isPresented: Bool
     @State var isEditing = false
     
     var bedHour: Int { settings.bedHour }
@@ -63,21 +63,8 @@ struct WakeUpRoutineView: View {
                     .font(.title3)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        isPresented.toggle()
-                    }) {
-                        HStack {
-                            
-                            Text("Add Task")
-                                
-                        }
-                        .font(.title3)
-                    }
+                    DoneButton(isSetting: $isPresented)
                 }
-            }
-            .sheet(isPresented: $isPresented) {
-                NewTaskView(selectedType: "Wake Up", isPresented: $isPresented)
-                    
             }
         }
         
@@ -170,13 +157,12 @@ struct WakeUpRoutineView: View {
         
         return task
     }
-
-    
 }
 
-struct WakeUpRoutineView_Previews: PreviewProvider {
+struct SecondWakeUpRoutineView_Previews: PreviewProvider {
     static var previews: some View {
-        WakeUpRoutineView()
+        SecondWakeUpRoutineView(isPresented: .constant(true))
             .environmentObject(UserSettings.shared)
+    
     }
 }

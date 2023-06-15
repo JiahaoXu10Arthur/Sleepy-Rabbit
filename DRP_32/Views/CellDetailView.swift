@@ -21,11 +21,12 @@ struct CellDetailView: View {
                 HStack {
                     if task.type == "Bedtime" {
                         Image(systemName: "moon.haze.fill")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.purple)
                         Text("\(task.type) Routine")
                     } else if task.type == "Sleep" {
                         Image(systemName: "moon.zzz.fill")
                             .foregroundColor(.blue)
+                        Text("Sleep")
                     } else {
                         Image(systemName: "sun.max.fill")
                             .foregroundColor(.orange)
@@ -40,7 +41,7 @@ struct CellDetailView: View {
                 
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("Duration:\n\(formatTime(_:task.hour))hr \(formatTime(_:task.minute))min")
+                        Text("Duration:\n\(task.hour)hr \(task.minute)min")
                         
                     }
                     .font(.headline)
@@ -118,10 +119,7 @@ struct CellDetailView: View {
         }
         
     }
-    func formatTime(_ time: Int) -> String {
-        let hourString = String(format: "%02d", time)
-        return hourString
-    }
+    
     
     func generateBefore() -> String{
         switch task.before {
@@ -143,7 +141,10 @@ struct CellDetailView: View {
             return "5 minutes before"
         }
     }
-    
+    func formatTime(_ time: Int) -> String {
+        let hourString = String(format: "%02d", time)
+        return hourString
+    }
     func createTime() -> some View {
         var hour = task.startHour + task.hour
         var minute = task.startMinute + task.minute
@@ -162,7 +163,7 @@ struct CellDetailView: View {
 
 struct CellDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let task = Task(title: "Take a Warm Bath", hour: 0, minute: 30, startHour: 21, startMinute: 30, detail: "This is detail", referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime")
+        let task = Task(title: "Take a Warm Bath", hour: 0, minute: 30, startHour: 21, startMinute: 30, detail: "adisdetailsjkdsafkkkklhhgkjsadgkjasjglaskjdlgkfasdjklajgdkalsdjkgsajdlksdjglkajdslgjaslkj", referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime")
         CellDetailView(task: task)
             .environmentObject(UserSettings.shared)
     }

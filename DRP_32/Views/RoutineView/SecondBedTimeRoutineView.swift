@@ -1,18 +1,19 @@
 //
-//  WakeUpRoutineView.swift
+//  SecondBedTimeRoutineView.swift
 //  DRP_32
 //
-//  Created by paulodybala on 08/06/2023.
+//  Created by paulodybala on 15/06/2023.
 //
 
 import SwiftUI
 
-struct WakeUpRoutineView: View {
+struct SecondBedTimeRoutineView: View {
     @EnvironmentObject var settings: UserSettings
+    @State private var editMode = EditMode.inactive
     var tasks: [Task] {
-        settings.wakeUpRoutine
+        settings.bedTimeRoutine
     }
-    @State var isPresented = false
+    @Binding var isPresented: Bool
     @State var isEditing = false
     
     var bedHour: Int { settings.bedHour }
@@ -24,33 +25,40 @@ struct WakeUpRoutineView: View {
  
     @State private var startHour = 0
     @State private var startMinute = 0
+
     
     var body: some View {
-        NavigationView{
+        NavigationView {
             Form{
                 
-                Section(header: Text(" a set of habits or motions that you go through when you wake up").foregroundColor(.primary)
-                        , footer:  HStack {
+                Section(header: Text("a set of activities you perform in the same order before going to bed.")
+                    .foregroundColor(.primary)
+                    , footer:  HStack {
                     Text("New Task will be added here")
                     Image(systemName: "arrow.up")
                 
                 }.font(.title2)) {
-                    VStack(alignment: .leading) {
-                        Text("Go to bed at")
-                        Text("\(formatTime(_:settings.wakeHour)) : \(formatTime(_:settings.wakeMinute))")
-                            .font(.headline)
-                    }
                     List {
                         ForEach(tasks) { task in
                             TaskCellView(task: task)
                         }
+                        
                         .onMove(perform: moveRow)
                         .onDelete(perform: deleteRow)
                     }
+                    
+                    VStack(alignment: .leading) {
+                        Text("Go to bed at")
+                        Text("\(formatTime(_:settings.bedHour)) : \(formatTime(_:settings.bedMinute))")
+                            .font(.headline)
+                    }
+                    
                 }
+                
             }
+            
             .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(.spring(), value: isEditing)
-            .navigationTitle(Text("Wake Up Routine"))
+            .navigationTitle(Text("Bedtime Routine"))
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -63,24 +71,11 @@ struct WakeUpRoutineView: View {
                     .font(.title3)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        isPresented.toggle()
-                    }) {
-                        HStack {
-                            
-                            Text("Add Task")
-                                
-                        }
-                        .font(.title3)
-                    }
+                    DoneButton(isSetting: $isPresented)
                 }
             }
-            .sheet(isPresented: $isPresented) {
-                NewTaskView(selectedType: "Wake Up", isPresented: $isPresented)
-                    
-            }
+            
         }
-        
         
     }
     
@@ -89,13 +84,13 @@ struct WakeUpRoutineView: View {
         return hourString
     }
     private func deleteRow(at indexSet: IndexSet) {
-        settings.wakeUpRoutine.remove(atOffsets: indexSet)
+        settings.bedTimeRoutine.remove(atOffsets: indexSet)
         update()
     }
     
     
     private func moveRow(source: IndexSet, destination: Int){
-        settings.wakeUpRoutine.move(fromOffsets: source,           toOffset: destination)
+        settings.bedTimeRoutine.move(fromOffsets: source,           toOffset: destination)
         update()
     }
     
@@ -110,7 +105,10 @@ struct WakeUpRoutineView: View {
             tasks.append(updateTask(task: task))
         }
         
-        settings.bedTimeChosenTasks = tasks
+        settings.bedTimeChosenTasks = tasks.reversed()
+        settings.bedTimeRoutine = tasks.reversed()
+        
+        
         
         startHour = wakeHour
         startMinute = wakeMinute
@@ -170,13 +168,11 @@ struct WakeUpRoutineView: View {
         
         return task
     }
-
-    
 }
 
-struct WakeUpRoutineView_Previews: PreviewProvider {
+struct SecondBedTimeRoutineView_Previews: PreviewProvider {
     static var previews: some View {
-        WakeUpRoutineView()
+        SecondBedTimeRoutineView(isPresented: .constant(true))
             .environmentObject(UserSettings.shared)
     }
 }

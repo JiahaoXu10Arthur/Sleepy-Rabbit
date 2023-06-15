@@ -113,7 +113,7 @@ struct PreFedAddTaskView: View {
                 
                 Section(header: Text("Detail")
                     .font(.headline)) {
-                        TextField("Enter your task detail", text: $detail)
+                        TextField("Enter your task detail", text: $detail, axis: .vertical)
                     }.onTapGesture {
                         self.hideKeyboard()
                     }

@@ -66,10 +66,10 @@ struct TimeLineView: View {
             }
             .padding()
             .navigationTitle(
-                Text("Routine"))
+                Text("Routine Timeline"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         isAdding.toggle()
                     
@@ -78,11 +78,11 @@ struct TimeLineView: View {
                             .font(.title)
                     }
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         isSetting.toggle()
                     }) {
-                        Image(systemName: "gear")
+                        Image(systemName: "calendar.badge.clock")
                             .font(.title)
                     }
                 }
@@ -134,6 +134,24 @@ struct TimeLineView: View {
                         .foregroundColor(Color.black)
                     
                     Text(task.title).foregroundColor(Color.black).bold()
+                    Spacer()
+                    
+                    if task.type == "Bedtime" {
+                        Image(systemName: "moon.haze.fill")
+                            .foregroundColor(.purple)
+                        
+                    } else if task.type == "Sleep" {
+                        Image(systemName: "moon.zzz.fill")
+                            .foregroundColor(.blue)
+                        
+                    } else {
+                        Image(systemName: "sun.max.fill")
+                            .foregroundColor(.yellow)
+                        
+                    }
+                    
+                
+                    
                 }
                 
             }
@@ -167,6 +185,23 @@ struct TimeLineView: View {
                         .font(.caption)
                         .foregroundColor(Color.black)
                     Text(task.title).foregroundColor(Color.black).bold()
+                    Spacer()
+                    
+                        
+                    if task.type == "Bedtime" {
+                        Image(systemName: "moon.haze.fill")
+                            .foregroundColor(.purple)
+                        
+                    } else if task.type == "Sleep" {
+                        Image(systemName: "moon.zzz.fill")
+                            .foregroundColor(.blue)
+                        
+                    } else {
+                        Image(systemName: "sun.max.fill")
+                            .foregroundColor(.yellow)
+                    }
+                    
+                    
                 }
                 
             }

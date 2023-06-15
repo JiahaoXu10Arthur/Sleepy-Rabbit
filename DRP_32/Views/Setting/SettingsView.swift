@@ -115,10 +115,10 @@ struct SettingsView: View {
                 
             }
             .sheet(isPresented: $showBedtime) {
-                BedTimeRoutineView()
+                SecondBedTimeRoutineView(isPresented: $showBedtime)
             }
             .sheet(isPresented: $showWakeUp) {
-                WakeUpRoutineView()
+                SecondWakeUpRoutineView(isPresented: $showWakeUp)
             }
         
             

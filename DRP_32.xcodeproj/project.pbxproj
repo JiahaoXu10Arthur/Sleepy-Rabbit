@@ -10,6 +10,8 @@
 		531D12BD2A3A717900A5E36D /* EditCellDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531D12BC2A3A717900A5E36D /* EditCellDetail.swift */; };
 		531D12BF2A3A822F00A5E36D /* EditDetailButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531D12BE2A3A822F00A5E36D /* EditDetailButtonView.swift */; };
 		5355C60D2A3A9F79006499B2 /* BedTimeSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355C60C2A3A9F79006499B2 /* BedTimeSave.swift */; };
+		535944352A3B5AF30073D15A /* SecondBedTimeRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535944342A3B5AF30073D15A /* SecondBedTimeRoutineView.swift */; };
+		535944392A3B5D020073D15A /* SecondWakeUpRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535944382A3B5D020073D15A /* SecondWakeUpRoutineView.swift */; };
 		538995702A37574200071A3E /* Tasked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389956F2A37574200071A3E /* Tasked.swift */; };
 		538995762A37574E00071A3E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538995722A37574E00071A3E /* NotificationManager.swift */; };
 		538995772A37574E00071A3E /* TaskPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538995732A37574E00071A3E /* TaskPersistenceManager.swift */; };
@@ -95,6 +97,8 @@
 		531D12BC2A3A717900A5E36D /* EditCellDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCellDetail.swift; sourceTree = "<group>"; };
 		531D12BE2A3A822F00A5E36D /* EditDetailButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailButtonView.swift; sourceTree = "<group>"; };
 		5355C60C2A3A9F79006499B2 /* BedTimeSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedTimeSave.swift; sourceTree = "<group>"; };
+		535944342A3B5AF30073D15A /* SecondBedTimeRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondBedTimeRoutineView.swift; sourceTree = "<group>"; };
+		535944382A3B5D020073D15A /* SecondWakeUpRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondWakeUpRoutineView.swift; sourceTree = "<group>"; };
 		5389956F2A37574200071A3E /* Tasked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasked.swift; sourceTree = "<group>"; };
 		538995722A37574E00071A3E /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		538995732A37574E00071A3E /* TaskPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPersistenceManager.swift; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 				53E054F82A30A749001E8340 /* TimeLineView.swift */,
 				53E0551F2A33502B001E8340 /* NewTaskView.swift */,
 				5389957E2A37CF7C00071A3E /* NewTaskButton.swift */,
+				535944342A3B5AF30073D15A /* SecondBedTimeRoutineView.swift */,
+				535944382A3B5D020073D15A /* SecondWakeUpRoutineView.swift */,
 			);
 			path = RoutineView;
 			sourceTree = "<group>";
@@ -578,6 +584,7 @@
 				539663BD2A2F5B3A007187BF /* TaskCellView.swift in Sources */,
 				EE28A9A92A28ADC700736689 /* HttpOperations.swift in Sources */,
 				EE8015082A278D1500137787 /* BottomNavigator.swift in Sources */,
+				535944392A3B5D020073D15A /* SecondWakeUpRoutineView.swift in Sources */,
 				53E055202A33502B001E8340 /* NewTaskView.swift in Sources */,
 				53E054F92A30A749001E8340 /* TimeLineView.swift in Sources */,
 				53C34D5E2A3886BE00405939 /* SettingsView.swift in Sources */,
@@ -602,6 +609,7 @@
 				E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */,
 				53E0550D2A31F709001E8340 /* WelcomeView.swift in Sources */,
 				EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */,
+				535944352A3B5AF30073D15A /* SecondBedTimeRoutineView.swift in Sources */,
 				EE9B1DEB2A30A987003AAC1C /* LikeButton.swift in Sources */,
 				53E055142A321BDA001E8340 /* NextButton.swift in Sources */,
 				53E055182A32689A001E8340 /* WakeUpRoutineView.swift in Sources */,
