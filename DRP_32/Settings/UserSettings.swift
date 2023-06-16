@@ -102,9 +102,18 @@ class UserSettings: ObservableObject {
            saveSleep()
         }
     }
+    @Published var universites: [String] = ["Imperial College London", "University of Cambridge", "University of Oxford", "University College London", "London School of Economics and Political Science", "University of Edinburgh", "King's College London", "University of Manchester", "University of Bristol", "University of Warwick", "University of Glasgow"]
+    
+    @Published var chosenUniversity: String = "Imperial College London" {
+        didSet {
+            UserDefaults.standard.set(username, forKey: "username")
+        }
+    }
+    
     
     init() {
         self.username = UserDefaults.standard.object(forKey: "username") as? String ?? ""
+        self.chosenUniversity = UserDefaults.standard.object(forKey: "chosenUniversity") as? String ?? "Imperial College London"
         self.bedHour = UserDefaults.standard.integer(forKey: "bedHour")
         self.bedMinute = UserDefaults.standard.integer(forKey: "bedMinute")
         self.sleepHour = UserDefaults.standard.integer(forKey: "sleepHour")
@@ -149,28 +158,28 @@ class UserSettings: ObservableObject {
            let tasks5 = try? JSONDecoder().decode([Task].self, from: data5) {
             wakeUpTasks = tasks5
         } else {
-            wakeUpTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Wake Up"), Task(title: "Stretch", hour: 0, minute: 15, type: "Wake Up"), Task(title: "Breathe", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Wake Up"), Task(title: "Read a Book", hour: 2, minute: 0, type: "Wake Up"), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, type: "Wake Up")]
+            wakeUpTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Listen to Music", hour: 1, minute: 0, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Stretch", hour: 0, minute: 15, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Breathe", hour: 0, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Practice Meditation", hour: 1, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Read a Book", hour: 2, minute: 0, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up")]
         }
         
         if let data6 = UserDefaults.standard.data(forKey: "bedTimeTasks"),
            let tasks6 = try? JSONDecoder().decode([Task].self, from: data6) {
             bedTimeTasks = tasks6
         } else {
-            bedTimeTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Bedtime"), Task(title: "Stretch", hour: 0, minute: 15, type: "Bedtime"), Task(title: "Breathe", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Bedtime"), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, type: "Bedtime")]
+            bedTimeTasks = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Bedtime"), Task(title: "Stretch", hour: 0, minute: 15, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime"), Task(title: "Breathe", hour: 0, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime"), Task(title: "Practice Meditation", hour: 1, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime"), Task(title: "Read a Book", hour: 2, minute: 0, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime"), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime")]
         }
         
         if let data7 = UserDefaults.standard.data(forKey: "wakeUpRoutine"),
            let tasks7 = try? JSONDecoder().decode([Task].self, from: data7) {
             wakeUpRoutine = tasks7
         } else {
-            wakeUpRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Wake Up"), Task(title: "Stretch", hour: 0, minute: 15, type: "Wake Up"), Task(title: "Breathe", hour: 0, minute: 30, type: "Wake Up"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Wake Up"), Task(title: "Read a Book", hour: 2, minute: 0, type: "Wake Up"), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, type: "Wake Up")]
+            wakeUpRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Listen to Music", hour: 1, minute: 0, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Stretch", hour: 0, minute: 15, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Breathe", hour: 0, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Practice Meditation", hour: 1, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Read a Book", hour: 2, minute: 0, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up"), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Wake Up")]
         }
         
         if let data8 = UserDefaults.standard.data(forKey: "bedTimeRoutine"),
            let tasks8 = try? JSONDecoder().decode([Task].self, from: data8) {
             bedTimeRoutine = tasks8
         } else {
-            bedTimeRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Bedtime"), Task(title: "Stretch", hour: 0, minute: 15, type: "Bedtime"), Task(title: "Breathe", hour: 0, minute: 30, type: "Bedtime"), Task(title: "Practice Meditation", hour: 1, minute: 30, type: "Bedtime"), Task(title: "Read a Book", hour: 2, minute: 0), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, type: "Bedtime")]
+            bedTimeRoutine = [Task(title: "Take a Warm Bath", hour: 0, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime"), Task(title: "Listen to Music", hour: 1, minute: 0, type: "Bedtime"), Task(title: "Stretch", hour: 0, minute: 15, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime"), Task(title: "Breathe", hour: 0, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime"), Task(title: "Practice Meditation", hour: 1, minute: 30, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime"), Task(title: "Read a Book", hour: 2, minute: 0, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime"), Task(title: "Write Down a To-Do List", hour: 0, minute: 45, referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime")]
         }
         
         

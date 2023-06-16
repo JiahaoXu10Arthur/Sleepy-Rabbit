@@ -11,10 +11,9 @@ struct OnboardingView: View {
     @State var showNotificationSettingsUI = false
     @EnvironmentObject var settings: UserSettings
     
-    var task = Task(title: "Write Down a To-Do List", hour: 0, minute: 45, startHour: 14, startMinute: 45)
     @State private var currentTab = 0
     
-    var viewList: [Any] = [FirstView.self, BedTimeSettingView.self, BedTimeRoutineView.self, WakeUpRoutineView.self, GetStartView.self]
+    var viewList: [Any] = [FirstView.self, ChooseView.self, BedTimeSettingView.self, BedTimeRoutineView.self, WakeUpRoutineView.self, GetStartView.self]
     
     var body: some View {
         TabView(selection: $currentTab,
@@ -38,7 +37,8 @@ struct OnboardingView: View {
         HStack(spacing: 12) {
             ForEach(0..<viewList.count) { index in
                 Capsule()
-                    .foregroundColor(currentTab == index ? Color(#colorLiteral(red: 0.1951392889, green: 0.1309193373, blue: 0.4449608624, alpha: 1)) : Color.gray)
+                    .foregroundColor(.black)
+//                    .foregroundColor(currentTab == index ? Color(#colorLiteral(red: 0.1951392889, green: 0.1309193373, blue: 0.4449608624, alpha: 1)) : Color.gray)
                     .frame(width: currentTab == index ? 16 : 8, height: 8)
             }
         }
@@ -67,6 +67,9 @@ struct OnboardingView: View {
             
         case is GetStartView.Type: return AnyView(
             GetStartView())
+        case is ChooseView.Type: return AnyView(
+            ChooseView())
+        
             
         default: return AnyView(EmptyView())
         }

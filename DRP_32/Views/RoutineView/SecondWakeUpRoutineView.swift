@@ -65,6 +65,14 @@ struct SecondWakeUpRoutineView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     DoneButton(isSetting: $isPresented)
                 }
+                ToolbarItem(placement: .bottomBar) {
+                    Button(action: {
+                        settings.wakeUpRoutine.shuffle()
+                        update()
+                    }){
+                        Text("Automatic Orderding")
+                    }
+                }
             }
         }
         

@@ -74,6 +74,14 @@ struct WakeUpRoutineView: View {
                         .font(.title3)
                     }
                 }
+                ToolbarItem(placement: .bottomBar) {
+                    Button(action: {
+                        settings.wakeUpRoutine.shuffle()
+                        update()
+                    }){
+                        Text("Automatic Orderding")
+                    }
+                }
             }
             .sheet(isPresented: $isPresented) {
                 NewTaskView(selectedType: "Wake Up", isPresented: $isPresented)

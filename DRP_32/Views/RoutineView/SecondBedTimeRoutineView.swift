@@ -73,6 +73,14 @@ struct SecondBedTimeRoutineView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     DoneButton(isSetting: $isPresented)
                 }
+                ToolbarItem(placement: .bottomBar) {
+                    Button(action: {
+                        settings.bedTimeRoutine.shuffle()
+                        update()
+                    }){
+                        Text("Automatic Orderding")
+                    }
+                }
             }
             
         }

@@ -81,6 +81,14 @@ struct BedTimeRoutineView: View {
                         .font(.title3)
                     }
                 }
+                ToolbarItem(placement: .bottomBar) {
+                    Button(action: {
+                        settings.bedTimeRoutine.shuffle()
+                        update()
+                    }){
+                        Text("Automatic Orderding")
+                    }
+                }
             }
             
         }

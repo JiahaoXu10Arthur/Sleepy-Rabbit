@@ -47,6 +47,7 @@
 		53E055162A326816001E8340 /* WakeUpTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055152A326816001E8340 /* WakeUpTaskCell.swift */; };
 		53E055182A32689A001E8340 /* WakeUpRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055172A32689A001E8340 /* WakeUpRoutineView.swift */; };
 		53E055202A33502B001E8340 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E0551F2A33502B001E8340 /* NewTaskView.swift */; };
+		53E650962A3C7D130099374E /* ChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E650952A3C7D130099374E /* ChooseView.swift */; };
 		E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E0D3122A28E0F5003DD154 /* PostButtons.swift */; };
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
 		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
@@ -134,6 +135,7 @@
 		53E055152A326816001E8340 /* WakeUpTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTaskCell.swift; sourceTree = "<group>"; };
 		53E055172A32689A001E8340 /* WakeUpRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpRoutineView.swift; sourceTree = "<group>"; };
 		53E0551F2A33502B001E8340 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskView.swift; sourceTree = "<group>"; };
+		53E650952A3C7D130099374E /* ChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseView.swift; sourceTree = "<group>"; };
 		E66F1D0E2A30EED80033A520 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		E66F1D0F2A30EED80033A520 /* TaskPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPersistenceManager.swift; sourceTree = "<group>"; };
 		E66F1D102A30EED80033A520 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				53C34D5D2A3886BE00405939 /* SettingsView.swift */,
 				53C34D622A38A02200405939 /* DoneButton.swift */,
 				5355C60C2A3A9F79006499B2 /* BedTimeSave.swift */,
+				53E650952A3C7D130099374E /* ChooseView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				EE9B1DE32A2F5346003AAC1C /* QueryView.swift in Sources */,
 				EE71774D2A3A02870011AC3B /* PreFedNewTaskButton.swift in Sources */,
 				538B38F52A2F54B300A8DBED /* Task.swift in Sources */,
+				53E650962A3C7D130099374E /* ChooseView.swift in Sources */,
 				EE7177492A39F4AC0011AC3B /* AddToRoutineButton.swift in Sources */,
 				53C34D652A39089D00405939 /* ColoredIconView.swift in Sources */,
 				53E054F52A2FD883001E8340 /* CustomDatePicker.swift in Sources */,
