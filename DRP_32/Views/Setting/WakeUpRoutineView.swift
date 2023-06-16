@@ -84,7 +84,7 @@ struct WakeUpRoutineView: View {
                 }
             }
             .sheet(isPresented: $isPresented) {
-                NewTaskView(selectedType: "Wake Up", isPresented: $isPresented)
+                SecondNewTaskView(selectedType: "Wake Up", isPresented: $isPresented)
                     
             }
         }

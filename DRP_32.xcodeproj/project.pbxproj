@@ -48,6 +48,8 @@
 		53E055182A32689A001E8340 /* WakeUpRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E055172A32689A001E8340 /* WakeUpRoutineView.swift */; };
 		53E055202A33502B001E8340 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E0551F2A33502B001E8340 /* NewTaskView.swift */; };
 		53E650962A3C7D130099374E /* ChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E650952A3C7D130099374E /* ChooseView.swift */; };
+		53E650982A3C93F50099374E /* SecondNewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E650972A3C93F50099374E /* SecondNewTaskView.swift */; };
+		53E6509A2A3C94180099374E /* SecondNewTaakButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E650992A3C94180099374E /* SecondNewTaakButton.swift */; };
 		E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E0D3122A28E0F5003DD154 /* PostButtons.swift */; };
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
 		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
@@ -136,6 +138,8 @@
 		53E055172A32689A001E8340 /* WakeUpRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpRoutineView.swift; sourceTree = "<group>"; };
 		53E0551F2A33502B001E8340 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskView.swift; sourceTree = "<group>"; };
 		53E650952A3C7D130099374E /* ChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseView.swift; sourceTree = "<group>"; };
+		53E650972A3C93F50099374E /* SecondNewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondNewTaskView.swift; sourceTree = "<group>"; };
+		53E650992A3C94180099374E /* SecondNewTaakButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondNewTaakButton.swift; sourceTree = "<group>"; };
 		E66F1D0E2A30EED80033A520 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		E66F1D0F2A30EED80033A520 /* TaskPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPersistenceManager.swift; sourceTree = "<group>"; };
 		E66F1D102A30EED80033A520 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 				53C34D622A38A02200405939 /* DoneButton.swift */,
 				5355C60C2A3A9F79006499B2 /* BedTimeSave.swift */,
 				53E650952A3C7D130099374E /* ChooseView.swift */,
+				53E650972A3C93F50099374E /* SecondNewTaskView.swift */,
+				53E650992A3C94180099374E /* SecondNewTaakButton.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -602,6 +608,7 @@
 				53E054F72A2FDC9F001E8340 /* WakeUpTimePickerView.swift in Sources */,
 				EE28A9A52A27976D00736689 /* QuestionView.swift in Sources */,
 				53E055162A326816001E8340 /* WakeUpTaskCell.swift in Sources */,
+				53E650982A3C93F50099374E /* SecondNewTaskView.swift in Sources */,
 				53E055052A30E1AF001E8340 /* AppDelegate.swift in Sources */,
 				538995782A37574E00071A3E /* TaskManager.swift in Sources */,
 				538D90892A29300900A80AAB /* TipPostView.swift in Sources */,
@@ -629,6 +636,7 @@
 				538995792A37574E00071A3E /* LocationManager.swift in Sources */,
 				EE28A9AE2A28B4F300736689 /* Todo.swift in Sources */,
 				EE9B1DE52A2F5A3F003AAC1C /* TipPageView.swift in Sources */,
+				53E6509A2A3C94180099374E /* SecondNewTaakButton.swift in Sources */,
 				538995702A37574200071A3E /* Tasked.swift in Sources */,
 				53E054F12A2FC822001E8340 /* StartButtonView.swift in Sources */,
 				531D12BD2A3A717900A5E36D /* EditCellDetail.swift in Sources */,

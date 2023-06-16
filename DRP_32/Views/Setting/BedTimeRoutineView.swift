@@ -74,9 +74,7 @@ struct BedTimeRoutineView: View {
                         isPresented.toggle()
                     }) {
                         HStack {
-                            
                             Text("Add Task")
-                                
                         }
                         .font(.title3)
                     }
@@ -93,7 +91,7 @@ struct BedTimeRoutineView: View {
             
         }
         .sheet(isPresented: $isPresented) {
-            NewTaskView(selectedType: "Bedtime", isPresented: $isPresented)
+            SecondNewTaskView(selectedType: "Bedtime", isPresented: $isPresented)
         }
     }
     
