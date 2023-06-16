@@ -50,6 +50,7 @@
 		53E650962A3C7D130099374E /* ChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E650952A3C7D130099374E /* ChooseView.swift */; };
 		53E650982A3C93F50099374E /* SecondNewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E650972A3C93F50099374E /* SecondNewTaskView.swift */; };
 		53E6509A2A3C94180099374E /* SecondNewTaakButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E650992A3C94180099374E /* SecondNewTaakButton.swift */; };
+		53E6509C2A3CCE770099374E /* Rabbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6509B2A3CCE770099374E /* Rabbit.swift */; };
 		E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E0D3122A28E0F5003DD154 /* PostButtons.swift */; };
 		EE28A99D2A27912900736689 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A99C2A27912900736689 /* CalendarView.swift */; };
 		EE28A9A32A2796D800736689 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28A9A22A2796D800736689 /* CommunityView.swift */; };
@@ -140,6 +141,7 @@
 		53E650952A3C7D130099374E /* ChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseView.swift; sourceTree = "<group>"; };
 		53E650972A3C93F50099374E /* SecondNewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondNewTaskView.swift; sourceTree = "<group>"; };
 		53E650992A3C94180099374E /* SecondNewTaakButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondNewTaakButton.swift; sourceTree = "<group>"; };
+		53E6509B2A3CCE770099374E /* Rabbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rabbit.swift; sourceTree = "<group>"; };
 		E66F1D0E2A30EED80033A520 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		E66F1D0F2A30EED80033A520 /* TaskPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPersistenceManager.swift; sourceTree = "<group>"; };
 		E66F1D102A30EED80033A520 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				53E054F02A2FC822001E8340 /* StartButtonView.swift */,
 				538995802A37E2AD00071A3E /* FirstView.swift */,
 				538995852A38806400071A3E /* GetStartView.swift */,
+				53E6509B2A3CCE770099374E /* Rabbit.swift */,
 			);
 			path = OnboardView;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				EE28A9B22A28E47900736689 /* Tip.swift in Sources */,
 				5389957B2A375AD200071A3E /* NotificationSettingsView.swift in Sources */,
 				EE9B1DE72A2F5C55003AAC1C /* NewTipButton.swift in Sources */,
+				53E6509C2A3CCE770099374E /* Rabbit.swift in Sources */,
 				E6E0D3132A28E0F5003DD154 /* PostButtons.swift in Sources */,
 				53E0550D2A31F709001E8340 /* WelcomeView.swift in Sources */,
 				EECEE48D2A24F9F400249177 /* DRP_32App.swift in Sources */,

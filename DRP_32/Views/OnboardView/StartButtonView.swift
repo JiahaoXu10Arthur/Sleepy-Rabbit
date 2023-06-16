@@ -21,11 +21,18 @@ struct StartButtonView: View {
     
     @State private var startHour = 0
     @State private var startMinute = 0
+    @Binding var isMoving: Bool
     
     var body: some View {
         Button(action: {
-            settings.showOnboarding = false
-            update()
+            withAnimation(.easeInOut(duration: 1)) {
+                isMoving.toggle()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+               // your function
+                settings.showOnboarding = false
+                update()
+            }
         }) {
             HStack(spacing: 8) {
                 Text("Get Started")
@@ -118,7 +125,7 @@ struct StartButtonView: View {
 
 struct StartButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        StartButtonView()
+        StartButtonView(isMoving: .constant(true))
             .previewLayout(.sizeThatFits)
             .environmentObject(UserSettings.shared)
         

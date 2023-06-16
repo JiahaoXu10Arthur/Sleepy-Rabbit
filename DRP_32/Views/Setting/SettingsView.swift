@@ -100,11 +100,6 @@ struct SettingsView: View {
                         Text("Show Onboarding")
                             .font(.title2)
                     } //: BUTTON
-                    NavigationLink(destination: ChooseView()) {
-                        Text("Choose university")
-                            .font(.title2)
-                    } //: LINK
-                
                 }
             
             }

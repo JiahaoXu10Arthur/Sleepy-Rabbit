@@ -9,21 +9,39 @@ import SwiftUI
 
 struct GetStartView: View {
     @EnvironmentObject var settings: UserSettings
+    @State var isMoving = false
     var body: some View {
         VStack {
-          
-          Spacer()
-          Text("Eveything is ready")
-            .font(.system(size: 44, weight: .semibold))
-            .padding(.bottom)
-          
-          Text("Let's jump into the rabbit hole!")
-              .padding()
-          
-            StartButtonView()
+            
+            Spacer()
+            Text("Eveything is ready")
+                .font(.system(size: 44, weight: .semibold))
+                .padding(.bottom)
+            
+            Text("Let's jump into the rabbit hole and\nstart dreaming!")
+                .multilineTextAlignment(.center)
+                .padding()
+            
+            
+            StartButtonView(isMoving: $isMoving)
                 .padding(.top, 20)
-          
-          Spacer()
+            ZStack {
+                
+                
+                Image("RabbitImage")
+                    .rotationEffect(.degrees(70))
+                    .padding()
+                
+                    .padding(.top)
+                    .offset(x: 0, y:isMoving ? 300 : -50)
+                    .clipped()
+                    .overlay(alignment: .top) {
+                        Image("hole")
+                            .offset(y: 100)
+                    }
+                
+            }
+            Spacer()
         } //: BUTTON
     }
 }

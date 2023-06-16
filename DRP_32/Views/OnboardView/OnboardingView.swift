@@ -13,7 +13,7 @@ struct OnboardingView: View {
     
     @State private var currentTab = 0
     
-    var viewList: [Any] = [FirstView.self, ChooseView.self, BedTimeSettingView.self, BedTimeRoutineView.self, WakeUpRoutineView.self, GetStartView.self]
+    var viewList: [Any] = [FirstView.self, BedTimeSettingView.self, BedTimeRoutineView.self, WakeUpRoutineView.self, GetStartView.self]
     
     var body: some View {
         TabView(selection: $currentTab,
@@ -67,9 +67,6 @@ struct OnboardingView: View {
             
         case is GetStartView.Type: return AnyView(
             GetStartView())
-        case is ChooseView.Type: return AnyView(
-            ChooseView())
-        
             
         default: return AnyView(EmptyView())
         }

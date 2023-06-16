@@ -22,6 +22,7 @@ struct FirstView: View {
                     .font(.system(size: 48, weight: .semibold))
                     .padding(.bottom)
                 Text("Try to set up your first routine!")
+                    .font(.title2)
                     .padding()
                 Button(action: {
                     NotificationManager.shared.requestAuthorization{ granted in
@@ -50,10 +51,15 @@ struct FirstView: View {
                     currentTab += 1
                 }) {
                     HStack(spacing: 8) {
-                        Text("Next")
+                        Text("Start Setting")
                         Image(systemName: "chevron.forward.2")
                     }
+                    .font(.title2)
+                    .padding(.horizontal, 16)
                     .padding(.vertical, 10)
+                    .background(
+                        Capsule().strokeBorder(Color.black, lineWidth: 1.25)
+                    )
                 }
                 Spacer()
             
