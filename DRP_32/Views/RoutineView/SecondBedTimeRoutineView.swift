@@ -66,7 +66,7 @@ struct SecondBedTimeRoutineView: View {
                         self.isEditing.toggle()
                     }) {
                         Text(isEditing ? "Done" : "Edit")
-                            .font(.title3)
+
                     }
                     .font(.title3)
                 }

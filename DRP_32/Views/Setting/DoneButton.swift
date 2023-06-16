@@ -27,7 +27,7 @@ struct DoneButton: View {
             update()
             isSetting.toggle()
         }) {
-            Text("Done")
+            Text("Save")
         } //: BUTTON
         
     }
