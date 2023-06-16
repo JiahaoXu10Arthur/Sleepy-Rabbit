@@ -72,6 +72,7 @@ struct SecondBedTimeRoutineView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     DoneButton(isSetting: $isPresented)
+                        .font(.title3)
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: {
