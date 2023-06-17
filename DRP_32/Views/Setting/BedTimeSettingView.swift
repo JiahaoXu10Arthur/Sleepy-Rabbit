@@ -116,7 +116,9 @@ struct BedTimeSettingView: View {
             .navigationBarTitleDisplayMode(.large)
             .navigationViewStyle(StackNavigationViewStyle())
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
+            .onAppear {
+                update()
+            }
             .onDisappear {
                 DispatchQueue.main.async {
                     settings.bedHour = bedHour
