@@ -136,6 +136,9 @@ struct BedTimeRoutineView: View {
         }
         
         settings.wakeUpChosenTasks = tasks
+        settings.wakeUpRoutine = tasks
+        
+        
         
         TaskAdaptor.shared.removeAll()
         tasks.append(settings.sleep)

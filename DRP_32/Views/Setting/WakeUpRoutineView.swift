@@ -118,7 +118,8 @@ struct WakeUpRoutineView: View {
             tasks.append(updateTask(task: task))
         }
         
-        settings.bedTimeChosenTasks = tasks
+        settings.bedTimeChosenTasks = tasks.reversed()
+        settings.bedTimeRoutine = tasks.reversed()
         
         startHour = wakeHour
         startMinute = wakeMinute
@@ -130,9 +131,12 @@ struct WakeUpRoutineView: View {
         }
         
         settings.wakeUpChosenTasks = tasks
+        settings.wakeUpRoutine = tasks
+        
         
         TaskAdaptor.shared.removeAll()
         tasks.append(settings.sleep)
+        
         
         let notifications = tasks + settings.bedTimeChosenTasks
         for task in notifications {

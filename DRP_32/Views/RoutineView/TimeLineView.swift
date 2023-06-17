@@ -74,16 +74,16 @@ struct TimeLineView: View {
                         isAdding.toggle()
                     
                     }) {
-                        Image(systemName: "plus.circle")
-                            .font(.title)
+                        Text("Add Task")
+                            .font(.title3)
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         isSetting.toggle()
                     }) {
-                        Image(systemName: "calendar.badge.clock")
-                            .font(.title)
+                        Text("Settings")
+                            .font(.title3)
                     }
                 }
             }

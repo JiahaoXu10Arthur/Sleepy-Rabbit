@@ -11,15 +11,15 @@ struct EditCellDetail: View {
     @EnvironmentObject var settings: UserSettings
 
     @State var title: String = ""
-    @State var hour: Int = 0
-    @State var minute: Int = 15
-    @State var startHour: Int = -1
-    @State var startMinute: Int = -1
+    @State var hour: Int
+    @State var minute: Int
+    @State var startHour: Int
+    @State var startMinute: Int
     
     @State var selectedType: String
     let types = ["Bedtime", "Wake Up"]
     
-    @State var detail: String = ""
+    @State var detail: String
     @Binding var isPresented: Bool
     
     @State private var errorMessage = ""
@@ -29,21 +29,21 @@ struct EditCellDetail: View {
     
     @State private var notify = "5 minutes before"
     
-    @Binding var task: Task
-    @State var orginal: Task
+    var task: Task
     
-    
+
     let befores = ["At time of event", "5 minutes before", "10 minutes before", "15 minutes before", "20 minutes before", "30 minutes before", "1 hour before"]
     
-    init(task: Binding<Task>, isPresented: Binding<Bool>) {
-        _title = State(initialValue: task.wrappedValue.title)
-        _detail = State(initialValue: task.wrappedValue.detail)
-        _selectedType = State(initialValue: task.wrappedValue.type)
-        _hour = State(initialValue: task.wrappedValue.hour)
-        _minute = State(initialValue: task.wrappedValue.minute)
-        _startHour = State(initialValue: task.wrappedValue.startHour)
-        _startMinute = State(initialValue: task.wrappedValue.startMinute)
-        _notify = State(initialValue: {switch task.wrappedValue.before {
+    init(task: Task, isPresented: Binding<Bool>) {
+        self.task = task
+        _title = State(initialValue: task.title)
+        _detail = State(initialValue: task.detail)
+        _selectedType = State(initialValue: task.type)
+        _hour = State(initialValue: task.hour)
+        _minute = State(initialValue: task.minute)
+        _startHour = State(initialValue: task.startHour)
+        _startMinute = State(initialValue: task.startMinute)
+        _notify = State(initialValue: {switch task.before {
         case 0:
             return "At time of event"
         case 5:
@@ -61,10 +61,9 @@ struct EditCellDetail: View {
         default:
             return "5 minutes before"
         }}())
-        _referenceLinks = State(initialValue: {task.wrappedValue.referenceLinks.map {($0, true)}}())
+        _referenceLinks = State(initialValue: {task.referenceLinks.map {($0, true)}}())
         _isPresented = isPresented
-        _task = task
-        _orginal = State(initialValue: task.wrappedValue)
+        
     }
     
     var body: some View {
@@ -72,6 +71,8 @@ struct EditCellDetail: View {
             Form {
                 Section(header: Text("Task Title")
                     .font(.headline)) {
+                        if let index = settings.bedTimeRoutine.firstIndex(of: task)
+                        { Text("true") }
                         TextField("Enter your task title", text: $title)
                     }.onTapGesture {
                         self.hideKeyboard()
@@ -93,7 +94,7 @@ struct EditCellDetail: View {
                         
                         VStack {
                             HStack {
-                                CustomDatePicker(sleepHour: $hour, sleepMinute: $minute)
+                                EditPicker(sleepHour: $hour, sleepMinute: $minute)
                                     .frame(height: 100.0)
                             }
                             if hour * 60 + minute < 15 {
@@ -182,26 +183,30 @@ struct EditCellDetail: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    EditDetailButtonView(title: $title, hour: $hour, minute: $minute, taskHour: $startHour, taskMinute: $startMinute, selectedType: $selectedType, detail: $detail, isPresented: $isPresented, errorMessage: $errorMessage, shouldShowValidationAlert: $shouldShowValidationAlert, referenceLinks: $referenceLinks, notify: $notify, task: $task, original: orginal)
+                    EditDetailButtonView(title: $title, hour: $hour, minute: $minute, taskHour: $startHour, taskMinute: $startMinute, selectedType: $selectedType, detail: $detail, isPresented: $isPresented, errorMessage: $errorMessage, shouldShowValidationAlert: $shouldShowValidationAlert, referenceLinks: $referenceLinks, notify: $notify, task: task, original: task)
                     
                 }
             }
         }
         
     }
-        func canOpenURL(_ string: String?) -> Bool {
-            var formatterString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
-            formatterString = formatterString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            guard let urlString = formatterString, let url = URL(string: urlString) else { return false }
-            return UIApplication.shared.canOpenURL(url)
+    func canOpenURL(_ urlString: String?) -> Bool {
+        if let urlString = urlString {
+            if let url = URL(string: urlString) {
+                
+                return UIApplication.shared.canOpenURL(url)
+            }
         }
+        
+        return false
+    }
     
 }
 
 struct EditCellDetail_Previews: PreviewProvider {
     static var previews: some View {
         let task = Task(title: "Take a Warm Bath", hour: 0, minute: 30, startHour: 21, startMinute: 30, detail: "This is detail", referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], type: "Bedtime")
-        EditCellDetail(task: .constant(task), isPresented: .constant(true))
+        EditCellDetail(task: task, isPresented: .constant(true))
             .environmentObject(UserSettings.shared)
     }
 }

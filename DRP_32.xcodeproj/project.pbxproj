@@ -12,6 +12,7 @@
 		5355C60D2A3A9F79006499B2 /* BedTimeSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355C60C2A3A9F79006499B2 /* BedTimeSave.swift */; };
 		535944352A3B5AF30073D15A /* SecondBedTimeRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535944342A3B5AF30073D15A /* SecondBedTimeRoutineView.swift */; };
 		535944392A3B5D020073D15A /* SecondWakeUpRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535944382A3B5D020073D15A /* SecondWakeUpRoutineView.swift */; };
+		535F49D42A3E03B700C8D6E7 /* EditPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535F49D32A3E03B700C8D6E7 /* EditPicker.swift */; };
 		538995702A37574200071A3E /* Tasked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389956F2A37574200071A3E /* Tasked.swift */; };
 		538995762A37574E00071A3E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538995722A37574E00071A3E /* NotificationManager.swift */; };
 		538995772A37574E00071A3E /* TaskPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538995732A37574E00071A3E /* TaskPersistenceManager.swift */; };
@@ -103,6 +104,7 @@
 		5355C60C2A3A9F79006499B2 /* BedTimeSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedTimeSave.swift; sourceTree = "<group>"; };
 		535944342A3B5AF30073D15A /* SecondBedTimeRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondBedTimeRoutineView.swift; sourceTree = "<group>"; };
 		535944382A3B5D020073D15A /* SecondWakeUpRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondWakeUpRoutineView.swift; sourceTree = "<group>"; };
+		535F49D32A3E03B700C8D6E7 /* EditPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPicker.swift; sourceTree = "<group>"; };
 		5389956F2A37574200071A3E /* Tasked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasked.swift; sourceTree = "<group>"; };
 		538995722A37574E00071A3E /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		538995732A37574E00071A3E /* TaskPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPersistenceManager.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				53C34D642A39089D00405939 /* ColoredIconView.swift */,
 				531D12BC2A3A717900A5E36D /* EditCellDetail.swift */,
 				531D12BE2A3A822F00A5E36D /* EditDetailButtonView.swift */,
+				535F49D32A3E03B700C8D6E7 /* EditPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				538D909C2A2A093200A80AAB /* TipRow.swift in Sources */,
 				EECEE48F2A24F9F400249177 /* ContentView.swift in Sources */,
 				538995772A37574E00071A3E /* TaskPersistenceManager.swift in Sources */,
+				535F49D42A3E03B700C8D6E7 /* EditPicker.swift in Sources */,
 				531D12BF2A3A822F00A5E36D /* EditDetailButtonView.swift in Sources */,
 				53E054EE2A2FC016001E8340 /* OnboardingView.swift in Sources */,
 				53E0550F2A32003E001E8340 /* BedTimeRoutineView.swift in Sources */,

@@ -184,11 +184,10 @@ struct NewTaskView: View {
     func canOpenURL(_ urlString: String?) -> Bool {
         if let urlString = urlString {
             if let url = URL(string: urlString) {
-                print("url")
+                
                 return UIApplication.shared.canOpenURL(url)
             }
         }
-        print("url false")
         
         return false
     }

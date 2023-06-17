@@ -115,7 +115,7 @@ struct CellDetailView: View {
             }
         }
         .sheet(isPresented: $isPresented) {
-            EditCellDetail(task: $task, isPresented: $isPresented)
+            EditCellDetail(task: task, isPresented: $isPresented)
         }
         
     }

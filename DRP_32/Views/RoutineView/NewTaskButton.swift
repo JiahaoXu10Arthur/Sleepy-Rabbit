@@ -91,13 +91,16 @@ struct NewTaskButton: View {
         
     }
     
-    func canOpenURL(_ string: String?) -> Bool {
-        var formatterString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
-        formatterString = formatterString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        guard let urlString = formatterString, let url = URL(string: urlString) else { return false }
-        return UIApplication.shared.canOpenURL(url)
+    func canOpenURL(_ urlString: String?) -> Bool {
+        if let urlString = urlString {
+            if let url = URL(string: urlString) {
+                
+                return UIApplication.shared.canOpenURL(url)
+            }
+        }
+        
+        return false
     }
-    
     func createNewReference() {
         for link in referenceLinks {
             urls.append(link.0)
@@ -137,7 +140,8 @@ struct NewTaskButton: View {
             tasks.append(updateTask(task: task))
         }
         
-        settings.bedTimeChosenTasks = tasks
+        settings.bedTimeChosenTasks = tasks.reversed()
+        settings.bedTimeRoutine = tasks.reversed()
         
         startHour = wakeHour
         startMinute = wakeMinute
@@ -149,6 +153,9 @@ struct NewTaskButton: View {
         }
         
         settings.wakeUpChosenTasks = tasks
+        settings.wakeUpRoutine = tasks
+        
+
         
         TaskAdaptor.shared.removeAll()
         tasks.append(settings.sleep)
