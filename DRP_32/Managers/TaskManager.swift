@@ -75,6 +75,8 @@ class TaskManager: ObservableObject {
     }
     
     if task.reminderEnabled {
+      print("123")
+      print(task.reminder.date)
       NotificationManager.shared.scheduleNotification(task: task)
     }
   }

@@ -100,6 +100,16 @@ struct SettingsView: View {
                         Text("Show Onboarding")
                             .font(.title2)
                     } //: BUTTON
+                  
+                  Button(action: {
+                    let date = Calendar.current.date(byAdding: .second, value: 3, to: Date())
+                    let reminder = Reminder(date: date, reminderType: .calendar)
+                    let t = Tasked(name: "Reminder", reminderEnabled: true, reminder: reminder, hour: 0, minute: 0, startHour: 0, startMinute: 0)
+                    TaskManager.shared.save(task: t)
+                  }) {
+                    Text("Push a notification after 3 seconds")
+                      .font(.title2)
+                  }
                 }
             
             }
