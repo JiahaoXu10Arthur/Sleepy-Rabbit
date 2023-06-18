@@ -13,11 +13,11 @@ struct BedTimeSettingView: View {
     
     // Default time
     
-    @AppStorage("sleepHour") var sleepHour = 0
-    @AppStorage("sleepMinute") var sleepMinute = 15
-    @AppStorage("wakeHour") var wakeHour = 0
+    @AppStorage("sleepHour") var sleepHour = 8
+    @AppStorage("sleepMinute") var sleepMinute = 0
+    @AppStorage("wakeHour") var wakeHour = 7
     @AppStorage("wakeMinute") var wakeMinute = 0
-    @AppStorage("bedHour") var bedHour = 0
+    @AppStorage("bedHour") var bedHour = 23
     @AppStorage("bedMinute") var bedMinute = 0
     @State private var startHour = 0
     @State private var startMinute = 0
@@ -159,6 +159,7 @@ struct BedTimeSettingView: View {
         }
         
         settings.wakeUpChosenTasks = tasks
+        settings.wakeUpRoutine = tasks
         
         TaskAdaptor.shared.removeAll()
         tasks.append(settings.sleep)

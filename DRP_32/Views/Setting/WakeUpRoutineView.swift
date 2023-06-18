@@ -36,9 +36,16 @@ struct WakeUpRoutineView: View {
                 
                 }.font(.title2)) {
                     VStack(alignment: .leading) {
-                        Text("Wake Up At")
+                        HStack {
+                            ColoredIconView(imageName: "sunrise", foregroundColor: .orange, backgroundColor: .white)
+                            Text("Wake Up At:")
+                        }
+                        
+                        
+                        
                         Text("\(formatTime(_:settings.wakeHour)) : \(formatTime(_:settings.wakeMinute))")
                             .font(.headline)
+                            .bold()
                     }
                     List {
                         ForEach(tasks) { task in

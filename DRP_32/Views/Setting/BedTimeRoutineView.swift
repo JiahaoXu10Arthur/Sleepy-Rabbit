@@ -47,9 +47,13 @@ struct BedTimeRoutineView: View {
                     }
                     
                     VStack(alignment: .leading) {
-                        Text("Go to bed at")
+                        HStack {
+                            ColoredIconView(imageName: "bed.double", foregroundColor: .blue, backgroundColor: .white)
+                            Text("Go to bed at:")
+                        }
                         Text("\(formatTime(_:settings.bedHour)) : \(formatTime(_:settings.bedMinute))")
                             .font(.headline)
+                            .bold()
                     }
                     
                 }
