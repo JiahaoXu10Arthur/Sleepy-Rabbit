@@ -24,28 +24,7 @@ struct FirstView: View {
                 Text("Try to set up your first routine!")
                     .font(.title2)
                     .padding()
-                Button(action: {
-                    NotificationManager.shared.requestAuthorization{ granted in
-                        
-                        // 2
-                        if granted {
-                            
-                            showNotificationSettingsUI = true
-                        }
-                    }
-                    
-                }) {
-                    HStack {
-                        Image(systemName: "bell.badge.circle.fill")
-                            .foregroundColor(Color.blue)
-                            .font(.title)
-                            .accentColor(.pink)
-                        
-                        Text("Enable Notification")
-                            .font(.title2)
-                    }
-                    
-                }
+                
                 
                 Button(action: {
                     currentTab += 1
