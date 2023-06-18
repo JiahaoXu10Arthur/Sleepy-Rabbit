@@ -76,7 +76,7 @@ class NotificationManager: ObservableObject {
     let a = "Duration: \(task.hour) hours \(task.minute) minutes\n"
     let b = "@ \(_:formatTime(task.startHour)):\(_:formatTime(task.startMinute)) (\(task.before) minutes left)"
     
-    content.body = a+b
+      content.body = a+b
 
     // 3
     var trigger: UNNotificationTrigger?

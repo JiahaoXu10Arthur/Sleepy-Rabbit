@@ -71,8 +71,6 @@ struct EditCellDetail: View {
             Form {
                 Section(header: Text("Task Title")
                     .font(.headline)) {
-                        if let index = settings.bedTimeRoutine.firstIndex(of: task)
-                        { Text("true") }
                         TextField("Enter your task title", text: $title)
                     }.onTapGesture {
                         self.hideKeyboard()

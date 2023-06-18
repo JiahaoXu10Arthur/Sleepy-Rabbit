@@ -36,7 +36,7 @@ struct WakeUpRoutineView: View {
                 
                 }.font(.title2)) {
                     VStack(alignment: .leading) {
-                        Text("Go to bed at")
+                        Text("Wake Up At")
                         Text("\(formatTime(_:settings.wakeHour)) : \(formatTime(_:settings.wakeMinute))")
                             .font(.headline)
                     }
