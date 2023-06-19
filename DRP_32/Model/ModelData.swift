@@ -90,7 +90,7 @@ class ModelData: ObservableObject {
         }
     }
     
-    func getAnAiTip1(retries: Int = 3, completion: @escaping (Tip?) -> Void) {
+    func getAnAiTip1(retries: Int = 5, completion: @escaping (Tip?) -> Void) {
         guard retries > 0 else {
             print("Max retries reached. Fetch failed.")
             completion(nil)
@@ -210,7 +210,7 @@ class ModelData: ObservableObject {
     }
 
     
-    func getQueryTip(retries: Int = 3, query: Query, completion: @escaping (Tip?) -> Void) {
+    func getQueryTip(retries: Int = 5, query: Query, completion: @escaping (Tip?) -> Void) {
         guard retries > 0 else {
             print("Max retries reached. Fetch failed.")
             self.showingTip = Tip(title: "Failed", tag: ":(", detail: "Get Tip Failed")
