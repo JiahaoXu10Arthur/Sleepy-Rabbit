@@ -828,7 +828,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP453598669;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP45ggjhgjgjkhjk;
 				PRODUCT_NAME = "Sleepy Rabbit";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -858,7 +858,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP453598669;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imperial.DRP45ggjhgjgjkhjk;
 				PRODUCT_NAME = "Sleepy Rabbit";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

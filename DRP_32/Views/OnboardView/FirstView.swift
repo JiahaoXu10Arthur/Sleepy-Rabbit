@@ -28,6 +28,10 @@ struct FirstView: View {
                         .font(.title2)
                         .multilineTextAlignment(.center)
                         .padding()
+                    Text("(Please \(Text("ALLOW").bold()) notifications, Sleepy Rabbit will remind you of your routines!)")
+                        .font(.caption2)
+                        .multilineTextAlignment(.center)
+                        .padding()
                 }
                 
              
