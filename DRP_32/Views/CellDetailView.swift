@@ -103,7 +103,7 @@ struct CellDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("Routine Detail")
+        .navigationTitle("Task Detail")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {

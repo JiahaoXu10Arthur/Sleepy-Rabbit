@@ -16,7 +16,7 @@ class UserSettings: ObservableObject {
         }
     }
     
-    @Published var bedHour: Int = 0 {
+    @Published var bedHour: Int = 23 {
         didSet {
             UserDefaults.standard.set(bedHour, forKey: "bedHour")
         }
@@ -28,19 +28,19 @@ class UserSettings: ObservableObject {
         }
     }
     
-    @Published var sleepHour: Int = 0 {
+    @Published var sleepHour: Int = 8 {
         didSet {
             UserDefaults.standard.set(sleepHour, forKey: "sleepHour")
         }
     }
     
-    @Published var sleepMinute: Int = 15 {
+    @Published var sleepMinute: Int = 0 {
         didSet {
             UserDefaults.standard.set(sleepMinute, forKey: "sleepMinute")
         }
     }
     
-    @Published var wakeHour: Int = 0 {
+    @Published var wakeHour: Int = 7 {
         didSet {
             UserDefaults.standard.set(wakeHour, forKey: "wakeHour")
         }
@@ -186,7 +186,7 @@ class UserSettings: ObservableObject {
                 Task(title: "Dim the Lights", hour: 0, minute: 15, detail: "Turning off or lowering bright lights can help with the process. As we know with screen time, exposure to bright lights before bedtime affects the circadian rhythm. Creating a cozy, cool and dark sleeping space will help set your circadian rhythm to sleep mode.", type: "Bedtime"),
                 Task(title: "Take a Warm Bath", hour: 0, minute: 30, detail: "As part of the sleep-wake cycle, your body experiences various metabolic changes throughout the day. One of these is melatonin production, which begins in the evening to prepare you for sleep, as well as a drop in your core body temperature Scientists have found that mimicking a nighttime drop in body temperature via a warm bath can trigger a similarly sleepy reaction. Consider taking a warm bath about an hour before you go to sleep.\nYour body will heat up from the water, and cool down quickly as the water evaporates, creating a sensation that makes you feel tired and relaxed.", referenceLinks: ["https://journals.sagepub.com/doi/10.1177/074873049701200604"], type: "Bedtime"),
                 Task(title: "Drinking Something Warm", hour: 0, minute: 15, detail: "Drinking a warm cup of tea or your favorite beverage can warm you up and get you in the mood for bedtime. Chamomile tea has been used for centuries to treat sleep disorders and insomnia. For kids, drinking warm milk can help encourage sleep. As adults, chamomile is the bedtime go-to.\nTurmeric is a superfood that helps you sleep and can help combat depression and inflammation, plus provide pain relief. The herb can be purchased at the grocery store or at a local farmer’s market. Turmeric can be a little bitter, so try creating a bedtime concoction like turmeric golden milk to sweeten up the flavor.", type: "Bedtime"),
-                Task(title: "Write Down a To-Do List", hour: 0, minute: 45, detail: "Creating a to-do list prevents the mind from worrying about tomorrow’s tasks. Bedtime writing is a mental dump of information that organizes future responsibilities and allows you to release anxiety. When you wake up in the morning, you’ll have an itinerary ready to start the day.", referenceLinks: ["https://psycnet.apa.org/record/2017-47677-001"], type: "Bedtime"),
+                Task(title: "Read Alice's Adventures in Wonderland", hour: 0, minute: 30, detail: "It's no use going back to yesterday because I was a different person then. - Alice's Adventures in Wonderland Page 114", type: "Bedtime"),
                 Task(title: "Listen to Music", hour: 1, minute: 0, detail: "Making a bedtime playlist can help you start letting go of mental attachments. Psychology studies have shown that listening to music can help encourage sleep and improve sleep quality. In one sleep study, 62 percent of participants reported using music in their nightly routines to help lessen stress.\nListening to music, particularly classical music, has been found to help with sleep, but don’t feel obligated to listen to a specific genre. Try some R&B, bossa nova or jazz. As long as it helps your sleep routine, it should help you sleep more soundly.", referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ", "https://www.youtube.com/watch?v=X3rJY63t5C8"], type: "Bedtime")
                 ]
         }
@@ -210,7 +210,6 @@ class UserSettings: ObservableObject {
                 Task(title: "Dim the Lights", hour: 0, minute: 15, detail: "Turning off or lowering bright lights can help with the process. As we know with screen time, exposure to bright lights before bedtime affects the circadian rhythm. Creating a cozy, cool and dark sleeping space will help set your circadian rhythm to sleep mode.", type: "Bedtime"),
                 Task(title: "Take a Warm Bath", hour: 0, minute: 30, detail: "As part of the sleep-wake cycle, your body experiences various metabolic changes throughout the day. One of these is melatonin production, which begins in the evening to prepare you for sleep, as well as a drop in your core body temperature Scientists have found that mimicking a nighttime drop in body temperature via a warm bath can trigger a similarly sleepy reaction. Consider taking a warm bath about an hour before you go to sleep.\nYour body will heat up from the water, and cool down quickly as the water evaporates, creating a sensation that makes you feel tired and relaxed.", referenceLinks: ["https://journals.sagepub.com/doi/10.1177/074873049701200604"], type: "Bedtime"),
                 Task(title: "Drinking Something Warm", hour: 0, minute: 15, detail: "Drinking a warm cup of tea or your favorite beverage can warm you up and get you in the mood for bedtime. Chamomile tea has been used for centuries to treat sleep disorders and insomnia. For kids, drinking warm milk can help encourage sleep. As adults, chamomile is the bedtime go-to.\nTurmeric is a superfood that helps you sleep and can help combat depression and inflammation, plus provide pain relief. The herb can be purchased at the grocery store or at a local farmer’s market. Turmeric can be a little bitter, so try creating a bedtime concoction like turmeric golden milk to sweeten up the flavor.", type: "Bedtime"),
-                Task(title: "Write Down a To-Do List", hour: 0, minute: 45, detail: "Creating a to-do list prevents the mind from worrying about tomorrow’s tasks. Bedtime writing is a mental dump of information that organizes future responsibilities and allows you to release anxiety. When you wake up in the morning, you’ll have an itinerary ready to start the day.", referenceLinks: ["https://psycnet.apa.org/record/2017-47677-001"], type: "Bedtime"),
                 Task(title: "Listen to Music", hour: 1, minute: 0, detail: "Making a bedtime playlist can help you start letting go of mental attachments. Psychology studies have shown that listening to music can help encourage sleep and improve sleep quality. In one sleep study, 62 percent of participants reported using music in their nightly routines to help lessen stress.\nListening to music, particularly classical music, has been found to help with sleep, but don’t feel obligated to listen to a specific genre. Try some R&B, bossa nova or jazz. As long as it helps your sleep routine, it should help you sleep more soundly.", referenceLinks: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ", "https://www.youtube.com/watch?v=X3rJY63t5C8"], type: "Bedtime")
                 ]
         }
