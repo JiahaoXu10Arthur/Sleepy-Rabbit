@@ -39,7 +39,7 @@ class TaskAdaptor {
         let date = Calendar.current.date(bySettingHour: task.startHour, minute: task.startMinute, second: 0, of: Date())
         
         if let date = date {
-            let d = Calendar.current.date(byAdding: .minute, value: -5, to: date)
+            let d = Calendar.current.date(byAdding: .minute, value: -(task.before), to: date)
             
             let reminder = Reminder(date: d, reminderType: .calendar, repeats: true)
             let t = Tasked(id: task.id.uuidString, name: task.title, reminderEnabled: true, reminder: reminder, hour: task.hour, minute: task.minute, startHour: task.startHour, startMinute: task.startMinute, before: task.before)
@@ -75,8 +75,6 @@ class TaskManager: ObservableObject {
     }
     
     if task.reminderEnabled {
-      print("123")
-      print(task.reminder.date)
       NotificationManager.shared.scheduleNotification(task: task)
     }
   }

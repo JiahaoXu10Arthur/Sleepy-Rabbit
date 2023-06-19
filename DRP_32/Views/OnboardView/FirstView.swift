@@ -17,15 +17,20 @@ struct FirstView: View {
             VStack {
                 
                 Spacer()
-                Text("Welcome")
+                VStack {
+                    Text("Welcome to Sleepy Rabbit!")
+                        
+                        .font(.system(size: 48, weight: .semibold))
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom)
+                    Image("rabbit")
+                    Text("It's time to set up your first sleeping routine with Sleepy Rabbit!")
+                        .font(.title2)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
                 
-                    .font(.system(size: 48, weight: .semibold))
-                    .padding(.bottom)
-                Text("Try to set up your first routine!")
-                    .font(.title2)
-                    .padding()
-                
-                
+             
                 Button(action: {
                     currentTab += 1
                 }) {
@@ -45,6 +50,7 @@ struct FirstView: View {
                 
             }
             .padding()
+            
         }
     
 }

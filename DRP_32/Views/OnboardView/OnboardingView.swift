@@ -33,7 +33,6 @@ struct OnboardingView: View {
         })
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         
-        
         HStack(spacing: 12) {
             ForEach(0..<viewList.count) { index in
                 Capsule()
