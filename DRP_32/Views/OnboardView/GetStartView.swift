@@ -15,10 +15,11 @@ struct GetStartView: View {
             
             Spacer()
             Text("Eveything is ready")
-                .font(.system(size: 44, weight: .semibold))
+                .font(.system(size: 44, weight: .bold))
                 .padding(.bottom)
             
             Text("Let's jump into the rabbit hole and\nstart dreaming!")
+                .font(.system(size: 20, weight: .semibold))
                 .multilineTextAlignment(.center)
                 .padding()
             
