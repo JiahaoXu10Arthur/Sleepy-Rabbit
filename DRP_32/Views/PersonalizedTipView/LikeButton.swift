@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LikeButton: View {
+    @EnvironmentObject var userSettings: UserSettings
     @EnvironmentObject var modelData: ModelData
     @Binding var like: Bool
     @State private var isDisabled: Bool = false
@@ -17,8 +18,8 @@ struct LikeButton: View {
         HStack {
             Button {
                 isDisabled = true
-                like.toggle()
-                modelData.updateLike(like: like) { success in
+                userSettings.liked.toggle()
+                modelData.updateLike(like: userSettings.liked) { success in
                     print(success)
                     if success {
                         modelData.fetchTipofTheDay() { _ in
@@ -33,9 +34,9 @@ struct LikeButton: View {
                     }
                 }
             } label: {
-                Label("Toggle like", systemImage: like ? "hand.thumbsup.fill" : "hand.thumbsup")
+                Label("Toggle like", systemImage: userSettings.liked ? "hand.thumbsup.fill" : "hand.thumbsup")
                     .labelStyle(.iconOnly)
-                    .foregroundColor(like ? .pink : .gray)
+                    .foregroundColor(userSettings.liked ? .pink : .gray)
             }
             .disabled(isDisabled)
             Text(num.description)
@@ -47,5 +48,6 @@ struct LikeButton: View {
 struct LikeButton_Previews: PreviewProvider {
     static var previews: some View {
         LikeButton(like: .constant(true), num: 10)
+            .environmentObject(UserSettings.shared)
     }
 }

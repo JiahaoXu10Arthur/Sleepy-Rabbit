@@ -91,6 +91,12 @@ class UserSettings: ObservableObject {
         }
     }
     
+    @Published var liked: Bool {
+        didSet {
+            saveLiked()
+        }
+    }
+    
     @Published var allowNotification: Bool {
         didSet {
             saveNotification()
@@ -145,6 +151,13 @@ class UserSettings: ObservableObject {
             showOnboarding = show
         } else {
             showOnboarding = true
+        }
+        
+        if let data99 = UserDefaults.standard.data(forKey: "liked"),
+           let found = try? JSONDecoder().decode(Bool.self, from: data99) {
+            liked = found
+        } else {
+            liked = false
         }
         
         if let data4 = UserDefaults.standard.data(forKey: "allowNotification"),
@@ -251,6 +264,12 @@ class UserSettings: ObservableObject {
     private func saveShow() {
         if let data = try? JSONEncoder().encode(showOnboarding) {
             UserDefaults.standard.set(data, forKey: "showOnboarding")
+        }
+    }
+    
+    private func saveLiked() {
+        if let data = try? JSONEncoder().encode(liked) {
+            UserDefaults.standard.set(data, forKey: "liked")
         }
     }
     

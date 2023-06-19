@@ -104,5 +104,6 @@ struct SwiftUIView_Previews: PreviewProvider {
                 .padding()
             Spacer()
         }
+        .environmentObject(UserSettings.shared)
     }
 }
